@@ -4,6 +4,9 @@
 .center{
     text-align:center;
 }
+.right{
+    text-align:right;
+    }
 body{
     text-transform:none !important;
 }
@@ -13,3 +16,6 @@ body{
 .form{
     height:40px;
 }
+.planeRequest, .hotelaccommodation, .carServices, .registration{
+    display:none;
+    }

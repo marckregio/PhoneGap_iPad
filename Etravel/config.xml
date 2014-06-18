@@ -112,5 +112,6 @@
     </feature>
     <!-- Deprecated plugins element. REmove in 3.0 -->
     <plugins>
+        <plugin name="SQLitePlugin" value="SQLitePlugin"/>
     </plugins>
 </widget>
