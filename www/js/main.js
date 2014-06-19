@@ -1,10 +1,14 @@
 $(document).ready(
 function(){
-                  $('#requestType').change(function(){
-                                           var request = $('#requestType').val();
-                                           $('.requestItem').hide();
-                                           $('.'+ request).fadeIn('fast');
-                                           });
+                  $('.requestType').click(function(){
+                                          var closestClass = "."+$(this).attr('id');
+                                          var closestId = "#"+$(this).attr('id');
+                                          $('.btn').removeClass('active');
+                                          $('.btn').removeClass('btn-info');
+                                          $(closestId).addClass('btn-info');
+                                          $('.requestItem').hide();
+                                          $(closestClass).fadeIn('fast');
+                                          });
                   //document.addEventListener("deviceready",createDB,false);
 });
 

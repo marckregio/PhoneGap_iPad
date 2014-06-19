@@ -47,15 +47,8 @@
                 <hr>
             </div>
             <div class="row-fluid">
-                <div class="span4">
-                    <label class="">Requestor Name: <br>
-                        <select>
-                            <option>Marck Regio</option>
-                            <option>Robin Lizaso</option>
-                            <option>Marck Regio</option>
-                            <option>Robin Lizaso</option>
-                        </select>
-                    </label>
+                <div class="span4 center">
+                    <label class="">Requestor Name: <br>Marck Regio</label>
                 </div>
                 <div class="span4 center">
                     <label>Mobile No.: <br>902432123</label>
@@ -99,20 +92,15 @@
             </div>
             <hr>
             <div class="row-fluid">
-                <div class="span4">
-                    <label>Request Type: <br>
-                        <select id="requestType">
-                            <option>Select a value</option>
-                            <option value="planeRequest">Plane Request</option>
-                            <option value="hotelaccommodation">Hotel Accommodation</option>
-                            <option value="carServices">Car Service</option>
-                            <option value="registration">Registration</option>
-                            <option value="others">Other Request</option>
-                        </select>
-                    </label>
+                <div class="span12 center">
+                    <div class="btn-group" data-toggle="button">
+                        <button id="planeRequest" type="button" class="btn requestType">Plane Request</button>
+                        <button id="hotelaccommodation" type="button" class="btn requestType">Hotel Accommodation</button>
+                        <button id="carServices" type="button" class="btn requestType">Car Service</button>
+                        <button id="registration" type="button" class="btn requestType">Registration</button>
+                        <button id="others" type="button" class="btn requestType">Other Requests</button>
+                    </div>
                 </div>
-                <div class="span4"></div>
-                <div class="span4"></div>
             </div>
             <hr>
             <div class="row-fluid planeRequest requestItem">
