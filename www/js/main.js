@@ -10,17 +10,15 @@ function(){
                                           $(closestClass).fadeIn('fast');
                                           });
                   //document.addEventListener("deviceready",createDB,false);
+                  $('#submit').click(function(){
+                                     $('#loader').modal('show');
+                                     setTimeout(function(){
+                                                $('#loader').modal('hide');
+                                                },3000);
+                                     setTimeout(function(){
+                                                window.location.assign("App.html");
+                                                },3500);
+                                     });
 });
 
 
-function createDB(){
-    try{
-        if(!!window.openDatabase){
-            var createDB = window.sqlitePlugin.openDatabase({name : "makDB"});
-        } else {
-            navigator.notification.alert("Local Database is not supported by the device");
-        }
-    } catch (error){
-        console.log("ERROR:" + error.message);
-    }
-}

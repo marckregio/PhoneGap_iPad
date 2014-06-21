@@ -1,22 +1,4 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
         <meta charset="utf-8" />
@@ -30,11 +12,18 @@
         <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
         <link rel="stylesheet" type="text/css" href="css/main.css" />
         <script src="js/index.js"></script>
-        
+        <script src="js/main.js"></script>
+        <script src="js/makoy.js"></script>
+        <script>
+            document.addEventListener("deviceready", onDeviceReady, false);
+            function onDeviceReady() {
+                makoy();
+            }
+        </script>
         <title></title>
     </head>
     <body>
-        <div class="container-fluid statusSpace">
+        <div id="page1" data-role="page" class="container-fluid statusSpace">
             <div class="navbar">
                 <div class="navbar-inner">
                     <h6 class="center appName">Nestle E-Travel</h6>
@@ -43,224 +32,41 @@
         </div>
         <div class="container-fluid">
             <div class="row-fluid">
-                <label class="right">Reference No.: 000-000-000</label>
+                <label class="center">Please Fill Up forms for One-time Authentication</label>
                 <hr>
             </div>
             <div class="row-fluid">
-                <div class="span4 center">
-                    <label class="">Requestor Name: <br>Marck Regio</label>
-                </div>
-                <div class="span4 center">
-                    <label>Mobile No.: <br>902432123</label>
-                </div>
-                <div class="span4 center">
-                    <label>Date of Birth: <br>March 10, 1994</label>
-                </div>
-            </div>
-            <hr>
-            <div class="row-fluid">
-                <div class="span4">
-                    <label>Activity Name: <br>
-                        <select>
-                            <option>Marck Regio</option>
-                            <option>Robin Lizaso</option>
-                            <option>Marck Regio</option>
-                            <option>Robin Lizaso</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="span4">
-                    <label class="">Account No.:<br>
-                        <select>
-                            <option>Marck Regio</option>
-                            <option>Robin Lizaso</option>
-                            <option>Marck Regio</option>
-                            <option>Robin Lizaso</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="span4">
-                    <label class="">Cost Center/WBS:<br>
-                        <select>
-                            <option>Marck Regio</option>
-                            <option>Robin Lizaso</option>
-                            <option>Marck Regio</option>
-                            <option>Robin Lizaso</option>
-                        </select>
-                    </label>
+                <div class="span12 center">
+                    <label class="">Full Name<br><input class="center" type="text"/></label>
                 </div>
             </div>
             <hr>
             <div class="row-fluid">
                 <div class="span12 center">
-                    <div class="btn-group" data-toggle="button">
-                        <button id="planeRequest" type="button" class="btn requestType">Plane Request</button>
-                        <button id="hotelaccommodation" type="button" class="btn requestType">Hotel Accommodation</button>
-                        <button id="carServices" type="button" class="btn requestType">Car Service</button>
-                        <button id="registration" type="button" class="btn requestType">Registration</button>
-                        <button id="others" type="button" class="btn requestType">Other Requests</button>
+                    <label class="">Mobile No.<br><input class="center" type="text"/></label>
+                </div>
+            </div>
+            <hr>
+            <div class="row-fluid">
+                <div class="span12 center">
+                    <label class="">Address<br><textarea></textarea></label>
+                </div>
+            </div>
+            <hr>
+            <div class="row-fluid">
+                <div class="span12 center">
+                    <a id="submit" class="btn btn-primary">Submit</a>
+                    <div id="loader" class="modal hide fade center">
+                        <div class="modal-header"><h4>Saving Credentials...</h4></div>
+                        <div class="modal-body">
+                            <div class="progress progress-striped active"><div class="bar" style="width:100%"></div></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <hr>
-            <div class="row-fluid planeRequest requestItem">
-                <div class="span4">
-                    <label>Title: <br>
-                        <select id="title">
-                            <option>Select a value</option>
-                            <option>Plane Request</option>
-                            <option>Hotel Accommodation</option>
-                            <option>Car Service</option>
-                            <option>Registration</option>
-                            <option>Other Request</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="span4">
-                    <label>Preferred Airline: <br>
-                        <select id="airline">
-                            <option>Select a value</option>
-                            <option>Plane Request</option>
-                            <option>Hotel Accommodation</option>
-                            <option>Car Service</option>
-                            <option>Registration</option>
-                            <option>Other Request</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="span4"></div>
-            </div>
-            <div class="row-fluid hotelaccommodation requestItem">
-                <div class="span4">
-                    <label>Guest Name: <br>
-                        <select id="guestName">
-                            <option>Select a value</option>
-                            <option>Plane Request</option>
-                            <option>Hotel Accommodation</option>
-                            <option>Car Service</option>
-                            <option>Registration</option>
-                            <option>Other Request</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="span4">
-                    <label>Location: <br>
-                        <select id="location">
-                            <option>Select a value</option>
-                            <option>Plane Request</option>
-                            <option>Hotel Accommodation</option>
-                            <option>Car Service</option>
-                            <option>Registration</option>
-                            <option>Other Request</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="span4">
-                    <label>Room Type: <br>
-                        <select id="roomType">
-                            <option>Select a value</option>
-                            <option>Plane Request</option>
-                            <option>Hotel Accommodation</option>
-                            <option>Car Service</option>
-                            <option>Registration</option>
-                            <option>Other Request</option>
-                        </select>
-                    </label>
-                </div>
-            </div>
-            <div class="row-fluid hotelaccommodation requestItem">
-                <div class="span4">
-                    <label>Category: <br>
-                        <select id="category">
-                            <option>Select a value</option>
-                            <option>Plane Request</option>
-                            <option>Hotel Accommodation</option>
-                            <option>Car Service</option>
-                            <option>Registration</option>
-                            <option>Other Request</option>
-                        </select>
-                    </label>
-                </div>
-            </div>
-            <div class="row-fluid carServices requestItem">
-                <div class="span4">
-                    <label>Description: <br>
-                        <select id="description">
-                            <option>Select a value</option>
-                            <option>Plane Request</option>
-                            <option>Hotel Accommodation</option>
-                            <option>Car Service</option>
-                            <option>Registration</option>
-                            <option>Other Request</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="span4">
-                    <label>Duration: <br>
-                        <select id="duration">
-                            <option>Select a value</option>
-                            <option>Plane Request</option>
-                            <option>Hotel Accommodation</option>
-                            <option>Car Service</option>
-                            <option>Registration</option>
-                            <option>Other Request</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="span4">
-                    <label>Car Details: <br>
-                        <select id="carDetails">
-                            <option>Select a value</option>
-                            <option>Plane Request</option>
-                            <option>Hotel Accommodation</option>
-                            <option>Car Service</option>
-                            <option>Registration</option>
-                            <option>Other Request</option>
-                        </select>
-                    </label>
-                </div>
-            </div>
-            <div class="row-fluid registration requestItem">
-                <div class="span4">
-                    <label>HCP Name: <br>
-                        <select id="hcpName">
-                            <option>Select a value</option>
-                            <option>Plane Request</option>
-                            <option>Hotel Accommodation</option>
-                            <option>Car Service</option>
-                            <option>Registration</option>
-                            <option>Other Request</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="span4">
-                    <label>Membership: <br>
-                        <select id="membership">
-                            <option>Select a value</option>
-                            <option>Plane Request</option>
-                            <option>Hotel Accommodation</option>
-                            <option>Car Service</option>
-                            <option>Registration</option>
-                            <option>Other Request</option>
-                        </select>
-                    </label>
-                </div>
-            </div>
-            <div class="row-fluid registration requestItem">
-                <div class="span4 center">
-                    <label>PRC No.: <br>902432123</label>
-                </div>
-                <div class="span4 center">
-                    <label>Mailing Address: <br>ecopy@ecopy.com.ph</label>
-                </div>
-                <div class="span4 center">
-                    <label>Email Address: <br>marckregio@gmail.com</label>
-                </div>
-            </div>
-            
         </div>
     </body>
-    <script src="js/main.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>
