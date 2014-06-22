@@ -19,3 +19,6 @@ body{
 .planeRequest, .hotelaccommodation, .carServices, .registration{
     display:none;
     }
+#page2{
+    display:none;
+    }

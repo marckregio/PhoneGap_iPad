@@ -14,11 +14,20 @@ function(){
                                      $('#loader').modal('show');
                                      setTimeout(function(){
                                                 $('#loader').modal('hide');
+                                                $('#page1').hide();
+                                                $('#page2').fadeIn();
                                                 },3000);
                                      setTimeout(function(){
-                                                window.location.assign("App.html");
-                                                },3500);
+                                                
+                                                },3100);
                                      });
+                  $('#submit').click(function(){
+                                     var id = Math.floor((Math.random() * 100) + 1);
+                                     //RunDynamicSQL("Insert Into AccountHandler (id, fullname, mobileno, address) Values (" + id + ",'Marck Litonjua Regio','09276572480','Sauyo QC')");
+                                     //RunDynamicSQL("Delete from AccountHandler");
+                                     //RunDynamicSQLReturn("Select * from AccountHandler");
+                                     });
+                  
 });
 
 

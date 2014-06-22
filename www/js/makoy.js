@@ -1,8 +1,10 @@
 /*
  * Hard Coded and Tested by Marck Litonjua Regio
  */
+var db;
 function makoy(){
     createDB();
+    
 }
 //File Accessors
 function requestAccess(){
@@ -19,7 +21,7 @@ function gotFS(FileSystem){
 }
 //Database Accessors
 function createDB(){
-    var db = window.openDatabase("DB","1.0","NestleETravel",10485760);
+    db = window.openDatabase("NestleDB","1.0","NestleETravel",10485760);
     db.transaction(createTables, errorException, success);
 }
 function createTables(tx){
@@ -31,12 +33,28 @@ function createTables(tx){
     tx.executeSql('Create Table If Not Exists Registration (id unique, parentid text, hcpname text, mobileno text, prcno text, mailing text, email text)');
     tx.executeSql('Create Table If Not Exists OtherRequest (id unique, parentid text, hcpname text, mobileno text, remarks text)');
 }
-function query(tx){
-
+function RunDynamicSQL(queryString){
+    db.transaction(function(tx){
+                   tx.executeSql(queryString);
+                   }, errorException, success);
 }
-function errorException(tx, error){
-    alert("DBError:" + error);
+function RunDynamicSQLReturn(queryString){
+    db.transaction(function(tx){
+                   tx.executeSql(queryString,[],
+                                 function(tx,results){
+                                 //ResultSet
+                                 var len = results.rows.length;
+                                 if (len > 0){
+                                 for (var i = 0; i < len; i++){
+                                 alert(results.rows.item(i)['fullname']);
+                                 }
+                                 }
+                                 },errorException);
+                   },errorException,success);
 }
-function success(){
+function errorException(error){
+    alert("DBError: " + error.message);
+}
+function success(tx){
     console.log("Tagumpay");
 }
