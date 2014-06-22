@@ -1,10 +1,10 @@
 /*
  * Hard Coded and Tested by Marck Litonjua Regio
  */
-var db;
+
 function makoy(){
     createDB();
-    
+    loginChecker();
 }
 //File Accessors
 function requestAccess(){
@@ -38,6 +38,22 @@ function RunDynamicSQL(queryString){
                    tx.executeSql(queryString);
                    }, errorException, success);
 }
+function loginChecker(){
+    db.transaction(function(tx){
+                   tx.executeSql('Select * from AccountHandler',[],
+                                 function(tx,results){
+                                 //ResultSet
+                                 var len = results.rows.length;
+                                 if (len > 0){
+                                 loginCheck = true;
+                                 currentUser = results.rows.item(0)['fullname'];
+                                 }else{
+                                 alert("no data");
+                                 loginCheck = false;
+                                 }
+                                 },errorException);
+                   },errorException,success);
+}
 function RunDynamicSQLReturn(queryString){
     db.transaction(function(tx){
                    tx.executeSql(queryString,[],
@@ -48,6 +64,8 @@ function RunDynamicSQLReturn(queryString){
                                  for (var i = 0; i < len; i++){
                                  alert(results.rows.item(i)['fullname']);
                                  }
+                                 }else{
+                                 alert("no data");
                                  }
                                  },errorException);
                    },errorException,success);

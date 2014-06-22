@@ -9,7 +9,6 @@ function(){
                                           $('.requestItem').hide();
                                           $(closestClass).fadeIn('fast');
                                           });
-                  //document.addEventListener("deviceready",createDB,false);
                   $('#submit').click(function(){
                                      $('#loader').modal('show');
                                      setTimeout(function(){
@@ -17,17 +16,14 @@ function(){
                                                 $('#page1').hide();
                                                 $('#page2').fadeIn();
                                                 },3000);
-                                     setTimeout(function(){
-                                                
-                                                },3100);
                                      });
                   $('#submit').click(function(){
                                      var id = Math.floor((Math.random() * 100) + 1);
-                                     //RunDynamicSQL("Insert Into AccountHandler (id, fullname, mobileno, address) Values (" + id + ",'Marck Litonjua Regio','09276572480','Sauyo QC')");
+                                     //RunDynamicSQL("Insert Into AccountHandler (id, fullname, mobileno, address) Values (" + id + ",'"+ $('.fullname').val() + "','" + $('.mobileno').val() + "','" + $('.address').val() + "')");
                                      //RunDynamicSQL("Delete from AccountHandler");
                                      //RunDynamicSQLReturn("Select * from AccountHandler");
                                      });
-                  
+                  $('.registeredUser').text() = currentUser;
 });
 
 

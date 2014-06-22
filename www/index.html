@@ -8,6 +8,7 @@
         <script src="js/bootstrap.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script src="SQLitePlugin.js"></script>
+        <script src="js/vars.js"></script>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
         <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
         <link rel="stylesheet" type="text/css" href="css/main.css" />
@@ -25,30 +26,30 @@
         <div class="container-fluid statusSpace">
             <div class="navbar">
                 <div class="navbar-inner">
-                    <h6 class="center appName">Nestle E-Travel</h6>
+                    <button id="menu" class=" btn"><i class="icon-th-list"></i></button>
                 </div>
             </div>
         </div>
         <div id="page1" class="container-fluid">
             <div class="row-fluid">
-                <label class="center">Please Fill Up forms for One-time Authentication</label>
+                <label class="center">Please Fill Up forms for Authentication</label>
                 <hr>
             </div>
             <div class="row-fluid">
                 <div class="span12 center">
-                    <label class="">Full Name<br><input class="center" type="text"/></label>
+                    <label>Full Name<br><input class="center fullname" type="text"/></label>
                 </div>
             </div>
             <hr>
             <div class="row-fluid">
                 <div class="span12 center">
-                    <label class="">Mobile No.<br><input class="center" type="text"/></label>
+                    <label>Mobile No.<br><input class="center mobileno" type="text"/></label>
                 </div>
             </div>
             <hr>
             <div class="row-fluid">
                 <div class="span12 center">
-                    <label class="">Address<br><textarea></textarea></label>
+                    <label>Address<br><textarea class="address"></textarea></label>
                 </div>
             </div>
             <hr>
@@ -73,7 +74,7 @@
             </div>
             <div class="row-fluid">
                 <div class="span4 center">
-                    <label class="">Requestor Name: <br>Marck Regio</label>
+                    <label class="">Requestor Name: <br><span class="registeredUser"></span></label>
                 </div>
                 <div class="span4 center">
                     <label>Mobile No.: <br>902432123</label>
