@@ -1,5 +1,7 @@
+
 $(document).ready(
 function(){
+                  //ALL UI Related
                   $('.requestType').click(function(){
                                           var closestClass = "."+$(this).attr('id');
                                           var closestId = "#"+$(this).attr('id');
@@ -9,21 +11,13 @@ function(){
                                           $('.requestItem').hide();
                                           $(closestClass).fadeIn('fast');
                                           });
-                  $('#submit').click(function(){
-                                     $('#loader').modal('show');
-                                     setTimeout(function(){
-                                                $('#loader').modal('hide');
-                                                $('#page1').hide();
-                                                $('#page2').fadeIn();
-                                                },3000);
-                                     });
-                  $('#submit').click(function(){
-                                     var id = Math.floor((Math.random() * 100) + 1);
-                                     //RunDynamicSQL("Insert Into AccountHandler (id, fullname, mobileno, address) Values (" + id + ",'"+ $('.fullname').val() + "','" + $('.mobileno').val() + "','" + $('.address').val() + "')");
-                                     //RunDynamicSQL("Delete from AccountHandler");
-                                     //RunDynamicSQLReturn("Select * from AccountHandler");
-                                     });
-                  $('.registeredUser').text() = currentUser;
+                  
+                  $('.registeredUser').text("Marck Litonjua Regio");
+                  $('.mobileNo').text("09276572480");
+                  $('.dateOfBirth').text("March 10, 1994");
+                  $('.referenceNo').text(id + "-213441");
+                  
+                  
 });
 
 

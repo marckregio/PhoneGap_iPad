@@ -16,7 +16,7 @@ body{
 .form{
     height:40px;
 }
-.planeRequest, .hotelaccommodation, .carServices, .registration{
+.planeRequest, .hotelaccommodation, .carServices, .registration, .others{
     display:none;
     }
 #page2{

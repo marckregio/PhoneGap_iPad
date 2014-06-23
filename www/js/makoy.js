@@ -1,23 +1,77 @@
 /*
  * Hard Coded and Tested by Marck Litonjua Regio
  */
-
 function makoy(){
-    createDB();
-    loginChecker();
+    //createDB();
+    //loginChecker();
+    //requestAccess();
 }
 //File Accessors
 function requestAccess(){
+    xmlString = makeXML();
     window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, failAccess);
 }
 function failAccess(){
     alert("Failed to access FileSystem");
 }
-
 function gotFS(FileSystem){
     window.rootFS = FileSystem.root;
-    alert(window.rootFS.fullPath);
+    //alert(window.rootFS.fullPath);
+    window.rootFS.getFile("request"+id+".xml", {create: true, exclusive: false},
+                          function(fileEntry){
+                          fileEntry.createWriter(fileWriter, errorException);
+                          }, errorException);
+}
+function fileWriter(writer){
+    //writer.onwriteend = function(evt){};
+    writer.seek(writer.length);
+    writer.write(xmlString);
+    alert("XML FILE GENERATED");
+}
+function makeXML(){
+    var template = '<?xml version="1.0" encoding="UTF-8"?> \
+    <Section1> \
+    <head> \
+        <referenceNo>' + refNo + '</referenceNo> \
+        <requestor>' + requestor + '</requestor> \
+        <mobileno>' + mobileno + '</mobileno> \
+        <activityName>' + activityName + '</activityName> \
+        <accountNo>' + accountNo + '</accountNo> \
+        <costcenter>' + costCenter + '</costcenter> \
+    </head> \
+    <body> \
+        <Airline> \
+            <title>' + title + '</title> \
+            <airline>' + airline + '</airline> \
+        </Airline> \
+        <Hotel> \
+            <guestName>' + guestName + '</guestName> \
+            <roomlocation>' + roomlocation +'</roomlocation> \
+            <roomType>' + roomType + '</roomType> \
+            <category>' + category + '</category> \
+        </Hotel> \
+        <Car> \
+            <description>' + description + '</description> \
+            <duration>' + duration + '</duration> \
+            <carDetails>' + carDetails + '</carDetails> \
+        </Car> \
+        <Registration> \
+            <hcpName>' + hcpName + '</hcpName> \
+            <membership>' + membership + '</membership> \
+            <prcNo>' + prcNo + '</prcNo> \
+            <mailing>' + mailing + '</mailing> \
+            <email>' + email + '</email> \
+        </Registration> \
+        <Others> \
+            <hcpName2>' + hcpName2 + '</hcpName2> \
+            <hcpMobile>' + hcpMobile + '</hcpMobile> \
+            <remarks>' + remarks + '</remarks> \
+        </Others> \
+    </body> \
+    </Section1> \
+    ';
+    return template;
 }
 //Database Accessors
 function createDB(){
