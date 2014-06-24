@@ -21,10 +21,12 @@
         <div class="container-fluid statusSpace">
             <div class="navbar">
                 <div class="navbar-inner">
-                    <button id="menu" class=" btn"><i class="icon-th-list"></i></button>
+                    <button class="menuButton btn" style="position:relative; left:-14px;"><i class="icon-th-list"></i></button>
+                    <button class="btn pull-right" style="position:relative; right:-14px;">Nestle E-Travel</button>
                 </div>
             </div>
         </div>
+        <!--LOGIN PAGE-->
         <div id="page1" class="container-fluid">
             <div class="row-fluid">
                 <label class="center">Please Fill Up forms for Authentication</label>
@@ -61,12 +63,15 @@
             </div>
             <hr>
         </div>
-        <!--APP PAGE-->
+        <!--REQUEST PAGE-->
         <div id="page2" class="container-fluid">
             <div class="row-fluid">
+                <div class="span6"><b>Request</b></div>
+                <div class="span6">
                 <label class="right">Reference No.: <span class="referenceNo"></span></label>
-                <hr>
+                </div>
             </div>
+            <hr>
             <div class="row-fluid">
                 <div class="span4 center">
                     <label class="">Requestor Name: <br><span class="registeredUser"></span></label>
@@ -306,6 +311,58 @@
                 <div class="span4">
                     <button class="genXML btn btn-success pull-right">Generate XML</button>
                 </div>
+            </div>
+        </div>
+        <!--EMAIL PAGE-->
+        <div id="page3" class="container-fluid">
+            <div class="row-fluid">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Reference No.</th>
+                            <th>Activity</th>
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr value="row1" class="selectedRow">
+                            <td>1</td>
+                            <td>3242344</td>
+                            <td>Plane Request</td>
+                        </tr>
+                        <tr class="selectedRow">
+                            <td>2</td>
+                            <td>3242344</td>
+                            <td>Plane Request</td>
+                        </tr>
+                        <tr class="selectedRow">
+                            <td>3</td>
+                            <td>3242344</td>
+                            <td>Plane Request</td>
+                        </tr>
+                        <tr class="selectedRow">
+                            <td>4</td>
+                            <td>3242344</td>
+                            <td>Plane Request</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--MENU MODAL-->
+        <div class="modal menu hide fade">
+            <div class="modal-header center"><h4>Menu</h4></div>
+            <div class="modal-body center">
+                <div class="row-fluid"><button class="btn btn-info menubutton">
+                    <i class="icon-wrench icon-white"></i> Maintenance</button></div>
+                <br>
+                <div class="row-fluid"><button class="btn btn-inverse menubutton">
+                    <i class="icon-list-alt icon-white"></i> Database</button></div>
+                <br>
+                <div class="row-fluid"><button class="btn btn-success menubutton">
+                    <i class="icon-flag icon-white"></i> About</button></div>
+                <hr>
+                <div class="row-fluid"><button class="btn btn-danger menubutton exit">Exit</button></div>
             </div>
         </div>
     </body>

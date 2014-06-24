@@ -13,7 +13,7 @@ function requestAccess(){
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, failAccess);
 }
 function failAccess(){
-    alert("Failed to access FileSystem");
+    showAlert("Failed to access FileSystem");
 }
 function gotFS(FileSystem){
     window.rootFS = FileSystem.root;
@@ -27,7 +27,7 @@ function fileWriter(writer){
     //writer.onwriteend = function(evt){};
     writer.seek(writer.length);
     writer.write(xmlString);
-    alert("XML FILE GENERATED");
+    showAlert("XML FILE GENERATED");
 }
 function makeXML(){
     var template = '<?xml version="1.0" encoding="UTF-8"?> \
@@ -125,8 +125,18 @@ function RunDynamicSQLReturn(queryString){
                    },errorException,success);
 }
 function errorException(error){
-    alert("DBError: " + error.message);
+    showAlert("DBError: " + error.message);
 }
 function success(tx){
     console.log("Tagumpay");
+}
+function showAlert(alert){
+    navigator.notification.alert(
+        alert,
+        function(){
+            console.log("Alert triggered");
+        },
+        'Nestle E-Travel',
+        'Ok'
+    );
 }

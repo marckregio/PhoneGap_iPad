@@ -54,7 +54,8 @@ function(){
                                      });
                   if (requestor != ""){
                   $('#page1').hide();
-                  $('#page2').show();
+                  $('#page2').hide();
+                  $('#page3').show();
                   }
                   $('.genXML').click(function(){
                                      requestAccess();

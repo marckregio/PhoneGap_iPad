@@ -17,7 +17,16 @@ function(){
                   $('.dateOfBirth').text("March 10, 1994");
                   $('.referenceNo').text(id + "-213441");
                   
-                  
+                  $('.menuButton').click(function(){
+                                         $('.menu').modal('show');
+                                         });
+                  $('.exit').click(function(){
+                                         $('.menu').modal('hide');
+                                         });
+                  $('.selectedRow').click(function(){
+                                          var closestTr = $(this).closest('tr');
+                                          $(closestTr).css('background-color','#76eee6');
+                                          });
 });
 
 
