@@ -6,6 +6,47 @@ function(){
                   requestor = $('.registeredUser').text();
                   mobileno = $('.mobileNo').text();
                   dateofBirth = $('.dateOfBirth').text();
+                  //Bind JSON to UI
+                  for (var i = 0; i < Activity.length; i++){
+                  $('.activityName').append('<option value="' + Activity[i].val + '">' + Activity[i].activityName + '</option>');
+                  }
+                  for (var i = 0; i < Accounts.length; i++){
+                  $('.accountNo').append('<option value="' + Accounts[i].val + '">' + Accounts[i].accountNo + '</option>');
+                  }
+                  for (var i = 0; i < CostCenters.length; i++){
+                  $('.costCenter').append('<option value="' + CostCenters[i].val + '">' + CostCenters[i].costCenter + '</option>');
+                  }
+                  for (var i = 0; i < Airline.length; i++){
+                  $('.airline').append('<option value="' + Airline[i].val + '">' + Airline[i].preferredAirline + '</option>');
+                  }
+                  for (var i = 0; i < Location.length; i++){
+                  $('.location').append('<option value="' + Location[i].val + '">' + Location[i].location + '</option>');
+                  }
+                  for (var i = 0; i < Type.length; i++){
+                  $('.roomType').append('<option value="' + Type[i].val + '">' + Type[i].roomType + '</option>');
+                  }
+                  for (var i = 0; i < Category.length; i++){
+                  $('.category').append('<option value="' + Category[i].val + '">' + Category[i].roomCategory + '</option>');
+                  }
+                  for (var i = 0; i < Description.length; i++){
+                  $('.description').append('<option value="' + Description[i].val + '">' + Description[i].description + '</option>');
+                  }
+                  for (var i = 0; i < Duration.length; i++){
+                  $('.duration').append('<option value="' + Duration[i].val + '">' + Duration[i].duration + '</option>');
+                  }
+                  for (var i = 0; i < Details.length; i++){
+                  $('.carDetails').append('<option value="' + Details[i].val + '">' + Details[i].details + '</option>');
+                  }
+                  for (var i = 0; i < Member.length; i++){
+                  $('.membership').append('<option value="' + Member[i].val + '">' + Member[i].membership + '</option>');
+                  }
+                  for (var i = 0; i < OtherTable.length; i++){
+                  $('#otherRows').append('<tr class="selectedRow">\
+                                         <td>' + OtherTable[i].item + '</td> \
+                                         <td>' + OtherTable[i].hcpname + '</td> \
+                                         <td>' + OtherTable[i].remarks + '</td> \
+                                         </tr>');
+                  }
                   
                   $('select').change(function(){
                                       activityName = $('.activityName').val();
@@ -29,14 +70,17 @@ function(){
                                       prcNo = $('.prcNo').text();
                                       mailing = $('.mailing').text();
                                       email = $('.email').text();
+                                     
+                                     });
                                       //
+                                     /*
                                       hcpName2 = $('.hcpName2').val();
                                       hcpMobile = $('.hcpMobile').text();
                                       });
                   $('.remarks').change(function(){
                                        remarks = $('.remarks').val();
                                        });
-                  
+                  */
                   
                   
                   $('#submit').click(function(){
@@ -54,11 +98,36 @@ function(){
                                      });
                   if (requestor != ""){
                   $('#page1').hide();
-                  $('#page2').hide();
-                  $('#page3').show();
+                  $('#page2').show();
+                  $('#page3').hide();
                   }
                   $('.genXML').click(function(){
                                      requestAccess();
                                      });
+                  var closestTr;
+                  $('.selectedRow').click(function(){
+                                          closestTr = $(this).closest('tr');
+                                          if ($(closestTr).hasClass("selected") == true){
+                                          $(closestTr).removeClass("selected");
+                                          } else {
+                                          $(closestTr).addClass("selected");
+                                          }
+                                          });
+                  $('#deleteRow').click(function(){
+                                        if ($(closestTr).hasClass("selected") == true){
+                                        $('.selected').remove();
+                                        }
+                                        });
+                  $('.saveOther').click(function(){
+                                        var item = 4;
+                                        $('#otherRows').append('<tr class="selectedRow">\
+                                                               <td>' + item + '</td> \
+                                                               <td>' + $('#hcpName2').val() + '</td> \
+                                                               <td>' + $('#remarks').val()  + '</td> \
+                                                               </tr>');
+                                        $('#otherEntry').modal('hide');
+                                        $('#hcpName2').val("");
+                                        $('#remarks').val("");
+                                        });
 });
 

@@ -1,3 +1,6 @@
+body{
+    margin-bottom:50px;
+}
 .statusSpace{
     margin-top:20px;
 }
@@ -28,9 +31,18 @@ body{
     margin-left:auto;
     margin-right:auto;
     }
+.dataEntry{
+    width:33%;
+    left: 33.5%; /* (100- width)/2 */
+    margin-left:auto;
+    margin-right:auto;
+    }
 .menubutton{
     width:150px;
     }
 thead{
     background-color:#00b3a7;
+    }
+.selected{
+    background-color:#76eee6;
     }

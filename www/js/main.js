@@ -23,10 +23,12 @@ function(){
                   $('.exit').click(function(){
                                          $('.menu').modal('hide');
                                          });
-                  $('.selectedRow').click(function(){
-                                          var closestTr = $(this).closest('tr');
-                                          $(closestTr).css('background-color','#76eee6');
-                                          });
+                  $('#addRow').click(function(){
+                                     $('#otherEntry').modal('show');
+                                     });
+                  $('.cancelOther').click(function(){
+                                     $('#otherEntry').modal('hide');
+                                     });
 });
 
 
