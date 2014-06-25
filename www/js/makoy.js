@@ -39,10 +39,12 @@ function makeXML(){
         <activityName>' + activityName + '</activityName> \
         <accountNo>' + accountNo + '</accountNo> \
         <costcenter>' + costCenter + '</costcenter> \
+        <dateofActivity>' + dateofActivity + '</dateofActivity> \
+        <justification>' + justification + '</justification> \
     </head> \
     <body> \
         <Airline> \
-            <title>' + title + '</title> \
+            <planePassenger>' + planePassenger + '</planePassenger> \
             <airline>' + airline + '</airline> \
         </Airline> \
         <Hotel> \
@@ -52,6 +54,7 @@ function makeXML(){
             <category>' + category + '</category> \
         </Hotel> \
         <Car> \
+            <carPassenger>' + carPassenger + '</carPassenger> \
             <description>' + description + '</description> \
             <duration>' + duration + '</duration> \
             <carDetails>' + carDetails + '</carDetails> \

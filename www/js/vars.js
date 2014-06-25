@@ -2,11 +2,17 @@ var id = Math.floor((Math.random() * 100) + 1);
 var db;
 var loginCheck;
 var currentUser;
-var refNo,requestor,mobileno,dateofBirth,activityName,accountNo,costCenter,title,airline,guestName,roomlocation,roomType,category,description,duration,carDetails,hcpName,membership,prcNo,mailing,email,hcpName2,hcpMobile,remarks;
+var refNo,dateofActivity,justification,planePassenger,carPassenger,requestor,mobileno,dateofBirth,activityName,accountNo,costCenter,title,airline,guestName,roomlocation,roomType,category,description,duration,carDetails,hcpName,membership,prcNo,mailing,email,hcpName2,hcpMobile,remarks;
 var xmlString ;
 
 //Temporary Database
 //Head
+var Passenger = [
+                 {"passengerName":"Select a value","val":"","mobile":"","dateofbirth":""},
+                 {"passengerName":"Georgina Macalindan","val":"Georgina Macalindan","mobile":"124949124","dateofbirth":"06/21/2014"},
+                 {"passengerName":"Marck Regio","val":"Marck Regio","mobile":"09276572480","dateofbirth":"03/10/1994"},
+                 {"passengerName":"Juan Dela Cruz","val":"Juan Dela Cruz","mobile":"0945412333","dateofbirth":"06/01/2014"}
+];
 var Accounts = [
                 {"accountNo":"Select a value","val":""},
                 {"accountNo":"6028000","val":"6028000"},

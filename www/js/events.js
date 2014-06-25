@@ -40,6 +40,18 @@ function(){
                   for (var i = 0; i < Member.length; i++){
                   $('.membership').append('<option value="' + Member[i].val + '">' + Member[i].membership + '</option>');
                   }
+                  for (var i = 0; i < Passenger.length; i++){
+                  $('.guestName').append('<option value="' + Passenger[i].passengerName + '">' + Passenger[i].passengerName + '</option>');
+                  }
+                  for (var i = 0; i < Passenger.length; i++){
+                  $('.hcpName').append('<option value="' + Passenger[i].passengerName + '">' + Passenger[i].passengerName + '</option>');
+                  }
+                  for (var i = 0; i < Passenger.length; i++){
+                  $('.planePassenger').append('<option value="' + Passenger[i].passengerName + '">' + Passenger[i].passengerName + '</option>');
+                  }
+                  for (var i = 0; i < Passenger.length; i++){
+                  $('.carPassenger').append('<option value="' + Passenger[i].passengerName + '">' + Passenger[i].passengerName + '</option>');
+                  }
                   for (var i = 0; i < OtherTable.length; i++){
                   $('#otherRows').append('<tr class="selectedRow">\
                                          <td>' + OtherTable[i].item + '</td> \
@@ -49,11 +61,12 @@ function(){
                   }
                   
                   $('select').change(function(){
+                                     
                                       activityName = $('.activityName').val();
                                       accountNo = $('.accountNo').val();
                                       costCenter = $('.costCenter').val();
                                       //
-                                      title = $('.title').val();
+                                      planePassenger = $('.planePassenger').val();
                                       airline = $('.airline').val();
                                       //
                                       guestName = $('.guestName').val();
@@ -61,6 +74,7 @@ function(){
                                       roomType = $('.roomType').val();
                                       category = $('.category').val();
                                       //
+                                      carPassenger = $('.carPassenger').val();
                                       description = $('.description').val();
                                       duration = $('.duration').val();
                                       carDetails = $('.carDetails').val();
@@ -77,10 +91,12 @@ function(){
                                       hcpName2 = $('.hcpName2').val();
                                       hcpMobile = $('.hcpMobile').text();
                                       });
-                  $('.remarks').change(function(){
-                                       remarks = $('.remarks').val();
+                                      */
+                  $('.dateofActivity').change(function(){
+                                              dateofActivity = $('.dateofActivity').val();
+                                              //alert(dateofActivity);
                                        });
-                  */
+                  
                   
                   
                   $('#submit').click(function(){
