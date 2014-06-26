@@ -46,3 +46,9 @@ body{
 .selected{
     background-color:#76eee6;
     }
+.dbName{
+    margin-top:0px;
+    }
+.item{
+    width:2px;
+    }

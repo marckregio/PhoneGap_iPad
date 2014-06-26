@@ -114,11 +114,12 @@ function(){
                                      });
                   if (requestor != ""){
                   $('#page1').hide();
-                  $('#page2').show();
-                  $('#page3').hide();
+                  $('#page2').hide();
+                  $('#page3').show();
                   }
                   $('.genXML').click(function(){
                                      requestAccess();
+                                     //constructor();
                                      });
                   var closestTr;
                   $('.selectedRow').click(function(){
@@ -135,7 +136,7 @@ function(){
                                         }
                                         });
                   $('.saveOther').click(function(){
-                                        var item = 4;
+                                        var item = $('#otherTable tr').size();
                                         $('#otherRows').append('<tr class="selectedRow">\
                                                                <td>' + item + '</td> \
                                                                <td>' + $('#hcpName2').val() + '</td> \
@@ -145,5 +146,21 @@ function(){
                                         $('#hcpName2').val("");
                                         $('#remarks').val("");
                                         });
+                  function constructor(){
+                  var array = [];
+                  var header = [];
+                  $('#otherTable th').each(function(index, item){
+                                           header[index] = $(item).html();
+                                           });
+                  $('#otherTable tr').has('td').each(function(index, item){
+                                                     var items = {};
+                                                     $('td', $(this)).each(function(index, item){
+                                                                           items[header[index]] = $(item).html();
+                                                                           });
+                                                     array.push(items);
+                                                     });
+                  var tba = JSON.stringify(array);
+                  alert(tba[0].HCPName);
+                  }
 });
 

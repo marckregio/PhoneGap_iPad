@@ -219,14 +219,14 @@
                     <div class="span6"></div>
                 </div>
                 <div class="row-fluid">
-                    <table class="table table-bordered">
+                    <table id="otherTable" class="table table-bordered">
                         <thead class="tbHead">
                             <tr>
-                                <th>#</th>
-                                <th>HCP Name</th>
+                                <th>Item</th>
+                                <th>HCPName</th>
                                 <th>Remarks</th>
-                                </th>
-                                </thead>
+                            </tr>
+                        </thead>
                         <tbody id="otherRows">
                         
                         </tbody>
@@ -242,8 +242,156 @@
                 </div>
             </div>
         </div>
-        <!--EMAIL PAGE-->
+        <!--MAINTENANCE PAGE-->
         <div id="page3" class="container-fluid">
+            <div class="row-fluid planeDBSection requestItem">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <div class="btn-group">
+                            <button id="back" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-left"></i></button>
+                            <button id="forward" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-right"></i></button>
+                            <button id="addRow" class="btn btn-mini btn-inverse ">Add Record</button>
+                            <button id="deleteRow" class="btn btn-mini btn-inverse">Delete Selected</button>
+                        </div>
+                    </div>
+                    <div class="span6"><h4 class="pull-right dbName">Plane Request</h4></div>
+                </div>
+                <div class="row-fluid">
+                    <table id="planeDB" class="table table-bordered">
+                        <thead class="tbHead">
+                            <tr>
+                                <th class="item">Item</th>
+                                <th>Passenger</th>
+                                <th>Preferred Airline</th>
+                            </tr>
+                        </thead>
+                        <tbody id="planeRows">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <div class="row-fluid hotelDBSection requestItem">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <div class="btn-group">
+                            <button id="back" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-left"></i></button>
+                            <button id="forward" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-right"></i></button>
+                            <button id="addRow" class="btn btn-mini btn-inverse ">Add Record</button>
+                            <button id="deleteRow" class="btn btn-mini btn-inverse">Delete Selected</button>
+                        </div>
+                    </div>
+                    <div class="span6"><h4 class="pull-right dbName">Hotel Accommodation</h4></div>
+                </div>
+                <div class="row-fluid">
+                    <table id="hotelDB" class="table table-bordered">
+                        <thead class="tbHead">
+                            <tr>
+                                <th class="item">Item</th>
+                                <th>Guest Name</th>
+                                <th>Location</th>
+                                <th>Room Type</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody id="hotelRows">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <div class="row-fluid carDBSection requestItem">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <div class="btn-group">
+                            <button id="back" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-left"></i></button>
+                            <button id="forward" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-right"></i></button>
+                            <button id="addRow" class="btn btn-mini btn-inverse ">Add Record</button>
+                            <button id="deleteRow" class="btn btn-mini btn-inverse">Delete Selected</button>
+                        </div>
+                    </div>
+                    <div class="span6"><h4 class="pull-right dbName">Car Service</h4></div>
+                </div>
+                <div class="row-fluid">
+                    <table id="carDB" class="table table-bordered">
+                        <thead class="tbHead">
+                            <tr>
+                                <th class="item">Item</th>
+                                <th>Passenger</th>
+                                <th>Description</th>
+                                <th>Duration</th>
+                                <th>Car Details</th>
+                            </tr>
+                        </thead>
+                        <tbody id="carRows">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <div class="row-fluid registrationDBSection requestItem">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <div class="btn-group">
+                            <button id="back" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-left"></i></button>
+                            <button id="forward" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-right"></i></button>
+                            <button id="addRow" class="btn btn-mini btn-inverse ">Add Record</button>
+                            <button id="deleteRow" class="btn btn-mini btn-inverse">Delete Selected</button>
+                        </div>
+                    </div>
+                    <div class="span6"><h4 class="pull-right dbName">Registration</h4></div>
+                </div>
+                <div class="row-fluid">
+                    <table id="registrationDB" class="table table-bordered">
+                        <thead class="tbHead">
+                            <tr>
+                                <th class="item">Item</th>
+                                <th>HCP Name</th>
+                                <th>Membership</th>
+                                <th>PRC No.</tH>
+                                <th>Mobile No.</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody id="registrationRows">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <div class="row-fluid othersDBSection requestItem">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <div class="btn-group">
+                            <button id="back" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-left"></i></button>
+                            <button id="forward" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-right"></i></button>
+                            <button id="addRow" class="btn btn-mini btn-inverse ">Add Record</button>
+                            <button id="deleteRow" class="btn btn-mini btn-inverse">Delete Selected</button>
+                        </div>
+                    </div>
+                    <div class="span6"><h4 class="pull-right dbName">Other Requests</h4></div>
+                </div>
+                <div class="row-fluid">
+                    <table id="othersDB" class="table table-bordered">
+                        <thead class="tbHead">
+                            <tr>
+                                <th class="item">Item</th>
+                                <th>HCP Name</th>
+                                <th>Mobile No.</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody id="othersRows">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
         </div>
         <!--MENU MODAL-->
         <div class="modal menu hide fade">
