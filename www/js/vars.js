@@ -4,7 +4,8 @@ var loginCheck;
 var currentUser;
 var refNo,dateofActivity,justification,planePassenger,carPassenger,requestor,mobileno,dateofBirth,activityName,accountNo,costCenter,title,airline,guestName,roomlocation,roomType,category,description,duration,carDetails,hcpName,membership,prcNo,mailing,email,hcpName2,hcpMobile,remarks;
 var xmlString ;
-
+var currentDate;
+var allowRequest;
 //Temporary Database
 //Head
 var Passenger = [

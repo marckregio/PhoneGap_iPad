@@ -29,6 +29,23 @@ function(){
                   $('.cancelOther').click(function(){
                                      $('#otherEntry').modal('hide');
                                      });
+                  $('.maintenance').click(function(){
+                                          $('#page1').show();
+                                          $('#page2').hide();
+                                          $('#page3').hide();
+                                          $('.menu').modal('hide');
+                                          });
+                  $('.database').click(function(){
+                                          $('#page1').hide();
+                                          $('#page2').hide();
+                                          $('#page3').show();
+                                            $('.menu').modal('hide');
+                                          });
+                  $('.goBack').click(function(){
+                                       $('#page1').hide();
+                                       $('#page2').show();
+                                       $('#page3').hide();
+                                       });
 });
 
 

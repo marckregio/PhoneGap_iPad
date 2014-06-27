@@ -114,11 +114,22 @@ function(){
                                      });
                   if (requestor != ""){
                   $('#page1').hide();
-                  $('#page2').hide();
-                  $('#page3').show();
+                  $('#page2').show();
+                  $('#page3').hide();
                   }
                   $('.genXML').click(function(){
+                                     dateNow = new Date();
+                                     dateAllowed = dateNow.setDate(dateNow.getDate() + 6);
+                                     dateActivity = new Date($('.dateofActivity').val());
+                                     currentDate = new Date().toISOString().slice(0,19).replace('T',' ');
+                                     //showConfirm("aa");
+                                     //alert(dateNow.setDate(dateNow + 6));
+                                     if (dateActivity < dateAllowed){
+                                     showConfirm("Request is below 6 Days");
+                                     } else {
                                      requestAccess();
+                                     }
+                                    
                                      //constructor();
                                      });
                   var closestTr;

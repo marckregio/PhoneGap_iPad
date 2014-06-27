@@ -41,6 +41,7 @@ function makeXML(){
         <costcenter>' + costCenter + '</costcenter> \
         <dateofActivity>' + dateofActivity + '</dateofActivity> \
         <justification>' + justification + '</justification> \
+        <currentDate>' + currentDate + '</currentDate> \
     </head> \
     <body> \
         <Airline> \
@@ -142,4 +143,18 @@ function showAlert(alert){
         'Nestle E-Travel',
         'Ok'
     );
+}
+function showConfirm(confirmation){
+    navigator.notification.confirm(
+                                   confirmation,
+                                   function(button){
+                                   console.log("Confirm Triggered with " +button);
+                                   if (button == 1){
+                                   allowRequest = true;
+                                   requestAccess();
+                                   }
+                                   },
+                                   'Nestle E-Travel',
+                                   ['Ok','Cancel']
+                                   );
 }
