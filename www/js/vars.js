@@ -101,7 +101,7 @@ var Member = [
                ];
 //Other
 var OtherTable = [
-                  {"item":"1","hcpname":"Marck Regio","remarks":"Tagumpay"},
-                  {"item":"2","hcpname":"Mark Stephen Villamar","remarks":"TagumpayKa"},
-                  {"item":"3","hcpname":"John Robin Lizaso","remarks":"Champion"}
+                  {"item":"1","hcpname":"Marck Regio","remarks":"Other Request"},
+                  {"item":"2","hcpname":"Mark Stephen Villamar","remarks":"Other Request"},
+                  {"item":"3","hcpname":"John Robin Lizaso","remarks":"Other Request"}
 ];

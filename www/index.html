@@ -1,437 +1,937 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="stylesheet" href="css/framework7.css">
+        <link rel="stylesheet" href="css/my-app.css">
         <script src="js/jquery.js"></script>
-        <script src="js/bootstrap.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/framework7.js"></script>
         <script src="SQLitePlugin.js"></script>
         <script src="js/vars.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-        <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
-        <script src="js/index.js"></script>
-        <script src="js/main.js"></script>
         <script src="js/makoy.js"></script>
         <title></title>
     </head>
     <body>
-        <div class="container-fluid statusSpace">
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <button class="goBack btn" style="position:relative; left:-14px;"><i class=" icon-chevron-left"></i></button>
-                    <button class="menuButton btn" style="position:relative; left:-14px;"><i class="icon-th-list"></i> Menu</button>
-                    <button class="btn pull-right disabled" style="position:relative; right:-14px;">Nestle E-Travel</button>
+        <div class="statusbar-overlay"></div>
+        <div class="panel-overlay"></div>
+        <div class="panel panel-left panel-cover"style="background-color:#e0e0e0;">
+            <div class="content-block-title">Menu</div>
+            <div class="list-block">
+                <ul>
+                    <li><a class="close-panel item-link">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Request</div>
+                            </div>
+                        </div>
+                    </a></li>
+                    <li><a class="close-panel item-link">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Import Database</div>
+                            </div>
+                        </div>
+                    </a></li>
+                    <li><a class="close-panel item-link">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">About</div>
+                            </div>
+                        </div>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="views">
+            <div class="view view-main">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="center sliding">Tubopod Helper App</div>
+                        <div class="right sidebarLink">
+                         <a href="#" class="link icon-only open-panel"><i class="icon icon-bars-blue"></i></a>
+                         </div>
+                    </div>
+                </div>
+                <div class="pages navbar-through toolbar-through">
+                    <div class="page page1">
+                        <div class="page-content">
+                            <div class="content-block-title center">Welcome to E-Travel Application</div>
+                            <div class="content-block">
+                                <div class="content-block-inner">
+                                    <p class="center">
+                                    Please provide your personal information <br>
+                                    for authentication
+                                    </p>
+                                    <div class="list-block">
+                                        <ul>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Name</div>
+                                                        <div class="item-input">
+                                                            <input type="text" name="name" placeholder="Full Name">
+                                                                </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Birthdate</div>
+                                                        <div class="item-input">
+                                                            <input type="date" name="name" placeholder="MM/DD/YYYY">
+                                                                </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Address</div>
+                                                        <div class="item-input">
+                                                            <input type="text" name="name" placeholder="No., Street, Town, City">
+                                                                </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-block-title">
+                                <a class="button">Submit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page page2">
+                        <div class="page-content">
+                            <div class="content-block-title center">Menu</div>
+                            <div class="content-block">
+                                <div class="content-block-inner">
+                                    <p class="center">
+                                    Select an item to start your transaction
+                                    </p>
+                                    <div class="list-block">
+                                        <ul>
+                                            <li><a class="item-link">
+                                                <div class="item-content">
+                                                    <div class="item-inner">
+                                                        <div class="item-title">Requests</div>
+                                                    </div>
+                                                </div>
+                                            </a></li>
+                                            <li><a class="item-link">
+                                                <div class="item-content">
+                                                    <div class="item-inner">
+                                                        <div class="item-title">Import Database</div>
+                                                    </div>
+                                                </div>
+                                            </a></li>
+                                            <li><a class="item-link">
+                                                <div class="item-content">
+                                                    <div class="item-inner">
+                                                        <div class="item-title">About</div>
+                                                    </div>
+                                                </div>
+                                            </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page page3">
+                        <div class="page-content">
+                            <div class="content-block-title onright"><span class="referenceNo">Reference No.: 000-000-000</span></div>
+                            <div class="content-block">
+                                <div class="content-block-inner">
+                                    <div class="list-block">
+                                        <ul>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Name</div>
+                                                        <div class="item-input">
+                                                            <input class="requestorName" type="text" name="name"
+                                                            placeholder="Full Name" value = "Marck Litonjua Regio"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Date of Activity</div>
+                                                        <div class="item-input">
+                                                            <input class="activityDate" type="date" name="name"
+                                                            value="1996-12-19" value="03/10/2014"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Activity Name</div>
+                                                        <div class="item-input">
+                                                            <select class="activityName">
+                                                                <option>Select an item</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Account No.</div>
+                                                        <div class="item-input">
+                                                            <select class="accountNo">
+                                                                <option>Select an item</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Cost Center</div>
+                                                        <div class="item-input">
+                                                            <select class="costCenter">
+                                                                <option>Select an item</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-inner">
+                                                        <div class="buttons-row requestTab">
+                                                            <a href="#" class="button tab-link planeRequest active">Plane</a>
+                                                            <a href="#" class="button tab-link hotelRequest">Hotel Accommodation</a>
+                                                            <a href="#" class="button tab-link carRequest">Car Services</a>
+                                                            <a href="#" class="button tab-link registrationRequest">Registration</a>
+                                                            <a href="#" class="button tab-link otherRequest">Visa / Passport / Other</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Plane Request-->
+                            <div class="planeRequestSection section">
+                                <div class="content-block-title">Plane Request</div>
+                                <div class="content-block">
+                                    <div class="content-block-inner">
+                                        <div class="list-block">
+                                            <div class="tableButtons">
+                                                <div class="buttons-row">
+                                                    <a href="#" data-popup=".addPlane" class="button tab-link open-popup">Add</a>
+                                                    <a href="#" class="button tab-link">Delete</a>
+                                                </div>
+                                            </div>
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th class="no">No.</th>
+                                                        <th class="item">Airline</th>
+                                                        <th class="item">Passenger</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="center">
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Cebu Pacific</td>
+                                                        <td>Marck Regio</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Hotel Request-->
+                            <div class="hotelRequestSection section">
+                                <div class="content-block-title">Hotel Accommodation Request</div>
+                                <div class="content-block">
+                                    <div class="content-block-inner">
+                                        <div class="list-block">
+                                            <div class="tableButtons">
+                                                <div class="buttons-row">
+                                                    <a href="#" data-popup=".addHotel" class="button tab-link open-popup">Add</a>
+                                                    <a href="#" class="button tab-link">Delete</a>
+                                                </div>
+                                            </div>
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th class="no">No.</th>
+                                                        <th class="item">Hotel</th>
+                                                        <th class="item">Guest Name</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="center">
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Manila Hotel</td>
+                                                        <td>Marck Regio</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Car Request-->
+                            <div class="carRequestSection section">
+                                <div class="content-block-title">Car Services Request</div>
+                                <div class="content-block">
+                                    <div class="content-block-inner">
+                                        <div class="list-block">
+                                            <div class="tableButtons">
+                                                <div class="buttons-row">
+                                                    <a href="#" data-popup=".addCar" class="button tab-link open-popup">Add</a>
+                                                    <a href="#" class="button tab-link">Delete</a>
+                                                </div>
+                                            </div>
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th class="no">No.</th>
+                                                        <th class="item">Destination</th>
+                                                        <th class="item">Passenger</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="center">
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Baguio City</td>
+                                                        <td>Marck Regio</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Registration Request-->
+                            <div class="registrationRequestSection section">
+                                <div class="content-block-title">Registration Request</div>
+                                <div class="content-block">
+                                    <div class="content-block-inner">
+                                        <div class="list-block">
+                                            <div class="tableButtons">
+                                                <div class="buttons-row">
+                                                    <a href="#" data-popup=".addReg" class="button tab-link open-popup">Add</a>
+                                                    <a href="#" class="button tab-link">Delete</a>
+                                                </div>
+                                            </div>
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th class="no">No.</th>
+                                                        <th class="item">PRC No.</th>
+                                                        <th class="item">HCP Name</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="center">
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>1234-1233</td>
+                                                        <td>Marck Regio</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Other Request-->
+                            <div class="otherRequestSection section">
+                                <div class="content-block-title">Visa / Passport / Other Request</div>
+                                <div class="content-block">
+                                    <div class="content-block-inner">
+                                        <div class="list-block">
+                                            <div class="tableButtons">
+                                                <div class="buttons-row">
+                                                    <a href="#" data-popup=".addOther" class="button tab-link open-popup">Add</a>
+                                                    <a href="#" class="button tab-link">Delete</a>
+                                                </div>
+                                            </div>
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th class="no">No.</th>
+                                                        <th class="item">HCP Name</th>
+                                                        <th class="item">Mobile</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="center">
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Marck Regio</td>
+                                                        <td>092130012312</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page page4">
+                        <div class="page-content">
+                            <div class="content-block-title center">About</div>
+                            <div class="content-block">
+                                <div class="content-block-inner">
+                                    <p class="center">
+                                        This Application works with
+                                        Washing Machines, Television Sets, Home Theather Systems, Airconditioners, Electric Fans, Water Dispensers,
+                                        Rice Cookers, Refrigerators, Oven Toasters, Microwave Ovens through Wi-Fi technology. <br>
+                                    </p>
+                                    <div class="list-block">
+                                        <ul>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">v.1.1</div>
+                                                        <div class="item-input">
+                                                            <p>Added feature, Clicking Exit will make the day a little nicer.
+                                                            Stress levels will decrease by 40%. <Br> Get out there and socialize.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-block-title center">Contact</div>
+                            <div class="content-block">
+                                <div class="content-block-inner">
+                                    <div class="list-block">
+                                        <ul>
+                                            <li><a class="item-link">
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Kenshin Himura</div>
+                                                        <div class="item-input">
+                                                            <p>Software Development Engineer</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a></li>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-inner">
+                                                        <div class="buttons-row requestTab">
+                                                            <a href="#" class="button tab-link planeRequest active">M</a>
+                                                            <a href="#" class="button tab-link hotelRequest">A</a>
+                                                            <a href="#" class="button tab-link carRequest">R</a>
+                                                            <a href="#" class="button tab-link registrationRequest">C</a>
+                                                            <a href="#" class="button tab-link otherRequest">K</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!--LOGIN PAGE-->
-        <div id="page1" class="container-fluid">
-            <div class="row-fluid">
-                <label class="center">Please Fill Up This Form for Authentication</label>
-                <hr>
-            </div>
-            <div class="row-fluid">
-                <div class="span12 center">
-                    <label>Full Name<br><input class="center fullname" type="text"/></label>
-                </div>
-            </div>
-            <hr>
-            <div class="row-fluid">
-                <div class="span12 center">
-                    <label>Mobile No.<br><input class="center mobileno" type="text"/></label>
-                </div>
-            </div>
-            <hr>
-            <div class="row-fluid">
-                <div class="span12 center">
-                    <label>Address<br><textarea class="address"></textarea></label>
-                </div>
-            </div>
-            <hr>
-            <div class="row-fluid">
-                <div class="span12 center">
-                    <a id="submit" class="btn btn-primary">Submit</a>
-                    <div id="loader" class="modal hide fade center">
-                        <div class="modal-header"><h4>Saving Credentials...</h4></div>
-                        <div class="modal-body">
-                            <div class="progress progress-striped active"><div class="bar" style="width:100%"></div></div>
-                        </div>
+        <!--Plane Request Add Popup-->
+        <div class="popup addPlane">
+            <div class="content-block-title center"><h3 class="title">Plane Request</h3></div>
+            <div class="content-block">
+                <div class="content-inner">
+                    <div class="content-block-title">Passenger Information</div>
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Title</div>
+                                        <div class="item-input">
+                                            <select>
+                                                <option>Mr.</option>
+                                                <option>Ms.</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Passenger</div>
+                                        <div class="item-input">
+                                            <select class="planePassenger"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-            <hr>
-        </div>
-        <!--REQUEST PAGE-->
-        <div id="page2" class="container-fluid">
-            <div class="row-fluid">
-                <div class="span6"><h3>Request</h3></div>
-                <div class="span6">
-                    <div class="row">
-                        <label class="right">Reference No.: <span class="referenceNo"></span></label>
+                <div class="content-inner">
+                    <div class="content-block-title">Fly-in Details</div>
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Airline Type</div>
+                                        <div class="item-input">
+                                            <select>
+                                                <option>Domestic</option>
+                                                <option>International</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Preferred Airline</div>
+                                        <div class="item-input">
+                                            <select class="preferredAirlineFlyin"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Flight No.</div>
+                                        <div class="item-input">
+                                            <input type="text" placeholder="000-000-000" class="flightNoFlyin"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">ETD</div>
+                                        <div class="item-input">
+                                            <input type="time" value="23:15:00" class="etdFlyin"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Flight Date</div>
+                                        <div class="item-input">
+                                            <input type="date" value="1996-12-19" class="dateFlyin"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="row">
-                        <label class="pull-right">Date of Activity
-                        <input type="date" style="width:110px;" class="dateofActivity"/>
-                        </label>
+                </div>
+                <div class="content-inner">
+                    <div class="content-block-title">Fly-out Details</div>
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Airline Type</div>
+                                        <div class="item-input">
+                                            <select>
+                                                <option>Domestic</option>
+                                                <option>International</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Preferred Airline</div>
+                                        <div class="item-input">
+                                            <select class="preferredAirlineFlyout"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Flight No.</div>
+                                        <div class="item-input">
+                                            <input type="text" placeholder="000-000-000" class="flightNoFlyout"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">ETD</div>
+                                        <div class="item-input">
+                                            <input type="time" value="23:15:00" class="etdFlyout"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Flight Date</div>
+                                        <div class="item-input">
+                                            <input type="date" value="1996-12-19" class="dateFlyout"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-            <hr>
-            <div class="row-fluid">
-                <div class="span4 center">
-                    <label class="">Requestor Name: <br><span class="registeredUser"></span></label>
-                </div>
-                <div class="span4 center">
-                    <label>Mobile No.: <br><span class="mobileNo"></span></label>
-                </div>
-                <div class="span4 center">
-                    <label>Date of Birth: <br><span class="dateOfBirth"></span></label>
-                </div>
-            </div>
-            <hr>
-            <div class="row-fluid">
-                <div class="span4">
-                    <label>Activity Name: <br>
-                        <select class="activityName"></select>
-                    </label>
-                </div>
-                <div class="span4">
-                    <label class="">Account No.:<br>
-                        <select class="accountNo"></select>
-                    </label>
-                </div>
-                <div class="span4">
-                    <label class="">Cost Center/WBS:<br>
-                        <select class="costCenter"></select>
-                    </label>
-                </div>
-            </div>
-            <hr>
-            <div class="row-fluid">
-                <div class="span12 center">
-                    <div class="btn-group" data-toggle="button">
-                        <button id="planeRequest" type="button" class="btn requestType">Plane Request</button>
-                        <button id="hotelaccommodation" type="button" class="btn requestType">Hotel Accommodation</button>
-                        <button id="carServices" type="button" class="btn requestType">Car Service</button>
-                        <button id="registration" type="button" class="btn requestType">Registration</button>
-                        <button id="others" type="button" class="btn requestType">Other Requests</button>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="row-fluid planeRequest requestItem">
-                <div class="span4">
-                    <label>Passenger: <br>
-                        <select class="planePassenger"></select>
-                    </label>
-                </div>
-                <div class="span4">
-                    <label>Preferred Airline: <br>
-                        <select class="airline"></select>
-                    </label>
-                </div>
-                <div class="span4"></div>
-            </div>
-            <div class="row-fluid hotelaccommodation requestItem">
-                <div class="span4">
-                    <label>Guest Name: <br>
-                        <select class="guestName"></select>
-                    </label>
-                </div>
-                <div class="span4">
-                    <label>Location: <br>
-                        <select class="location"></select>
-                    </label>
-                </div>
-                <div class="span4">
-                    <label>Room Type: <br>
-                        <select class="roomType"></select>
-                    </label>
-                </div>
-            </div>
-            <div class="row-fluid hotelaccommodation requestItem">
-                <div class="span4">
-                    <label>Category: <br>
-                        <select class="category"></select>
-                    </label>
-                </div>
-            </div>
-            <div class="row-fluid carServices requestItem">
-                <div class="span4">
-                    <label>Passenger: <br>
-                        <select class="carPassenger"></select>
-                    </label>
-                </div>
-                <div class="span4">
-                    <label>Description: <br>
-                        <select class="description"></select>
-                    </label>
-                </div>
-                <div class="span4">
-                    <label>Duration: <br>
-                        <select class="duration"></select>
-                    </label>
-                </div>
-            </div>
-            <div class="row-fluid carServices requestItem">
-                <div class="span4">
-                    <label>Car Details: <br>
-                        <select class="carDetails"></select>
-                    </label>
-                </div>
-            </div>
-            <div class="row-fluid registration requestItem">
-                <div class="span4">
-                    <label>HCP Name: <br>
-                        <select class="hcpName"></select>
-                    </label>
-                </div>
-                <div class="span4">
-                    <label>Membership: <br>
-                        <select class="membership"></select>
-                    </label>
-                </div>
-            </div>
-            <div class="row-fluid registration requestItem">
-                <div class="span4 center">
-                    <label>PRC No.: <br><span class="prcNo">902432123</span></label>
-                </div>
-                <div class="span4 center">
-                    <label>Mailing Address: <br><span class="mailing">1116 Sauyo QC</span></label>
-                </div>
-                <div class="span4 center">
-                    <label>Email Address: <br><span class="email">marckregio@gmail.com</span></label>
-                </div>
-            </div>
-            <div class="row-fluid others requestItem">
-                <div class="row-fluid">
-                    <div class="span6">
-                        <div class="btn-group">
-                            <button id="back" type="button" class="btn btn-mini btn-inverse requestType"><i class="icon-white icon-chevron-left"></i></button>
-                            <button id="forward" type="button" class="btn btn-mini btn-inverse requestType"><i class="icon-white icon-chevron-right"></i></button>
-                            <button id="addRow" class="btn btn-mini btn-inverse ">Add Record</button>
-                            <button id="deleteRow" class="btn btn-mini btn-inverse">Delete Selected</button>
-                        </div>
-                    </div>
-                    <div class="span6"></div>
-                </div>
-                <div class="row-fluid">
-                    <table id="otherTable" class="table table-bordered">
-                        <thead class="tbHead">
-                            <tr>
-                                <th>Item</th>
-                                <th>HCPName</th>
-                                <th>Remarks</th>
-                            </tr>
-                        </thead>
-                        <tbody id="otherRows">
-                        
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <hr>
-            <div class="row-fluid buttons">
-                <div class="span4"></div>
-                <div class="span4 center"></div>
-                <div class="span4">
-                    <button class="genXML btn btn-success pull-right">Generate XML</button>
-                </div>
+                <a href="#" class="button close-popup planeSave">Save and Close</a>
             </div>
         </div>
-        <!--MAINTENANCE PAGE-->
-        <div id="page3" class="container-fluid">
-            <div class="row-fluid planeDBSection requestItem">
-                <div class="row-fluid">
-                    <div class="span6">
-                        <div class="btn-group">
-                            <button id="back" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-left"></i></button>
-                            <button id="forward" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-right"></i></button>
-                            <button id="addRow" class="btn btn-mini btn-inverse ">Add Record</button>
-                            <button id="deleteRow" class="btn btn-mini btn-inverse">Delete Selected</button>
-                        </div>
+        <!--Hotel Request Add Popup-->
+        <div class="popup addHotel">
+            <div class="content-block-title center"><h3 class="title">Hotel Accommodation Request</h3></div>
+            <div class="content-block">
+                <div class="content-inner">
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Guest Name</div>
+                                        <div class="item-input">
+                                            <select class="hotelGuest"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="span6"><h4 class="pull-right dbName">Plane Request</h4></div>
                 </div>
-                <div class="row-fluid">
-                    <table id="planeDB" class="table table-bordered">
-                        <thead class="tbHead">
-                            <tr>
-                                <th class="item">Item</th>
-                                <th>Passenger</th>
-                                <th>Preferred Airline</th>
-                            </tr>
-                        </thead>
-                        <tbody id="planeRows">
-                            
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <hr>
-            <div class="row-fluid hotelDBSection requestItem">
-                <div class="row-fluid">
-                    <div class="span6">
-                        <div class="btn-group">
-                            <button id="back" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-left"></i></button>
-                            <button id="forward" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-right"></i></button>
-                            <button id="addRow" class="btn btn-mini btn-inverse ">Add Record</button>
-                            <button id="deleteRow" class="btn btn-mini btn-inverse">Delete Selected</button>
-                        </div>
+                <div class="content-inner">
+                    <div class="content-block-title">Hotel Details</div>
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Preferred Hotel</div>
+                                        <div class="item-input">
+                                            <select class="preferredHotel"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Location</div>
+                                        <div class="item-input">
+                                            <select class="hotelLocation"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Room Type</div>
+                                        <div class="item-input">
+                                            <select class="roomType"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Room Category</div>
+                                        <div class="item-input">
+                                            <select class="roomCategory"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Check-in Date</div>
+                                        <div class="item-input">
+                                            <input type="date" value="1996-12-19" class="checkInDate"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Check-out Date</div>
+                                        <div class="item-input">
+                                            <input type="date" value="1996-12-19" class="checkOutDate"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="span6"><h4 class="pull-right dbName">Hotel Accommodation</h4></div>
                 </div>
-                <div class="row-fluid">
-                    <table id="hotelDB" class="table table-bordered">
-                        <thead class="tbHead">
-                            <tr>
-                                <th class="item">Item</th>
-                                <th>Guest Name</th>
-                                <th>Location</th>
-                                <th>Room Type</th>
-                                <th>Category</th>
-                            </tr>
-                        </thead>
-                        <tbody id="hotelRows">
-                            
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <hr>
-            <div class="row-fluid carDBSection requestItem">
-                <div class="row-fluid">
-                    <div class="span6">
-                        <div class="btn-group">
-                            <button id="back" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-left"></i></button>
-                            <button id="forward" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-right"></i></button>
-                            <button id="addRow" class="btn btn-mini btn-inverse ">Add Record</button>
-                            <button id="deleteRow" class="btn btn-mini btn-inverse">Delete Selected</button>
-                        </div>
-                    </div>
-                    <div class="span6"><h4 class="pull-right dbName">Car Service</h4></div>
-                </div>
-                <div class="row-fluid">
-                    <table id="carDB" class="table table-bordered">
-                        <thead class="tbHead">
-                            <tr>
-                                <th class="item">Item</th>
-                                <th>Passenger</th>
-                                <th>Description</th>
-                                <th>Duration</th>
-                                <th>Car Details</th>
-                            </tr>
-                        </thead>
-                        <tbody id="carRows">
-                            
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <hr>
-            <div class="row-fluid registrationDBSection requestItem">
-                <div class="row-fluid">
-                    <div class="span6">
-                        <div class="btn-group">
-                            <button id="back" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-left"></i></button>
-                            <button id="forward" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-right"></i></button>
-                            <button id="addRow" class="btn btn-mini btn-inverse ">Add Record</button>
-                            <button id="deleteRow" class="btn btn-mini btn-inverse">Delete Selected</button>
-                        </div>
-                    </div>
-                    <div class="span6"><h4 class="pull-right dbName">Registration</h4></div>
-                </div>
-                <div class="row-fluid">
-                    <table id="registrationDB" class="table table-bordered">
-                        <thead class="tbHead">
-                            <tr>
-                                <th class="item">Item</th>
-                                <th>HCP Name</th>
-                                <th>Membership</th>
-                                <th>PRC No.</tH>
-                                <th>Mobile No.</th>
-                                <th>Email</th>
-                            </tr>
-                        </thead>
-                        <tbody id="registrationRows">
-                            
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <hr>
-            <div class="row-fluid othersDBSection requestItem">
-                <div class="row-fluid">
-                    <div class="span6">
-                        <div class="btn-group">
-                            <button id="back" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-left"></i></button>
-                            <button id="forward" type="button" class="btn btn-mini btn-inverse"><i class="icon-white icon-chevron-right"></i></button>
-                            <button id="addRow" class="btn btn-mini btn-inverse ">Add Record</button>
-                            <button id="deleteRow" class="btn btn-mini btn-inverse">Delete Selected</button>
-                        </div>
-                    </div>
-                    <div class="span6"><h4 class="pull-right dbName">Other Requests</h4></div>
-                </div>
-                <div class="row-fluid">
-                    <table id="othersDB" class="table table-bordered">
-                        <thead class="tbHead">
-                            <tr>
-                                <th class="item">Item</th>
-                                <th>HCP Name</th>
-                                <th>Mobile No.</th>
-                                <th>Remarks</th>
-                            </tr>
-                        </thead>
-                        <tbody id="othersRows">
-                            
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <hr>
-        </div>
-        <!--MENU MODAL-->
-        <div class="modal menu hide fade">
-            <div class="modal-header center"><h4>Menu</h4></div>
-            <div class="modal-body center">
-                <div class="row-fluid"><button class="btn btn-primary menubutton maintenance">
-                    <i class="icon-wrench icon-white"></i> Maintenance</button></div>
-                <br>
-                <div class="row-fluid"><button class="btn btn-inverse menubutton database">
-                    <i class="icon-list-alt icon-white"></i> Database</button></div>
-                <br>
-                <div class="row-fluid"><button class="btn btn-success menubutton">
-                    <i class="icon-flag icon-white"></i> About</button></div>
-                <hr>
-                <div class="row-fluid"><button class="btn btn-danger menubutton exit">Exit</button></div>
+                <a href="#" class="button close-popup hotelSave">Save and Close</a>
             </div>
         </div>
-        <div id="otherEntry" class="modal dataEntry hide fade">
-            <div class="modal-header center"><h4>Other Requests</h4></div>
-            <div class="modal-body">
-                <div class="row-fluid">
-                    HCP Name: <br><input id="hcpName2" type="text"/>
+        <!--Car Services Request Add Popup-->
+        <div class="popup addCar">
+            <div class="content-block-title center"><h3 class="title">Car Services Request</h3></div>
+            <div class="content-block">
+                <div class="content-inner">
+                    <div class="content-block-title">Passenger Information</div>
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Name</div>
+                                        <div class="item-input">
+                                            <select class="carPassenger"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Pick-up Time</div>
+                                        <div class="item-input">
+                                            <input type="time" value="23:00:00" class="pickUpTime">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Pick-up Date</div>
+                                        <div class="item-input">
+                                            <input type="date" value="1994-03-10" class="pickUpDate">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Pick-up Place</div>
+                                        <div class="item-input">
+                                            <input type="text" class="pickUpPlace">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Destination</div>
+                                        <div class="item-input">
+                                            <input type="text" class="destination">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">No. of Passenger</div>
+                                        <div class="item-input">
+                                            <input type="text" class="paxNo">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="row-fluid">
-                    Remarks: <br><input id="remarks" type="text"/>
+                <div class="content-inner">
+                    <div class="content-block-title">Car Details</div>
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Description</div>
+                                        <div class="item-input">
+                                            <select class="carDescription"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Duration</div>
+                                        <div class="item-input">
+                                            <select class="carDuration"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Car Details</div>
+                                        <div class="item-input">
+                                            <input type="text" class="carDetails">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <hr>
-                <div class="row-fluid center">
-                    <button class="saveOther btn">Save</button>
-                    <button class="cancelOther btn">Cancel</button>
+                <a href="#" class="button close-popup carSave">Save and Close</a>
+            </div>
+        </div>
+        <!--Registration Request Add Popup-->
+        <div class="popup addReg">
+            <div class="content-block-title center"><h3 class="title">Registration Request</h3></div>
+            <div class="content-block">
+                <div class="content-inner">
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">HCP Name</div>
+                                        <div class="item-input">
+                                            <select class="hcpReg"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">PRC No.</div>
+                                        <div class="item-input">
+                                            <input type="text" class="prcNo">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Mailing Address</div>
+                                        <div class="item-input">
+                                            <input type="text" placeHolder="No., Street, Town, City" class="mailingAddress">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Email Address</div>
+                                        <div class="item-input">
+                                            <input type="text" placeHolder="username@domain.com" class="emailAddress">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Member</div>
+                                        <div class="item-input">
+                                            <input type="checkbox" class="membership">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                <a href="#" class="button close-popup regSave">Save and Close</a>
+            </div>
+        </div>
+        <!--Other Request Add Popup-->
+        <div class="popup addOther">
+            <div class="content-block-title center"><h3 class="title">Visa / Passport / Other Request</h3></div>
+            <div class="content-block">
+                <div class="content-inner">
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">HCP Name</div>
+                                        <div class="item-input">
+                                            <select class="hcpOther"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Mobile No.</div>
+                                        <div class="item-input">
+                                            <input type="text" class="otherMobile">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Remarks</div>
+                                        <div class="item-input">
+                                            <input type="text" class="remarks">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="#" class="button close-popup otherSave">Save and Close</a>
             </div>
         </div>
     </body>
     <script type="text/javascript">
         document.addEventListener("deviceready", onDeviceReady, false);
         function onDeviceReady() {
-            makoy();
+            //makoy();
         }
         app.initialize();
     </script>
-    <script src="js/events.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
 </html>
