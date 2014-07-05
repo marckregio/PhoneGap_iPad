@@ -45,11 +45,11 @@ th, td{
     padding-bottom:0px;
 }
 .planeRequestSection, .hotelRequestSection, .carRequestSection, .registrationRequestSection, .otherRequestSection{
-    display:none;
+    display:block;
 }
-.page1, .page2, .page3{
-    display:none;
+.shown{
+    visibility:visible !important;
 }
-.page4{
-    background-color:#333333;
+.hidden{
+    visibility:hidden !important;
 }
