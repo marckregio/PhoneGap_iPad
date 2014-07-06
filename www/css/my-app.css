@@ -37,7 +37,7 @@ th, td{
     color:#666666;
 }
 .content-block-title{
-    top:-10px;
+    top:-11px;
     color:#2D8DFA;
 }
 .content-block-inner{
@@ -45,11 +45,14 @@ th, td{
     padding-bottom:0px;
 }
 .planeRequestSection, .hotelRequestSection, .carRequestSection, .registrationRequestSection, .otherRequestSection{
-    display:block;
+    display:none;
 }
 .shown{
     visibility:visible !important;
 }
 .hidden{
     visibility:hidden !important;
+}
+.otherInputs{
+    display:none;
 }

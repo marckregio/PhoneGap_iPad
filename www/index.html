@@ -7,12 +7,11 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <link rel="stylesheet" href="css/framework7.css">
         <link rel="stylesheet" href="css/my-app.css">
-        <script src="js/jquery.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/framework7.js"></script>
         <script src="SQLitePlugin.js"></script>
-        <script src="js/vars.js"></script>
-        <script src="js/makoy.js"></script>
+        <script src="js/jquery.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="js/makunatAPI.js"></script>
         <title></title>
     </head>
     <body>
@@ -53,7 +52,7 @@
                         <div class="left sliding backer hidden">
                             <a class="back link">
                                 <i class="icon icon-back-blue"></i>
-                                <span>Back to Menu</span>
+                                <span>Menu</span>
                             </a>
                         </div>
                         <div class="center sliding">Nestle E-Travel</div>
@@ -78,10 +77,32 @@
                                                 <div class="item-content">
                                                     <div class="item-media"><i class="icon icon-form-name"></i></div>
                                                     <div class="item-inner">
-                                                        <div class="item-title label">Name</div>
+                                                        <div class="item-title label">Lastname</div>
                                                         <div class="item-input">
-                                                            <input type="text" name="name" placeholder="Full Name">
-                                                                </div>
+                                                            <input class="lastname" type="text" name="name" placeholder="Surname">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Firstname</div>
+                                                        <div class="item-input">
+                                                            <input class="firstname" type="text" name="name" placeholder="Givenname">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Middlename</div>
+                                                        <div class="item-input">
+                                                            <input class="middlename" type="text" name="name" placeholder="Mother's Maiden Name / Initials">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </li>
@@ -91,8 +112,19 @@
                                                     <div class="item-inner">
                                                         <div class="item-title label">Birthdate</div>
                                                         <div class="item-input">
-                                                            <input type="date" name="name" placeholder="MM/DD/YYYY">
-                                                                </div>
+                                                            <input class="birthdate" type="date" name="name" value="2014-07-04">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Mobile No.</div>
+                                                        <div class="item-input">
+                                                            <input class="mobile" type="text" name="name" placeholder="0900-000-0000">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </li>
@@ -102,8 +134,8 @@
                                                     <div class="item-inner">
                                                         <div class="item-title label">Address</div>
                                                         <div class="item-input">
-                                                            <input type="text" name="name" placeholder="No., Street, Town, City">
-                                                                </div>
+                                                            <input class="address" type="text" name="name" placeholder="No., Street, Town, City">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </li>
@@ -112,21 +144,22 @@
                                 </div>
                             </div>
                             <div class="content-block-title">
-                                <a class="button">Submit</a>
+                                <a class="button newUserSubmit">Submit</a>
                             </div>
                         </div>
                     </div>
-                    <div class="page page2 shown">
+                    <div class="page page2 hidden">
                         <div class="page-content">
                             <div class="content-block-title center">Menu</div>
                             <div class="content-block">
                                 <div class="content-block-inner">
                                     <p class="center">
+                                    Good Day <span class="requestorName"></span>, <br>
                                     Select an item to start your transaction
                                     </p>
                                     <div class="list-block">
                                         <ul>
-                                            <li><a class="item-link">
+                                            <li><a class="item-link requestPage">
                                                 <div class="item-content">
                                                     <div class="item-inner">
                                                         <div class="item-title">Requests</div>
@@ -166,8 +199,7 @@
                                                     <div class="item-inner">
                                                         <div class="item-title label">Name</div>
                                                         <div class="item-input">
-                                                            <input class="requestorName" type="text" name="name"
-                                                            placeholder="Full Name" value = "Marck Litonjua Regio"/>
+                                                            <span class="requestorName"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -178,8 +210,7 @@
                                                     <div class="item-inner">
                                                         <div class="item-title label">Date of Activity</div>
                                                         <div class="item-input">
-                                                            <input class="activityDate" type="date" name="name"
-                                                            value="1996-12-19" value="03/10/2014"/>
+                                                            <input class="activityDate" type="date" name="name" value="2014-07-04"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -227,11 +258,11 @@
                                                 <div class="item-content">
                                                     <div class="item-inner">
                                                         <div class="buttons-row requestTab">
-                                                            <a href="#" class="button tab-link planeRequest active">Plane</a>
-                                                            <a href="#" class="button tab-link hotelRequest">Hotel Accommodation</a>
-                                                            <a href="#" class="button tab-link carRequest">Car Services</a>
-                                                            <a href="#" class="button tab-link registrationRequest">Registration</a>
-                                                            <a href="#" class="button tab-link otherRequest">Visa / Passport / Other</a>
+                                                            <a href="#" class="button tab-link requestType" id="planeRequest">Plane</a>
+                                                            <a href="#" class="button tab-link requestType" id="hotelRequest">Hotel Accommodation</a>
+                                                            <a href="#" class="button tab-link requestType" id="carRequest">Car Services</a>
+                                                            <a href="#" class="button tab-link requestType" id="registrationRequest">Registration</a>
+                                                            <a href="#" class="button tab-link requestType" id="otherRequest">Visa / Passport / Other</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -261,11 +292,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="center">
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Cebu Pacific</td>
-                                                        <td>Marck Regio</td>
-                                                    </tr>
+                                                    <tr class="addedPlaneRequest"></tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -293,11 +320,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="center">
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Manila Hotel</td>
-                                                        <td>Marck Regio</td>
-                                                    </tr>
+                                                    <tr class="addedHotelRequest"></tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -325,11 +348,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="center">
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Baguio City</td>
-                                                        <td>Marck Regio</td>
-                                                    </tr>
+                                                    <tr class="addedCarRequest"></tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -357,11 +376,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="center">
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>1234-1233</td>
-                                                        <td>Marck Regio</td>
-                                                    </tr>
+                                                    <tr class="addedRegRequest"></tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -385,15 +400,11 @@
                                                     <tr>
                                                         <th class="no">No.</th>
                                                         <th class="item">HCP Name</th>
-                                                        <th class="item">Mobile</th>
+                                                        <th class="item">Remarks</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="center">
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Marck Regio</td>
-                                                        <td>092130012312</td>
-                                                    </tr>
+                                                    <tr class="addedOtherRequest"></tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -498,6 +509,16 @@
                                     </div>
                                 </div>
                             </li>
+                            <li id="otherplanePassenger" class="otherInputs">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Other Passenger</div>
+                                        <div class="item-input">
+                                            <input type="text" class="otherplanePassenger">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -524,6 +545,16 @@
                                         <div class="item-title label">Preferred Airline</div>
                                         <div class="item-input">
                                             <select class="preferredAirlineFlyin"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="otherAirlineFlyin" class="otherInputs">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Other Airline</div>
+                                        <div class="item-input">
+                                            <input type="text" class="otherAirlineFlyin">
                                         </div>
                                     </div>
                                 </div>
@@ -588,6 +619,16 @@
                                     </div>
                                 </div>
                             </li>
+                            <li id="otherAirlineFlyout" class="otherInputs">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Other Airline</div>
+                                        <div class="item-input">
+                                            <input type="text" class="otherAirlineFlyout">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
                             <li>
                                 <div class="item-content">
                                     <div class="item-inner">
@@ -641,6 +682,16 @@
                                     </div>
                                 </div>
                             </li>
+                            <li id="otherguestName" class="otherInputs">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Other Guest</div>
+                                        <div class="item-input">
+                                            <input type="text" class="otherguestName">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -668,6 +719,16 @@
                                     </div>
                                 </div>
                             </li>
+                            <li id="otherlocation" class="otherInputs">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Other Location</div>
+                                        <div class="item-input">
+                                            <input type="text" class="otherlocation">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
                             <li>
                                 <div class="item-content">
                                     <div class="item-inner">
@@ -678,6 +739,16 @@
                                     </div>
                                 </div>
                             </li>
+                            <li id="otherroomType" class="otherInputs">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Other Room Type</div>
+                                        <div class="item-input">
+                                            <input type="text" class="otherroomType">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
                             <li>
                                 <div class="item-content">
                                     <div class="item-inner">
@@ -685,6 +756,16 @@
                                         <div class="item-input">
                                             <select class="roomCategory"></select>
                                         </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="otherroomCategory" class="otherInputs">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Other Room Category</div>
+                                        <div class="item-input">
+                                            <input type="text" class="otherroomCategory">
+                                                </div>
                                     </div>
                                 </div>
                             </li>
@@ -704,6 +785,16 @@
                                         <div class="item-title label">Check-out Date</div>
                                         <div class="item-input">
                                             <input type="date" value="1996-12-19" class="checkOutDate"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Room Nights</div>
+                                        <div class="item-input">
+                                            <input type="text" class="roomNights">
                                         </div>
                                     </div>
                                 </div>
@@ -729,6 +820,16 @@
                                         <div class="item-input">
                                             <select class="carPassenger"></select>
                                         </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="othercarPassenger" class="otherInputs">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Other Passenger</div>
+                                        <div class="item-input">
+                                            <input type="text" class="othercarPassenger">
+                                                </div>
                                     </div>
                                 </div>
                             </li>
@@ -799,6 +900,16 @@
                                     </div>
                                 </div>
                             </li>
+                            <li id="othercarDescription" class="otherInputs">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Other Description</div>
+                                        <div class="item-input">
+                                            <input type="text" class="othercarDescription">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
                             <li>
                                 <div class="item-content">
                                     <div class="item-inner">
@@ -809,12 +920,32 @@
                                     </div>
                                 </div>
                             </li>
+                            <li id="othercarDuration" class="otherInputs">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Other Duration</div>
+                                        <div class="item-input">
+                                            <input type="text" class="othercarDuration">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
                             <li>
                                 <div class="item-content">
                                     <div class="item-inner">
                                         <div class="item-title label">Car Details</div>
                                         <div class="item-input">
                                             <input type="text" class="carDetails">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="othercarDetails" class="otherInputs">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Other Details</div>
+                                        <div class="item-input">
+                                            <input type="text" class="othercarDetails">
                                                 </div>
                                     </div>
                                 </div>
@@ -839,6 +970,16 @@
                                         <div class="item-input">
                                             <select class="hcpReg"></select>
                                         </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="otherhcpReg" class="otherInputs">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Other HCP Name</div>
+                                        <div class="item-input">
+                                            <input type="text" class="otherhcpReg">
+                                                </div>
                                     </div>
                                 </div>
                             </li>
@@ -898,10 +1039,33 @@
                             <li>
                                 <div class="item-content">
                                     <div class="item-inner">
+                                        <div class="item-title label">Type</div>
+                                        <div class="item-input">
+                                            <select class="otherType">
+                                                <option>VISA</option>
+                                                <option>Passport</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
                                         <div class="item-title label">HCP Name</div>
                                         <div class="item-input">
                                             <select class="hcpOther"></select>
                                         </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="otherhcpOther" class="otherInputs">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Other HCP Name</div>
+                                        <div class="item-input">
+                                            <input type="text" class="otherhcpOther">
+                                                </div>
                                     </div>
                                 </div>
                             </li>
@@ -935,9 +1099,11 @@
     <script type="text/javascript">
         document.addEventListener("deviceready", onDeviceReady, false);
         function onDeviceReady() {
-            //makoy();
+            makoy();
         }
         app.initialize();
     </script>
-    <script type="text/javascript" src="js/my-app.js"></script>
+    <script>
+        var myApp = new Framework7();
+    </script>
 </html>
