@@ -55,15 +55,27 @@ function xmlBuilder(){
         other += otherRequests[i];
     }
     
+    var activityName = "";
+    if ($('#activityName').val() == "Other"){ activityName = $('.otheractivityName').val(); } else { activityName = $('#activityName').val(); }
+    var accountNo = "";
+    if ($('#accountNo').val() == "Other"){ accountNo = $('.otheraccountNo').val(); } else { accountNo = $('#accountNo').val(); }
+    var costCenter = "";
+    if ($('#costCenter').val() == "Other"){ costCenter = $('.othercostCenter').val(); } else { costCenter = $('#costCenter').val(); }
+    
     var xmlFile = '<?xml version="1.0" encoding="UTF-8"?> \
+    <!--\
+    Generated XML using iPad Application \
+    Unauthorized use of this file is prohibited \
+    if found elsewhere, Delete Immediately \
+    --> \
     <Nestle> \
         <Request> \
             <referenceNo>' + $('.referenceNo').text() + '</referenceNo> \
             <requestor>' + $('.requestorName').text() + '</requestor> \
             <activityDate>' + $('.activityDate').val() + '</activityDate> \
-            <activityName>' + $('#activityName').val() + '</activityName> \
-            <accountNo>' + $('#accountNo').val() + '</accountNo> \
-            <costCenter>' + $('#costCenter').val() + '</costCenter> \
+            <activityName>' + activityName + '</activityName> \
+            <accountNo>' + accountNo + '</accountNo> \
+            <costCenter>' + costCenter + '</costCenter> \
         </Request> \
         ' + plane + ' \
         ' + hotel + ' \
@@ -403,6 +415,7 @@ function fireJquery(){
     $(document).ready(function(){
                       //runSQL("Delete from AccountHandler");
                       //Load Maintenance
+                      $('.referenceNo').text(Math.uuid());
                       runSQLReturn("AccountHandler","*","");
                       runSQLReturn("Passenger", "*", "");
                       runSQLReturn("MainTableAccountNo","*","");
