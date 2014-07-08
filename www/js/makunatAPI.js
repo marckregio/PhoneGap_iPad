@@ -38,19 +38,38 @@ function xmlBuilder(){
     for (var i = 0; i < planeRequests.length; i++){
         plane += planeRequests[i];
     }
+    var hotel = "";
+    for (var i = 0; i < hotelRequests.length; i++){
+        hotel += hotelRequests[i];
+    }
+    var car = "";
+    for (var i = 0; i < carRequests.length; i++){
+        car += carRequests[i];
+    }
+    var reg = "";
+    for (var i = 0; i < regRequests.length; i++){
+        reg += regRequests[i];
+    }
+    var other = "";
+    for (var i = 0; i < otherRequests.length; i++){
+        other += otherRequests[i];
+    }
     
-    var xmlFile = '\
-    <?xml version="1.0" encoding="UTF-8"?> \
+    var xmlFile = '<?xml version="1.0" encoding="UTF-8"?> \
     <Nestle> \
         <Request> \
             <referenceNo>' + $('.referenceNo').text() + '</referenceNo> \
             <requestor>' + $('.requestorName').text() + '</requestor> \
             <activityDate>' + $('.activityDate').val() + '</activityDate> \
-            <activityName>' + $('.activityName').val() + '</activityName> \
-            <accountNo>' + $('.accountNo').val() + '</accountNo> \
-            <costCenter>' + $('.costCenter').val() + '</costCenter> \
+            <activityName>' + $('#activityName').val() + '</activityName> \
+            <accountNo>' + $('#accountNo').val() + '</accountNo> \
+            <costCenter>' + $('#costCenter').val() + '</costCenter> \
         </Request> \
         ' + plane + ' \
+        ' + hotel + ' \
+        ' + car + ' \
+        ' + reg + ' \
+        ' + other + ' \
     </Nestle>';
     return xmlFile;
 }
@@ -162,166 +181,208 @@ function getAccountList(tx, results){
     //showAlert("Welcome to E-Travel " + fullname);
     $('.page2').removeClass('hidden').addClass('shown');
     $('.requestorName').text(fullname);
+    $('.requestorWelcome').text(fullname);
 }
 function getPassengerList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['name'];
-        $('.planePassenger').append('<option value="' + dt + '">' + dt + '</option>');
-        $('.hotelGuest').append('<option value="' + dt + '">' + dt + '</option>');
-        $('.carPassenger').append('<option value="' + dt + '">' + dt + '</option>');
-        $('.hcpReg').append('<option value="' + dt + '">' + dt + '</option>');
-        $('.hcpOther').append('<option value="' + dt + '">' + dt + '</option>');
+        $('#planePassenger').append('<option value="' + dt + '">' + dt + '</option>');
+        $('#hotelGuest').append('<option value="' + dt + '">' + dt + '</option>');
+        $('#carPassenger').append('<option value="' + dt + '">' + dt + '</option>');
+        $('#hcpReg').append('<option value="' + dt + '">' + dt + '</option>');
+        $('#hcpOther').append('<option value="' + dt + '">' + dt + '</option>');
         }
 }
 function getPlaneList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['airline'];
-        $('.preferredAirlineFlyin').append('<option value="' + dt + '">' + dt + '</option>');
-        $('.preferredAirlineFlyout').append('<option value="' + dt + '">' + dt + '</option>');
+        $('#preferredAirlineFlyin').append('<option value="' + dt + '">' + dt + '</option>');
+        $('#preferredAirlineFlyout').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
 function getLocationList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['location'];
-        $('.hotelLocation').append('<option value="' + dt + '">' + dt + '</option>');
+        $('#hotelLocation').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
 function getRoomTypeList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['roomType'];
-        $('.roomType').append('<option value="' + dt + '">' + dt + '</option>');
+        $('#roomType').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
 function getRoomCategoryList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['roomCategory'];
-        $('.roomCategory').append('<option value="' + dt + '">' + dt + '</option>');
+        $('#roomCategory').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
 function getCarDescriptionList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['description'];
-        $('.carDescription').append('<option value="' + dt + '">' + dt + '</option>');
+        $('#carDescription').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
 function getCarDetailsList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['details'];
-        $('.carDetails').append('<option value="' + dt + '">' + dt + '</option>');
+        $('#carDetails').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
 function getCarDurationList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['duration'];
-        $('.carDuration').append('<option value="' + dt + '">' + dt + '</option>');
+        $('#carDuration').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
 function getAccountNumberList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['accountNumber'];
-        $('.accountNo').append('<option value="' + dt + '">' + dt + '</option>');
+        $('#accountNo').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
 function getActivityNameList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['activityName'];
-        $('.activityName').append('<option value="' + dt + '">' + dt + '</option>');
+        $('#activityName').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
 function getCostCenterList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['costCenter'];
-        $('.costCenter').append('<option value="' + dt + '">' + dt + '</option>');
+        $('#costCenter').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
 //Array Handlers
 function processPlaneEntry(){
     var index = planeRequests.length;
+    
+    var planePassenger = "";
+    if ($('#planePassenger').val() == "Other"){ planePassenger = $('.otherplanePassenger').val(); } else { planePassenger = $('#planePassenger').val(); }
+    var preferredAirlineFlyin = "";
+    if ($('#preferredAirlineFlyin').val() == "Other"){ preferredAirlineFlyin = $('.otherAirlineFlyin').val(); } else { preferredAirlineFlyin = $('#preferredAirlineFlyin').val(); }
+    var preferredAirlineFlyout = "";
+    if ($('#preferredAirlineFlyout').val() == "Other"){ preferredAirlineFlyout  = $('.otherAirlineFlyout').val(); } else { preferredAirlineFlyout  = $('#preferredAirlineFlyout').val(); }
+    
     var planeXML = '\
     <PlaneRequest>  \
         <title>' + $('.titlePassenger').val() + '</title> \
-        <planePassenger>' + $('.planePassenger').val() + '</planePassenger> \
+        <planePassenger>' + planePassenger + '</planePassenger> \
         <typeFlyin>' + $('.flightTypeFlyin').val() + '</typeFlyin> \
-        <preferredFlyin>' + $('.preferredAirlineFlyin').val() + '</preferredFlyin> \
+        <preferredFlyin>' + preferredAirlineFlyin + '</preferredFlyin> \
         <flightNoFlyin>' + $('.flightNoFlyin').val() + '</flightNoFlyin> \
         <etdFlyin>' + $('.etdFlyin').val() + '</etdFlyin> \
         <dateFlyin>' + $('.dateFlyin').val() + '</dateFlyin> \
         <typeFlyout>' + $('.flightTypeFlyout').val() + '</typeFlyout> \
-        <preferredFlyout>' + $('.preferredAirlineFlyout').val() + '</preferredFlyout> \
+        <preferredFlyout>' + preferredAirlineFlyout + '</preferredFlyout> \
         <flightNoFlyout>' + $('.flightNoFlyout').val() + '</flightNoFlyout> \
         <etdFlyout>' + $('.etdFlyout').val() + '</etdFlyout> \
         <dateFlyout>' + $('.dateFlyout').val() + '</dateFlyout> \
     </PlaneRequest>';
     //Store to Array
     planeRequests[index] = planeXML;
+    //showAlert(planeXML);
 }
 function processHotelEntry(){
     var index = hotelRequests.length;
+    
+    var hotelGuest;
+    if ($('#hotelGuest').val() == "Other"){ hotelGuest = $('.otherguestName').val(); } else { hotelGuest = $('#hotelGuest').val(); }
+    var hotelLocation;
+    if ($('#hotelLocation').val() == "Other"){ hotelLocation = $('.otherlocation').val(); } else { hotelLocation = $('#hotelLocation').val(); }
+    var roomType;
+    if ($('#roomType').val() == "Other"){ roomType = $('.otherroomType').val(); } else { roomType = $('#roomType').val(); }
+    var roomCategory;
+    if ($('#roomCategory').val() == "Other"){ roomCategory = $('.otherroomCategory').val(); } else { roomCategory = $('#roomCategory').val(); }
+    
     var hotelXML = '\
     <HotelRequest> \
-        <guestName>' + $('.hotelGuest').val() + '</guestName> \
+        <guestName>' + hotelGuest + '</guestName> \
         <hotel>' + $('.preferredHotel').val() + '</hotel> \
-        <location>' + $('.hotelLocation').val() + '</location> \
-        <roomType>' + $('.roomType').val() + '</roomType> \
-        <roomCategory>' + $('.roomCategory').val() + '</roomCategory> \
+        <location>' + hotelLocation + '</location> \
+        <roomType>' + roomType + '</roomType> \
+        <roomCategory>' + roomCategory + '</roomCategory> \
         <checkin>' + $('.checkInDate').val() + '</checkin> \
         <checkout>' + $('.checkOutDate').val() + '</checkout> \
         <roomNights>' + $('.roomNights').val() + '</roomNights> \
     </HotelRequest>';
     //Store to Array
-    //hotelRequests[index] = hotelXML;
+    hotelRequests[index] = hotelXML;
+    //showAlert(hotelXML);
 }
 function processCarEntry(){
     var index = carRequests.length;
+    
+    var carPassenger;
+    if ($('#carPassenger').val() == "Other"){ carPassenger = $('.othercarPassenger').val(); } else { carPassenger = $('#carPassenger').val(); }
+    var carDescription;
+    if ($('#carDescription').val() == "Other"){ carDescription = $('.othercarDescription').val(); } else { carDescription = $('#carDescription').val(); }
+    var carDuration;
+    if ($('#carDuration').val() == "Other"){ carDuration = $('.othercarDuration').val(); } else { carDuration = $('#carDuration').val(); }
+    var carDetails;
+    if ($('#carDetails').val() == "Other"){ carDetails = $('.othercarDetails').val(); } else { carDetails = $('#carDetails').val(); }
+    
     var carXML = '\
     <CarRequest> \
-        <carPassenger>' + $('.carPassenger').val() + '</carPassenger> \
+        <carPassenger>' + carPassenger + '</carPassenger> \
         <pickupTime>' + $('.pickUpTime').val() + '</pickupTime> \
         <pickupDate>' + $('.pickUpDate').val() + '</pickupDate> \
         <pickupPlace>' + $('.pickUpPlace').val() + '</pickupPlace> \
         <destination>' + $('.destination').val() + '</destination> \
         <paxNo>' + $('.paxNo').val() + '</paxNo> \
-        <description>' + $('.carDescription').val() + '</description> \
-        <duration>' + $('.carDuration').val() + '</duration> \
-        <details>' + $('.carDetails').val() + '</details> \
+        <description>' + carDescription + '</description> \
+        <duration>' + carDuration + '</duration> \
+        <details>' + carDetails + '</details> \
     </CarRequest>';
     //Store to Array
-    //carRequests[index] = carXML;
+    carRequests[index] = carXML;
+    //showAlert(carXML);
 }
 function processRegEntry(){
     var index = regRequests.length;
+    
+    var hcpReg;
+    if ($('#hcpReg').val() == "Other"){ hcpReg = $('.otherhcpReg').val(); } else { hcpReg = $('#hcpReg').val(); }
+    
     var regXML = '\
     <RegRequest> \
-        <hcpReg>' + $('.hcpReg').val() + '</hcpReg> \
+        <hcpReg>' + $('#hcpReg').val() + '</hcpReg> \
         <prcNo>' + $('.prcNo').val() + '</prcNo> \
         <mailing>' + $('.mailingAddress').val() + '</mailing> \
         <emailAddress>' + $('.emailAddress').val() + '</emailAddress> \
         <membership>' + $('.membership').val() + '</membership> \
     </RegRequest>';
     //Store to Array
-    //regRequests[index] = regXML;
+    regRequests[index] = regXML;
+    //showAlert(regXML);
 }
 function processOtherEntry(){
     var index = otherRequests.length;
+    
+    var hcpOther;
+    if ($('#hcpOther').val() == "Other"){ hcpOther = $('.otherhcpOther').val(); } else { hcpOther = $('#hcpOther').val(); }
+    
     var otherXML = '\
     <OtherRequest> \
-        <hcpOther>' + $('.hcpOther').val() + '</hcpOther> \
+        <hcpOther>' + $('#hcpOther').val() + '</hcpOther> \
         <mobileOther>' + $('.otherMobile').val() + '</mobileOther> \
         <remarks>' + $('.remarks').val() + '</remarks> \
     </OtherRequest>';
     //Store to Array
-    //otherRequests[index] = otherXML;
+    otherRequests[index] = otherXML;
+    //showAlert(otherXML);
 }
 //Error Handlers
 function showAlert(alert){
@@ -390,54 +451,70 @@ function fireJquery(){
                                                 });
                       //Tables
                       $('.planeSave').click(function(){
-                                            var item = $('.addedPlaneRequest tr').size();
-                                            $('.addedPlaneRequest').append('<tr class="selectedRow">\
+                                            var item = planeRequests.length;
+                                            $('.addedPlaneRequest').append('<tr>\
                                                                            <td>' + item + '</td> \
-                                                                           <td>' + $('.preferredAirlineFlyin').val() + '</td> \
-                                                                           <td>' + $('.planePassenger').val() + '</td> \
+                                                                           <td>' + $('#preferredAirlineFlyin').val() + '</td> \
+                                                                           <td>' + $('#planePassenger').val() + '</td> \
                                                                            </tr>');
                                             processPlaneEntry();
                                             });
                       $('.hotelSave').click(function(){
-                                            var item = $('.addedHotelRequest tr').size();
-                                            $('.addedHotelRequest').append('<tr class="selectedRow">\
+                                            var item = hotelRequests.length;
+                                            $('.addedHotelRequest').append('<tr>\
                                                                            <td>' + item + '</td> \
                                                                            <td>' + $('.preferredHotel').val() + '</td> \
-                                                                           <td>' + $('.hotelGuest').val() + '</td> \
+                                                                           <td>' + $('#hotelGuest').val() + '</td> \
                                                                            </tr>');
                                             processHotelEntry();
                                             });
                       $('.carSave').click(function(){
-                                          var item = $('.addedCarRequest tr').size();
-                                          $('.addedCarRequest').append('<tr class="selectedRow">\
+                                          var item = carRequests.length;
+                                          $('.addedCarRequest').append('<tr>\
                                                                        <td>' + item + '</td> \
                                                                        <td>' + $('.destination').val() + '</td> \
-                                                                       <td>' + $('.carPassenger').val() + '</td> \
+                                                                       <td>' + $('#carPassenger').val() + '</td> \
                                                                        </tr>');
                                           processCarEntry();
                                           });
                       $('.regSave').click(function(){
-                                          var item = $('.addedRegRequest tr').size();
-                                          $('.addedRegRequest').append('<tr class="selectedRow">\
+                                          var item = regRequests.length;
+                                          $('.addedRegRequest').append('<tr>\
                                                                        <td>' + item + '</td> \
                                                                        <td>' + $('.prcNo').val() + '</td> \
-                                                                       <td>' + $('.hcpReg').val() + '</td> \
+                                                                       <td>' + $('#hcpReg').val() + '</td> \
                                                                        </tr>');
                                           processRegEntry();
                                           });
                       $('.otherSave').click(function(){
-                                            var item = $('.addedOtherRequest tr').size();
-                                            $('.addedOtherRequest').append('<tr class="selectedRow">\
+                                            var item = otherRequests.length;
+                                            $('.addedOtherRequest').append('<tr>\
                                                                            <td>' + item + '</td> \
-                                                                           <td>' + $('.hcpOther').val() + '</td> \
+                                                                           <td>' + $('#hcpOther').val() + '</td> \
                                                                            <td>' + $('.otherType').val() + '</td> \
                                                                            <td>' + $('.remarks').val() + '</td> \
                                                                            </tr>');
                                             processOtherEntry();
                                             });
+                      $('.deleteRow').click(function(){
+                                            var arrayName = $(this).attr('id').substring(6,this.length);
+                                            
+                                            });
+                      //Generate XML
                       $('.newRequestSubmit').click(function(){
-                                                   fsAccess();
+                                                   //fsAccess();
+                                                   showAlert($('.requestorName').text()+"");
                                                    });
+                      //OtherInputs
+                      $('.selector').change(function(){
+                                            var closestId = "#"+$(this).attr('id');
+                                            var closestRaw = $(this).attr('id');
+                                            if ( $(closestId).val() == "Other"){
+                                            $('#other'+ closestRaw).fadeIn();
+                                            } else {
+                                            $('#other'+ closestRaw).hide();
+                                            }
+                                            });
                       });
 
 }

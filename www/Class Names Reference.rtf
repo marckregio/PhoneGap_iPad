@@ -18,38 +18,41 @@ Reference No <span> = .referenceNo\
 Name <span> = .requestorName\
 Date of Activity <input>  = .activityDate\
 Activity Name <select> = .activityName\
+Other Activity Name <input> = .otherActivityName ; <li> = #otheractivityName\
 Account No <select> = .accountNo\
+Other Account No <input> = .otheraccount No ; <li> = #otheraccountNo\
 CostCenter <select> = .costCenter\
+Other Cost Center <input> = .othercostCenter ; <li> = #othercostCenter\
 \
 \'97Plane Request\
 Title <select> = .titlePassenger\
-Passenger <select> = .planePassenger\
+Passenger <select> = #planePassenger\
 OtherPassenger <input> = .otherplanePassenger ; <li> = #otherplanePassenger\
 -Flyin\
 flightType <select> = .flightTypeFlyin\
-Preferred Airline <select> = .preferredAirlineFlyin\
-OtherAirline <input> = .otherAirlineFlyin ; <li> =#otherAirlineFlyin\
+Preferred Airline <select> = #preferredAirlineFlyin\
+OtherAirline <input> = .otherAirlineFlyin ; <li> =#otherpreferredAirlineFlyin\
 Flight No <input> = .flightNoFlyin\
 ETD <input> = .etdFlyin\
 Flight Date <input> = .dateFlyin\
 -Flyout\
 flightType <select> = .flightTypeFlyout\
-Preferred Airline <select> = .preferredAirlineFlyout\
-OtherAirline <input> = .otherAirlineFlyout ; <li> =#otherAirlineFlyout\
+Preferred Airline <select> = #preferredAirlineFlyout\
+OtherAirline <input> = .otherAirlineFlyout ; <li> =#otherpreferredAirlineFlyout\
 Flight No <input> = .flightNoFlyout\
 ETD <input> = .etdFlyout\
 Flight Date <input> = .dateFlyout\
 SaveButton = .planeSave\
 \
 \'97Hotel Request\
-GuestName <select> = .hotelGuest\
-OtherGuestName <input> = .otherguestName ; <li> = #otherguestName\
+GuestName <select> = #hotelGuest\
+OtherGuestName <input> = .otherguestName ; <li> = #otherhotelGuest\
 PreferredHotel <input> = .preferredHotel\
-Location <select> = .hotelLocation\
-OtherLocation <input> = .otherlocation ; <li> = #otherlocation\
-RoomType <select> = .roomType\
+Location <select> = #hotelLocation\
+OtherLocation <input> = .otherlocation ; <li> = #otherhotelLocation\
+RoomType <select> = #roomType\
 OtherRoomType <input> = .otherroomType ; <li> = #otherroomType\
-RoomCategory <select> = .roomCategory\
+RoomCategory <select> = #roomCategory\
 OtherRoomCategory <input> = .otherroomCategory ; <li> = #otherroomCategory\
 Checkin <input> = .checkInDate\
 Checkout <input> = .checkOutDate\
@@ -57,7 +60,7 @@ RoomNights <input> = .roomNights\
 SaveButton = .hotelSave\
 \
 \'97Car Request\
-Passenger <select> = .carPassenger\
+Passenger <select> = #carPassenger\
 OtherPassenger <input> = .othercarPassenger ; <li> = #othercarPassenger\
 Pickup time <input> = .pickUpTime\
 Pickup date <input> = .pickUpDate\
@@ -65,16 +68,16 @@ pickupPlace <input> = .pickUpPlace\
 Destination <input> = .destination\
 No of Passenger <input> = .paxNo\
 -CarDetails\
-Description <select> = .carDescription\
+Description <select> = #carDescription\
 OtherDescription <input> = .othercarDescription ; <li> = #othercarPassenger\
-Duration <select> = .carDuration\
+Duration <select> = #carDuration\
 OtherDuration <input> = .othercarDuration ; <li> = #othercarDuration\
-Details <select> = .carDetails\
+Details <select> = #carDetails\
 OtherDetails <input> = .othercarDetails ; <li> = #othercarDetails\
 SaveButton = .carSave\
 \
 \'97Registration\
-HCP Name <select> = .hcpReg\
+HCP Name <select> = #hcpReg\
 Otherhcp <input> = .otherhcpReg ; <li> = #otherhcpReg\
 PRC No. <input> = .prcNo\
 Mailing Address <input> = .mailingAddress\
@@ -84,7 +87,8 @@ SaveButton <input> = .regSave\
 \
 \'97Other\
 OtherType <select> = .otherType\
-HCP Name <select> = .hcpOther\
+HCP Name <select> = #hcpOther\
+Otherhcp <input> = .otherhcpOther ; <li> = #otherhcpOther\
 Mobile No <input> = .otherMobile\
 Remarks <input> = .remarks\
 SaveButton = .otherSave\

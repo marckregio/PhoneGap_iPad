@@ -155,7 +155,7 @@
                             <div class="content-block">
                                 <div class="content-block-inner">
                                     <p class="center">
-                                    Good Day <span class="requestorName"></span>, <br>
+                                    Good Day <span class="requestorWelcome"></span>, <br>
                                     Select an item to start your transaction
                                     </p>
                                     <div class="list-block">
@@ -222,9 +222,20 @@
                                                     <div class="item-inner">
                                                         <div class="item-title label">Activity Name</div>
                                                         <div class="item-input">
-                                                            <select class="activityName">
+                                                            <select id="activityName" class="selector">
                                                                 <option value="">Select an item</option>
                                                             </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li id="otheractivityName" class="otherInputs">
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Other Activity Name</div>
+                                                        <div class="item-input">
+                                                            <input type="text" class="otheractivityName">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -235,10 +246,21 @@
                                                     <div class="item-inner">
                                                         <div class="item-title label">Account No.</div>
                                                         <div class="item-input">
-                                                            <select class="accountNo">
+                                                            <select id="accountNo" class="selector">
                                                                 <option value="">Select an item</option>
                                                             </select>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li id="otheraccountNo" class="otherInputs">
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Other Account No.</div>
+                                                        <div class="item-input">
+                                                            <input type="text" class="otheraccountNo">
+                                                                </div>
                                                     </div>
                                                 </div>
                                             </li>
@@ -248,13 +270,25 @@
                                                     <div class="item-inner">
                                                         <div class="item-title label">Cost Center</div>
                                                         <div class="item-input">
-                                                            <select class="costCenter">
+                                                            <select id="costCenter" class="selector">
                                                                 <option value="">Select an item</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </li>
+                                            <li id="othercostCenter" class="otherInputs">
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Other Cost Center</div>
+                                                        <div class="item-input">
+                                                            <input type="text" class="othercostCenter">
+                                                                </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
                                             <li>
                                                 <div class="item-content">
                                                     <div class="item-inner">
@@ -281,7 +315,7 @@
                                             <div class="tableButtons">
                                                 <div class="buttons-row">
                                                     <a href="#" data-popup=".addPlane" class="button tab-link open-popup">Add</a>
-                                                    <a href="#" class="button tab-link">Delete</a>
+                                                    <a href="#" class="button tab-link deleteRow" id="deleteplaneRequests">Delete</a>
                                                 </div>
                                             </div>
                                             <table>
@@ -509,7 +543,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">Passenger</div>
                                         <div class="item-input">
-                                            <select class="planePassenger">
+                                            <select id="planePassenger" class="selector">
                                                 <option value="">Select an item</option>
                                             </select>
                                         </div>
@@ -551,14 +585,14 @@
                                     <div class="item-inner">
                                         <div class="item-title label">Preferred Airline</div>
                                         <div class="item-input">
-                                            <select class="preferredAirlineFlyin">
+                                            <select id="preferredAirlineFlyin" class="selector">
                                                 <option value="">Select an item</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                            <li id="otherAirlineFlyin" class="otherInputs">
+                            <li id="otherpreferredAirlineFlyin" class="otherInputs">
                                 <div class="item-content">
                                     <div class="item-inner">
                                         <div class="item-title label">Other Airline</div>
@@ -610,7 +644,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">Airline Type</div>
                                         <div class="item-input">
-                                            <select class="flightTypeFlyout">
+                                            <select class="flightTypeFlyout ">
                                                 <option value="Domestic">Domestic</option>
                                                 <option value="International">International</option>
                                             </select>
@@ -623,14 +657,14 @@
                                     <div class="item-inner">
                                         <div class="item-title label">Preferred Airline</div>
                                         <div class="item-input">
-                                            <select class="preferredAirlineFlyout">
+                                            <select id="preferredAirlineFlyout" class="selector">
                                                 <option value="">Select an item</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                            <li id="otherAirlineFlyout" class="otherInputs">
+                            <li id="otherpreferredAirlineFlyout" class="otherInputs">
                                 <div class="item-content">
                                     <div class="item-inner">
                                         <div class="item-title label">Other Airline</div>
@@ -688,14 +722,14 @@
                                     <div class="item-inner">
                                         <div class="item-title label">Guest Name</div>
                                         <div class="item-input">
-                                            <select class="hotelGuest">
-                                                <option>Select an item</option>
+                                            <select id="hotelGuest" class="selector">
+                                                <option value="">Select an item</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                            <li id="otherguestName" class="otherInputs">
+                            <li id="otherhotelGuest" class="otherInputs">
                                 <div class="item-content">
                                     <div class="item-inner">
                                         <div class="item-title label">Other Guest</div>
@@ -727,14 +761,14 @@
                                     <div class="item-inner">
                                         <div class="item-title label">Location</div>
                                         <div class="item-input">
-                                            <select class="hotelLocation">
+                                            <select id="hotelLocation" class="selector">
                                                 <option value="">Select an item</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                            <li id="otherlocation" class="otherInputs">
+                            <li id="otherhotelLocation" class="otherInputs">
                                 <div class="item-content">
                                     <div class="item-inner">
                                         <div class="item-title label">Other Location</div>
@@ -749,7 +783,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">Room Type</div>
                                         <div class="item-input">
-                                            <select class="roomType">
+                                            <select id="roomType" class="selector">
                                                 <option value="">Select an item</option>
                                             </select>
                                         </div>
@@ -771,7 +805,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">Room Category</div>
                                         <div class="item-input">
-                                            <select class="roomCategory">
+                                            <select id="roomCategory" class="selector">
                                                 <option value="">Select an item</option>
                                             </select>
                                         </div>
@@ -837,7 +871,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">Name</div>
                                         <div class="item-input">
-                                            <select class="carPassenger">
+                                            <select id="carPassenger" class="selector">
                                                 <option value="">Select an item</option>
                                             </select>
                                         </div>
@@ -916,7 +950,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">Description</div>
                                         <div class="item-input">
-                                            <select class="carDescription">
+                                            <select id="carDescription" class="selector">
                                                 <option value="">Select an item</option>
                                             </select>
                                         </div>
@@ -938,7 +972,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">Duration</div>
                                         <div class="item-input">
-                                            <select class="carDuration">
+                                            <select id="carDuration" class="selector">
                                                 <option value="">Select an item</option>
                                             </select>
                                         </div>
@@ -960,7 +994,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">Car Details</div>
                                         <div class="item-input">
-                                            <select class="carDetails">
+                                            <select id="carDetails" class="selector">
                                                 <option value="">Select an item</option>
                                             </select>
                                                 </div>
@@ -995,7 +1029,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">HCP Name</div>
                                         <div class="item-input">
-                                            <select class="hcpReg">
+                                            <select id="hcpReg" class="selector">
                                                 <option value="">Select an item</option>
                                             </select>
                                         </div>
@@ -1083,7 +1117,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">HCP Name</div>
                                         <div class="item-input">
-                                            <select class="hcpOther">
+                                            <select id="hcpOther" class="selector">
                                                 <option value="">Select an item</option>
                                             </select>
                                         </div>
