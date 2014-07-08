@@ -56,3 +56,6 @@ th, td{
 .otherInputs{
     display:none;
 }
+.selected{
+    background-color:#A8CDF7;
+}

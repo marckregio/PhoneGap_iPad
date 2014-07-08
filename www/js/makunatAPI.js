@@ -457,6 +457,7 @@ function fireJquery(){
                                                                            <td>' + $('#preferredAirlineFlyin').val() + '</td> \
                                                                            <td>' + $('#planePassenger').val() + '</td> \
                                                                            </tr>');
+                                            $('.addedPlaneRequest tr').addClass('selectable');
                                             processPlaneEntry();
                                             });
                       $('.hotelSave').click(function(){
@@ -466,6 +467,7 @@ function fireJquery(){
                                                                            <td>' + $('.preferredHotel').val() + '</td> \
                                                                            <td>' + $('#hotelGuest').val() + '</td> \
                                                                            </tr>');
+                                            $('.addedHotelRequest tr').addClass('selectable');
                                             processHotelEntry();
                                             });
                       $('.carSave').click(function(){
@@ -475,6 +477,7 @@ function fireJquery(){
                                                                        <td>' + $('.destination').val() + '</td> \
                                                                        <td>' + $('#carPassenger').val() + '</td> \
                                                                        </tr>');
+                                          $('.addedCarRequest tr').addClass('selectable');
                                           processCarEntry();
                                           });
                       $('.regSave').click(function(){
@@ -484,6 +487,7 @@ function fireJquery(){
                                                                        <td>' + $('.prcNo').val() + '</td> \
                                                                        <td>' + $('#hcpReg').val() + '</td> \
                                                                        </tr>');
+                                          $('.addedRegRequest tr').addClass('selectable');
                                           processRegEntry();
                                           });
                       $('.otherSave').click(function(){
@@ -494,16 +498,25 @@ function fireJquery(){
                                                                            <td>' + $('.otherType').val() + '</td> \
                                                                            <td>' + $('.remarks').val() + '</td> \
                                                                            </tr>');
+                                            $('.addedOtherRequest tr').addClass('selectable');
                                             processOtherEntry();
                                             });
+                      $('.selectable').click(function(){
+                                             var closestTr = $(this).closest('tr');
+                                             if ($(closestTr).hasClass('selected') == true){
+                                             $(closestTr).removeClass('selected');
+                                             } else {
+                                             $(closestTr).addClass('selected');
+                                             }
+                                             });
                       $('.deleteRow').click(function(){
                                             var arrayName = $(this).attr('id').substring(6,this.length);
-                                            
+                                            eval(arrayName).pop();
+                                            $('#'+arrayName+' tr:last').remove();
                                             });
                       //Generate XML
                       $('.newRequestSubmit').click(function(){
-                                                   //fsAccess();
-                                                   showAlert($('.requestorName').text()+"");
+                                                   fsAccess();
                                                    });
                       //OtherInputs
                       $('.selector').change(function(){
