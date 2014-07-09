@@ -9,7 +9,7 @@ var regRequests = [];
 var otherRequests = [];
 var dateJSON = new Date().toJSON();
 var currentDate = dateJSON.slice(0, 10);
-var rand = Math.floor((Math.random() * 100) + 1);
+var rand ;
 var referenceFile = currentDate+"-"+rand;
 function makoy(){
     //Initialization
@@ -23,6 +23,7 @@ function makoy(){
                                            );
 }
 function reset(){
+    rand = Math.floor((Math.random() * 100) + 1);
     $('.referenceNo').text(currentDate+"-"+rand);
     $('select').val("");
     $('input[type="text"]').val("");
@@ -37,6 +38,7 @@ function reset(){
     $('.addedHotelRequest tr').remove();
     $('.addedRegRequest tr').remove();
     $('.addedOtherRequest tr').remove();
+    $('.newRequestSubmit').removeClass('disable');
 }
 //File System Handlers
 function fsAccess(){
@@ -49,7 +51,7 @@ function fsAccess(){
                              }, gotError);
 }
 function generateFile(){
-    window.rootFS.getFile(referenceFile+".xml", {create:true, exclusive:false},
+    window.rootFS.getFile(Math.uuid()+".xml", {create:true, exclusive:false},
                           function(fileEntry){
                           fileEntry.createWriter(function(writer){
                                                  writer.seek(writer.length);
@@ -557,7 +559,12 @@ function fireJquery(){
                                             });
                       //Generate XML
                       $('.newRequestSubmit').click(function(){
-                                                   //fsAccess();
+                                                   if ($(this).hasClass('disable')){
+                                                   showAlert("Create New Request");
+                                                   } else {
+                                                   fsAccess();
+                                                   $(this).addClass('disable');
+                                                   }
                                                    //window.plugin.email.open();
                                                    });
                       //OtherInputs
