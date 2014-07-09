@@ -7,11 +7,36 @@ var hotelRequests = [];
 var carRequests = [];
 var regRequests = [];
 var otherRequests = [];
+var dateJSON = new Date().toJSON();
+var currentDate = dateJSON.slice(0, 10);
+var rand = Math.floor((Math.random() * 100) + 1);
+var referenceFile = currentDate+"-"+rand;
 function makoy(){
     //Initialization
     //fsAccess();
     createDB();
     fireJquery();
+    window.plugin.email.isServiceAvailable(
+                                           function (isAvailable) {
+                                           showAlert("Email Composer not working for now");
+                                           }
+                                           );
+}
+function reset(){
+    $('.referenceNo').text(currentDate+"-"+rand);
+    $('select').val("");
+    $('input[type="text"]').val("");
+    $('input[type="date"]').val(currentDate);
+    planeRequests = [];
+    hotelRequests = [];
+    carRequests = [];
+    regRequests = [];
+    otherRequests = [];
+    $('.addedPlaneRequest tr').remove();
+    $('.addedCarRequest tr').remove();
+    $('.addedHotelRequest tr').remove();
+    $('.addedRegRequest tr').remove();
+    $('.addedOtherRequest tr').remove();
 }
 //File System Handlers
 function fsAccess(){
@@ -24,12 +49,12 @@ function fsAccess(){
                              }, gotError);
 }
 function generateFile(){
-    window.rootFS.getFile(Math.uuid()+".xml", {create:true, exclusive:false},
+    window.rootFS.getFile(referenceFile+".xml", {create:true, exclusive:false},
                           function(fileEntry){
                           fileEntry.createWriter(function(writer){
                                                  writer.seek(writer.length);
                                                  writer.write(xmlBuilder());
-                                                 showAlert("File Generated");
+                                                 console.log("File Generated");
                                                  }, gotError);
                           }, gotError);
 }
@@ -194,6 +219,7 @@ function getAccountList(tx, results){
     $('.page2').removeClass('hidden').addClass('shown');
     $('.requestorName').text(fullname);
     $('.requestorWelcome').text(fullname);
+    $('.emailFrom').val(results.rows.item(0)['address']);
 }
 function getPassengerList(tx, results){
     var len = results.rows.length;
@@ -415,7 +441,8 @@ function fireJquery(){
     $(document).ready(function(){
                       //runSQL("Delete from AccountHandler");
                       //Load Maintenance
-                      $('.referenceNo').text(Math.uuid());
+                      reset();
+                      
                       runSQLReturn("AccountHandler","*","");
                       runSQLReturn("Passenger", "*", "");
                       runSQLReturn("MainTableAccountNo","*","");
@@ -435,6 +462,7 @@ function fireJquery(){
                                               }
                                               $('.backer').removeClass('hidden').addClass('shown');
                                               $('.backer').addClass('toPage2');
+                                              reset();
                                               });
                       $('.backer').click(function(){
                                          if($(this).hasClass('toPage2')){
@@ -529,7 +557,8 @@ function fireJquery(){
                                             });
                       //Generate XML
                       $('.newRequestSubmit').click(function(){
-                                                   fsAccess();
+                                                   //fsAccess();
+                                                   //window.plugin.email.open();
                                                    });
                       //OtherInputs
                       $('.selector').change(function(){
