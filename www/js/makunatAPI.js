@@ -466,6 +466,15 @@ function fireJquery(){
                                               $('.backer').addClass('toPage2');
                                               reset();
                                               });
+                      $('.requestPage').click(function(){
+                                              $('.page3').removeClass('hidden').addClass('shown');
+                                              if ($('.page2').hasClass('shown')){
+                                              $('.page2').removeClass('shown').addClass('hidden');
+                                              }
+                                              $('.backer').removeClass('hidden').addClass('shown');
+                                              $('.backer').addClass('toPage2');
+                                              reset();
+                                              });
                       $('.backer').click(function(){
                                          if($(this).hasClass('toPage2')){
                                          $('.page2').removeClass('hidden').addClass('shown');
@@ -484,7 +493,7 @@ function fireJquery(){
                                               $(closestId).addClass('active');
                                               $('.section').hide();
                                               $(closestClass+"Section").fadeIn();
-                                             });
+                                              });
                       //RegisterUser
                       $('.newUserSubmit').click(function(){
                                                 runSQL("Insert Into AccountHandler (lastname, firstname, middlename, birthdate, mobileno, address) Values \

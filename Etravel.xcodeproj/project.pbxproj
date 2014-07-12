@@ -46,11 +46,11 @@
 		5AA0E66F1729F460000DC89A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA0E66E1729F460000DC89A /* ImageIO.framework */; };
 		5AEE5B35173C68D80009041E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEE5B34173C68D80009041E /* CoreLocation.framework */; };
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
+		7A336C70196E66750058C055 /* APPEmailComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A336C6F196E66750058C055 /* APPEmailComposer.m */; };
 		7AACFD14195159E600FF89F6 /* SQLitePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AACFD13195159E600FF89F6 /* SQLitePlugin.m */; };
 		7AACFD1719515B5000FF89F6 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AACFD1519515B5000FF89F6 /* libsqlite3.0.dylib */; };
 		7AACFD1819515B5000FF89F6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AACFD1619515B5000FF89F6 /* libsqlite3.dylib */; };
 		7AE611CE196CE0FD00BEECE8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE611CD196CE0FD00BEECE8 /* MessageUI.framework */; };
-		7AE611D4196CE4BC00BEECE8 /* APPEmailComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE611D3196CE4BC00BEECE8 /* APPEmailComposer.m */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		F840E1F1165FE0F500CFE078 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = F840E1F0165FE0F500CFE078 /* config.xml */; };
 /* End PBXBuildFile section */
@@ -117,13 +117,13 @@
 		5AA0E66E1729F460000DC89A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		5AEE5B34173C68D80009041E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		7A336C6E196E66750058C055 /* APPEmailComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPEmailComposer.h; sourceTree = "<group>"; };
+		7A336C6F196E66750058C055 /* APPEmailComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPEmailComposer.m; sourceTree = "<group>"; };
 		7AACFD12195159E600FF89F6 /* SQLitePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLitePlugin.h; sourceTree = "<group>"; };
 		7AACFD13195159E600FF89F6 /* SQLitePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLitePlugin.m; sourceTree = "<group>"; };
 		7AACFD1519515B5000FF89F6 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		7AACFD1619515B5000FF89F6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		7AE611CD196CE0FD00BEECE8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		7AE611D2196CE4BC00BEECE8 /* APPEmailComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APPEmailComposer.h; path = "../../../../../Downloads/cordova-plugin-email-composer-master/src/ios/APPEmailComposer.h"; sourceTree = "<group>"; };
-		7AE611D3196CE4BC00BEECE8 /* APPEmailComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APPEmailComposer.m; path = "../../../../../Downloads/cordova-plugin-email-composer-master/src/ios/APPEmailComposer.m"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Etravel-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Etravel-Info.plist"; path = "../Etravel-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = Etravel/config.xml; sourceTree = "<group>"; };
@@ -282,8 +282,8 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				7AE611D2196CE4BC00BEECE8 /* APPEmailComposer.h */,
-				7AE611D3196CE4BC00BEECE8 /* APPEmailComposer.m */,
+				7A336C6E196E66750058C055 /* APPEmailComposer.h */,
+				7A336C6F196E66750058C055 /* APPEmailComposer.m */,
 				7AACFD12195159E600FF89F6 /* SQLitePlugin.h */,
 				7AACFD13195159E600FF89F6 /* SQLitePlugin.m */,
 			);
@@ -455,7 +455,7 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				7AACFD14195159E600FF89F6 /* SQLitePlugin.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				7AE611D4196CE4BC00BEECE8 /* APPEmailComposer.m in Sources */,
+				7A336C70196E66750058C055 /* APPEmailComposer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
