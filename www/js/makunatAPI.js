@@ -143,7 +143,7 @@ function runSQLReturn(dbName,fields,whereClause){
         db.transaction(function(tx){
                        tx.executeSql(queryString,[], getAccountList, gotError);
                        }, function(){
-                       $('.page1').removeClass('hidden').addClass('shown');
+                       $('#registrationPage').removeClass('hidden').addClass('shown');
                        $('.open-panel').addClass('hidden');
                        }, function(){ console.log("runSQLReturn Successful"); });
     } else if( dbName == "Passenger"){
@@ -218,7 +218,8 @@ function runSQLReturn(dbName,fields,whereClause){
 function getAccountList(tx, results){
     var fullname = results.rows.item(0)['firstname'] + " " + results.rows.item(0)['middlename'] + " " + results.rows.item(0)['lastname'];
     //showAlert("Welcome to E-Travel " + fullname);
-    $('.page2').removeClass('hidden').addClass('shown');
+    $('#menuPage').removeClass('hidden').addClass('shown');
+    pageController('menuPage');
     $('.requestorName').text(fullname);
     $('.requestorWelcome').text(fullname);
     $('.emailFrom').val(results.rows.item(0)['address']);
@@ -439,6 +440,48 @@ function gotError(error){
     showAlert("Error: "+ error.message);
 }
 //Jquery Handlers
+function pageController(currentPage){
+    switch (currentPage){
+        case 'menuPage' :
+            console.log(currentPage);
+            break;
+        case 'requestPage':
+            $("#"+currentPage).removeClass('hidden').addClass('shown');
+            $('#databasePage').removeClass('shown').addClass('hidden');
+            $('#aboutPage').removeClass('shown').addClass('hidden');
+            $('.backer').removeClass('hidden').addClass('shown');
+            $('.backer').click(function(){
+                               $("#"+currentPage).removeClass('shown').addClass('hidden');
+                               $('.backer').removeClass('shown').addClass('hidden');
+                               $('#menuPage').removeClass('hidden').addClass('shown');
+                               });
+            reset();
+            break;
+        case 'databasePage':
+            $("#"+currentPage).removeClass('hidden').addClass('shown');
+            $('#requestPage').removeClass('shown').addClass('hidden');
+            $('#aboutPage').removeClass('shown').addClass('hidden');
+            $('.backer').removeClass('hidden').addClass('shown');
+            $('.backer').click(function(){
+                               $("#"+currentPage).removeClass('shown').addClass('hidden');
+                               $('.backer').removeClass('shown').addClass('hidden');
+                               $('#menuPage').removeClass('hidden').addClass('shown');
+                               });
+            break;
+        case 'aboutPage':
+            $("#"+currentPage).removeClass('hidden').addClass('shown');
+            $('#requestPage').removeClass('shown').addClass('hidden');
+            $('#databasePage').removeClass('shown').addClass('hidden');
+            $('.backer').removeClass('hidden').addClass('shown');
+            $('.backer').click(function(){
+                               $("#"+currentPage).removeClass('shown').addClass('hidden');
+                               $('.backer').removeClass('shown').addClass('hidden');
+                               $('#menuPage').removeClass('hidden').addClass('shown');
+                               });
+            break;
+    }
+    //$('.backer').removeClass('hidden');
+}
 function fireJquery(){
     $(document).ready(function(){
                       //runSQL("Delete from AccountHandler");
@@ -457,34 +500,14 @@ function fireJquery(){
                       runSQLReturn("CarTableDescription","*","");
                       runSQLReturn("CarTableDetails","*","");
                       runSQLReturn("CarTableDuration","*","");
-                      $('.requestPage').click(function(){
-                                              $('.page3').removeClass('hidden').addClass('shown');
-                                              if ($('.page2').hasClass('shown')){
-                                              $('.page2').removeClass('shown').addClass('hidden');
-                                              }
-                                              $('.backer').removeClass('hidden').addClass('shown');
-                                              $('.backer').addClass('toPage2');
-                                              reset();
-                                              });
-                      $('.requestPage').click(function(){
-                                              $('.page3').removeClass('hidden').addClass('shown');
-                                              if ($('.page2').hasClass('shown')){
-                                              $('.page2').removeClass('shown').addClass('hidden');
-                                              }
-                                              $('.backer').removeClass('hidden').addClass('shown');
-                                              $('.backer').addClass('toPage2');
-                                              reset();
-                                              });
-                      $('.backer').click(function(){
-                                         if($(this).hasClass('toPage2')){
-                                         $('.page2').removeClass('hidden').addClass('shown');
-                                         if ($('.page3').hasClass('shown')){
-                                         $('.page3').removeClass('shown').addClass('hidden');
-                                         }
-                                         $('.backer').addClass('hidden').removeClass('shown');
-                                         $('.backer').removeClass('toPage2');
-                                         }
-                                         });
+                      
+                      //Link Pagers
+                      $('.pager').click(function(){
+                                        var showPage = $(this).attr('id');
+                                        pageController(showPage.substring(0, showPage.length-1));
+                                        //showAlert(showPage);
+                                        });
+                      
                       //RequestTabs
                       $('.requestType').click(function(){
                                               var closestClass = "."+$(this).attr('id');
