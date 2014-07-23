@@ -11,6 +11,7 @@ var dateJSON = new Date().toJSON();
 var currentDate = dateJSON.slice(0, 10);
 var rand ;
 var referenceFile = currentDate+"-"+rand;
+var ifPlanned = true;
 function makoy(){
     //Initialization
     //fsAccess();
@@ -83,7 +84,7 @@ function xmlBuilder(){
     }
     
     var activityName = "";
-    if ($('#activityName').val() == "Other"){ activityName = $('.otheractivityName').val(); } else { activityName = $('#activityName').val(); }
+    if ($('#activityName').val() == "Other"){ activityName = $('.otheractivityName').val(); ifPlanned = false; } else { activityName = $('#activityName').val(); }
     var accountNo = "";
     if ($('#accountNo').val() == "Other"){ accountNo = $('.otheraccountNo').val(); } else { accountNo = $('#accountNo').val(); }
     var costCenter = "";
@@ -103,6 +104,7 @@ function xmlBuilder(){
             <activityName>' + activityName + '</activityName> \
             <accountNo>' + accountNo + '</accountNo> \
             <costCenter>' + costCenter + '</costCenter> \
+            <plan>' + ifPlanned + '</plan> \
         </Request> \
         ' + plane + ' \
         ' + hotel + ' \
@@ -396,7 +398,7 @@ function processRegEntry(){
     
     var hcpReg;
     if ($('#hcpReg').val() == "Other"){ hcpReg = $('.otherhcpReg').val(); } else { hcpReg = $('#hcpReg').val(); }
-    
+
     var regXML = '\
     <RegRequest> \
         <hcpReg>' + $('#hcpReg').val() + '</hcpReg> \
@@ -610,6 +612,13 @@ function fireJquery(){
                                             $('#other'+ closestRaw).hide();
                                             }
                                             });
+                      
+                      $('.membership').change(function(){
+                                              var closest = $(this).attr('id');
+                                              var toSee = closest.substring(0, closest.length-1);
+                                              $('.membersSelector').hide();
+                                              $('#'+toSee).show();
+                                              });
                       });
 
 }

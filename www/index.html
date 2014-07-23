@@ -1116,10 +1116,41 @@
                             <li>
                                 <div class="item-content">
                                     <div class="item-inner">
-                                        <div class="item-title label">Member</div>
+                                        <div class="item-title label">Membership</div>
                                         <div class="item-input">
-                                            <input type="checkbox" class="membership">
-                                                </div>
+                                            <input id="members" type="radio" name="member" class="membership"> Member
+                                            <input id="nonmembers" type="radio" name="member" class="membership"> Non-Member
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="member" class="otherInputs membersSelector">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Category</div>
+                                        <div class="item-input">
+                                            <select id="hcpMember" class="selector">
+                                                <option value="">Select a Member Category</option>
+                                                <option value="Fellow">Fellow</option>
+                                                <option value="Diplomate">Diplomate</option>
+                                                <option value="Active Member">Active Member</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="nonmember" class="otherInputs membersSelector">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Category</div>
+                                        <div class="item-input">
+                                            <select id="hcpNonmember" class="selector">
+                                                <option value="">Select a Non-Member Category</option>
+                                                <option value="Consultant">Consultant</option>
+                                                <option value="Resident">Resident</option>
+                                                <option value="Fellow In Training">Fellow In Training</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
