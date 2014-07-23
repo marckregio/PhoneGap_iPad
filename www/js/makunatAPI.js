@@ -417,7 +417,7 @@ function processOtherEntry(){
     
     var otherXML = '\
     <OtherRequest> \
-        <otherType>' + $('.otherType').val() + '</hcpOther> \
+        <otherType>' + $('.otherType').val() + '</otherType> \
         <hcpOther>' + $('#hcpOther').val() + '</hcpOther> \
         <mobileOther>' + $('.otherMobile').val() + '</mobileOther> \
         <remarks>' + $('.remarks').val() + '</remarks> \
