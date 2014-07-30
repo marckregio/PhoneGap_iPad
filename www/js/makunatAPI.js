@@ -101,10 +101,10 @@ function xmlBuilder(){
             <referenceNo>' + $('.referenceNo').text() + '</referenceNo> \
             <requestor>' + $('.requestorName').text() + '</requestor> \
             <activityDate>' + $('.activityDate').val() + '</activityDate> \
+            <justification>' + $('.justification').val() + '</justification> \
             <activityName>' + activityName + '</activityName> \
             <accountNo>' + accountNo + '</accountNo> \
             <costCenter>' + costCenter + '</costCenter> \
-            <plan>' + ifPlanned + '</plan> \
         </Request> \
         ' + plane + ' \
         ' + hotel + ' \
@@ -131,91 +131,35 @@ function createTables(tx){
     tx.executeSql('Create Table If Not Exists CarTableDescription (id integer primary key autoincrement, description VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists CarTableDuration (id integer primary key autoincrement, duration VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists CarTableDetails (id integer primary key autoincrement, details VARCHAR(255))');
-    tx.executeSql('Create Table If Not Exists Passenger (id integer primary key autoincrement, name VARCHAR(255), mobile VARCHAR(255), address VARCHAR(255))');
+    tx.executeSql('Create Table If Not Exists Passengers (id integer primary key autoincrement, name VARCHAR(255), mobile VARCHAR(255), address VARCHAR(255), birthdate VARCHAR(255) )');
 }
 function runSQL(queryString){
     //showAlert(queryString);
     db.transaction(function(tx){ tx.executeSql(queryString);
                    }, gotError, function(){ console.log("runSQL Successful"); });
 }
-function runSQLReturn(dbName,fields,whereClause){
-    var queryString;
-    if( dbName == "AccountHandler"){
-        queryString = "Select " + fields + " from " + dbName + whereClause;
-        db.transaction(function(tx){
-                       tx.executeSql(queryString,[], getAccountList, gotError);
-                       }, function(){
-                       $('#registrationPage').removeClass('hidden').addClass('shown');
-                       $('.open-panel').addClass('hidden');
-                       }, function(){ console.log("runSQLReturn Successful"); });
-    } else if( dbName == "Passenger"){
-        queryString = "Select " + fields + " from " + dbName + whereClause;
-        db.transaction(function(tx){
-                       tx.executeSql(queryString,[], getPassengerList, gotError);
-                       }, function(){ console.log("Cannot Load Passengers");
-                       }, function(){ console.log("runSQLReturn Successful"); });
-    } else if( dbName == "PlaneTableAirline"){
-        queryString = "Select " + fields + " from " + dbName + whereClause;
-        db.transaction(function(tx){
-                       tx.executeSql(queryString,[], getPlaneList, gotError);
-                       }, function(){ console.log("Cannot Load Plane List");
-                       }, function(){ console.log("runSQLReturn Successful"); });
-    } else if( dbName == "HotelTableLocation"){
-        queryString = "Select " + fields + " from " + dbName + whereClause;
-        db.transaction(function(tx){
-                       tx.executeSql(queryString,[], getLocationList, gotError);
-                       }, function(){ console.log("Cannot Load Plane List");
-                       }, function(){ console.log("runSQLReturn Successful"); });
-    } else if( dbName == "HotelTableRoomType"){
-        queryString = "Select " + fields + " from " + dbName + whereClause;
-        db.transaction(function(tx){
-                       tx.executeSql(queryString,[], getRoomTypeList, gotError);
-                       }, function(){ console.log("Cannot Load Plane List");
-                       }, function(){ console.log("runSQLReturn Successful"); });
-    } else if( dbName == "HotelTableRoomCategory"){
-        queryString = "Select " + fields + " from " + dbName + whereClause;
-        db.transaction(function(tx){
-                       tx.executeSql(queryString,[], getRoomCategoryList, gotError);
-                       }, function(){ console.log("Cannot Load Plane List");
-                       }, function(){ console.log("runSQLReturn Successful"); });
-    } else if( dbName == "CarTableDescription"){
-        queryString = "Select " + fields + " from " + dbName + whereClause;
-        db.transaction(function(tx){
-                       tx.executeSql(queryString,[], getCarDescriptionList, gotError);
-                       }, function(){ console.log("Cannot Load Plane List");
-                       }, function(){ console.log("runSQLReturn Successful"); });
-    } else if( dbName == "CarTableDuration"){
-        queryString = "Select " + fields + " from " + dbName + whereClause;
-        db.transaction(function(tx){
-                       tx.executeSql(queryString,[], getCarDurationList, gotError);
-                       }, function(){ console.log("Cannot Load Plane List");
-                       }, function(){ console.log("runSQLReturn Successful"); });
-    } else if( dbName == "CarTableDetails"){
-        queryString = "Select " + fields + " from " + dbName + whereClause;
-        db.transaction(function(tx){
-                       tx.executeSql(queryString,[], getCarDetailsList, gotError);
-                       }, function(){ console.log("Cannot Load Plane List");
-                       }, function(){ console.log("runSQLReturn Successful"); });
-    } else if( dbName == "MainTableAccountNo"){
-        queryString = "Select " + fields + " from " + dbName + whereClause;
-        db.transaction(function(tx){
-                       tx.executeSql(queryString,[], getAccountNumberList, gotError);
-                       }, function(){ console.log("Cannot Load Plane List");
-                       }, function(){ console.log("runSQLReturn Successful"); });
-    } else if( dbName == "MainTableActivityName"){
-        queryString = "Select " + fields + " from " + dbName + whereClause;
-        db.transaction(function(tx){
-                       tx.executeSql(queryString,[], getActivityNameList, gotError);
-                       }, function(){ console.log("Cannot Load Plane List");
-                       }, function(){ console.log("runSQLReturn Successful"); });
-    } else if( dbName == "MainTableCostCenter"){
-        queryString = "Select " + fields + " from " + dbName + whereClause;
-        db.transaction(function(tx){
-                       tx.executeSql(queryString,[], getCostCenterList, gotError);
-                       }, function(){ console.log("Cannot Load Plane List");
-                       }, function(){ console.log("runSQLReturn Successful"); });
-    }
-    
+function authUser(dbName,fields,whereClause){
+    queryString = "Select " + fields + " from " + dbName + whereClause;
+    db.transaction(function(tx){
+                   tx.executeSql(queryString,[], getAccountList, gotError);
+                   }, function(){
+                   $('#registrationPage').removeClass('hidden').addClass('shown');
+                   $('.open-panel').addClass('hidden');
+                   }, function(){ console.log("runSQLReturn Successful"); });
+}
+function dropDownData(dbName,fields,whereClause){
+    var queryString = "Select " + fields + " from " + dbName + whereClause;
+    db.transaction(function(tx){
+                   tx.executeSql(queryString,[], eval('get'+dbName+'List'), gotError);
+                   }, function(){ console.log("Cannot Load Dropdown");
+                   }, function(){ console.log("runSQLReturn Successful"); });
+}
+function getDetails(forList, name){
+    var queryString = "Select * from Passengers Where name = '" + name + "'";
+    db.transaction(function(tx){
+                   tx.executeSql(queryString,[], eval(forList), gotError);
+                   }, function(){ console.log("Cannot Load For List");
+                   }, function(){ console.log("runSQLReturn Successful"); });
 }
 function getAccountList(tx, results){
     var fullname = results.rows.item(0)['firstname'] + " " + results.rows.item(0)['middlename'] + " " + results.rows.item(0)['lastname'];
@@ -226,7 +170,7 @@ function getAccountList(tx, results){
     $('.requestorWelcome').text(fullname);
     $('.emailFrom').val(results.rows.item(0)['address']);
 }
-function getPassengerList(tx, results){
+function getPassengersList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['name'];
@@ -237,7 +181,7 @@ function getPassengerList(tx, results){
         $('#hcpOther').append('<option value="' + dt + '">' + dt + '</option>');
         }
 }
-function getPlaneList(tx, results){
+function getPlaneTableAirlineList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['airline'];
@@ -245,68 +189,88 @@ function getPlaneList(tx, results){
         $('#preferredAirlineFlyout').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
-function getLocationList(tx, results){
+function getHotelTableLocationList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['location'];
         $('#hotelLocation').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
-function getRoomTypeList(tx, results){
+function getHotelTableRoomTypeList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['roomType'];
         $('#roomType').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
-function getRoomCategoryList(tx, results){
+function getHotelTableRoomCategoryList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['roomCategory'];
         $('#roomCategory').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
-function getCarDescriptionList(tx, results){
+function getCarTableDescriptionList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['description'];
         $('#carDescription').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
-function getCarDetailsList(tx, results){
+function getCarTableDetailsList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['details'];
         $('#carDetails').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
-function getCarDurationList(tx, results){
+function getCarTableDurationList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['duration'];
         $('#carDuration').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
-function getAccountNumberList(tx, results){
+function getMainTableAccountNoList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['accountNumber'];
         $('#accountNo').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
-function getActivityNameList(tx, results){
+function getMainTableActivityNameList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['activityName'];
         $('#activityName').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
-function getCostCenterList(tx, results){
+function getMainTableCostCenterList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['costCenter'];
         $('#costCenter').append('<option value="' + dt + '">' + dt + '</option>');
     }
+}
+function planePassengerDetails(tx, results){
+    $('.planeBirthdate').val(''+results.rows.item(0)['birthdate']);
+    $('.planeMobileNo').val(''+results.rows.item(0)['mobile']);
+}
+function hotelGuestDetails(tx, results){
+    $('.hotelBirthdate').val(''+results.rows.item(0)['birthdate']);
+    $('.hotelMobileNo').val(''+results.rows.item(0)['mobile']);
+}
+function carPassengerDetails(tx, results){
+    $('.carBirthdate').val(''+results.rows.item(0)['birthdate']);
+    $('.carMobileNo').val(''+results.rows.item(0)['mobile']);
+}
+function hcpRegDetails(tx, results){
+    $('.regBirthdate').val(''+results.rows.item(0)['birthdate']);
+    $('.regMobileNo').val(''+results.rows.item(0)['mobile']);
+}
+function hcpOtherDetails(tx, results){
+    $('.otherBirthdate').val(''+results.rows.item(0)['birthdate']);
+    //$('.otherMobileNo').val(''+results.rows.item(0)['mobile']);
 }
 //Array Handlers
 function processPlaneEntry(){
@@ -491,18 +455,18 @@ function fireJquery(){
                       //Load Maintenance
                       reset();
                       
-                      runSQLReturn("AccountHandler","*","");
-                      runSQLReturn("Passenger", "*", "");
-                      runSQLReturn("MainTableAccountNo","*","");
-                      runSQLReturn("MainTableActivityName","*","");
-                      runSQLReturn("MainTableCostCenter","*","");
-                      runSQLReturn("PlaneTableAirline", "*", "");
-                      runSQLReturn("HotelTableLocation","*","");
-                      runSQLReturn("HotelTableRoomType","*","");
-                      runSQLReturn("HotelTableRoomCategory","*","");
-                      runSQLReturn("CarTableDescription","*","");
-                      runSQLReturn("CarTableDetails","*","");
-                      runSQLReturn("CarTableDuration","*","");
+                      authUser("AccountHandler","*","");
+                      dropDownData("Passengers", "*", "");
+                      dropDownData("MainTableAccountNo","*","");
+                      dropDownData("MainTableActivityName","*","");
+                      dropDownData("MainTableCostCenter","*","");
+                      dropDownData("PlaneTableAirline", "*", "");
+                      dropDownData("HotelTableLocation","*","");
+                      dropDownData("HotelTableRoomType","*","");
+                      dropDownData("HotelTableRoomCategory","*","");
+                      dropDownData("CarTableDescription","*","");
+                      dropDownData("CarTableDetails","*","");
+                      dropDownData("CarTableDuration","*","");
                       
                       //Link Pagers
                       $('.pager').click(function(){
@@ -603,15 +567,18 @@ function fireJquery(){
                                                    //window.plugin.email.open();
                                                    });
                       //OtherInputs
-                      $('.selector').change(function(){
-                                            var closestId = "#"+$(this).attr('id');
-                                            var closestRaw = $(this).attr('id');
-                                            if ( $(closestId).val() == "Other"){
-                                            $('#other'+ closestRaw).fadeIn();
-                                            } else {
-                                            $('#other'+ closestRaw).hide();
-                                            }
-                                            });
+                      $('.activityDate').change(function(){
+                                                var allowedDate = new Date($('.activityDate').val());
+                                                allowedDate.setDate(allowedDate.getDate()+3);
+                                                var timeDiff = Math.abs(allowedDate.getTime() - new Date().getTime());
+                                                var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                                                if (diffDays < 6){
+                                                $('#justification').show();
+                                                } else {
+                                                $('#justification').hide();
+                                                $('.justification').val('');
+                                                }
+                                                });
                       
                       $('.membership').change(function(){
                                               var closest = $(this).attr('id');
@@ -619,6 +586,11 @@ function fireJquery(){
                                               $('.membersSelector').hide();
                                               $('#'+toSee).show();
                                               });
+                      
+                      $('.selector').change(function(){
+                                            var pass = $(this).attr('id');
+                                            getDetails(pass+'Details', $(this).val());
+                                            });
                       });
 
 }

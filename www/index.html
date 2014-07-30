@@ -190,7 +190,7 @@
                     </div>
                     <div id="requestPage" class="page hidden">
                         <div class="page-content">
-                            <div class="content-block-title onright">Reference No.: <span class="referenceNo"></span></div>
+                            <div class="content-block-title onright"><b>Reference No.: <span class="referenceNo"></span></b></div>
                             <div class="content-block">
                                 <div class="content-block-inner">
                                     <div class="list-block">
@@ -212,7 +212,31 @@
                                                     <div class="item-inner">
                                                         <div class="item-title label">Date of Activity</div>
                                                         <div class="item-input">
-                                                            <input class="activityDate" type="date" name="name" value="2014-07-04"/>
+                                                            <input class="activityDate" type="date" name="name" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li id="justification" class="otherInputs">
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Justification</div>
+                                                        <div class="item-input">
+                                                            <textarea placeholder="Activity Date is below the lead time" class="justification"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Activity Type</div>
+                                                        <div class="item-input">
+                                                            <select id="activityName" class="selector">
+                                                                <option value="">Select an item</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -223,20 +247,9 @@
                                                     <div class="item-inner">
                                                         <div class="item-title label">Activity Name</div>
                                                         <div class="item-input">
-                                                            <select id="activityName" class="selector">
+                                                            <select id="activityNameDetails" class="selector">
                                                                 <option value="">Select an item</option>
                                                             </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li id="otheractivityName" class="otherInputs">
-                                                <div class="item-content">
-                                                    <div class="item-media"><i class="icon icon-form-settings"></i></div>
-                                                    <div class="item-inner">
-                                                        <div class="item-title label">Other Activity Name</div>
-                                                        <div class="item-input">
-                                                            <input type="text" class="otheractivityName">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -254,17 +267,6 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li id="otheraccountNo" class="otherInputs">
-                                                <div class="item-content">
-                                                    <div class="item-media"><i class="icon icon-form-settings"></i></div>
-                                                    <div class="item-inner">
-                                                        <div class="item-title label">Other Account No.</div>
-                                                        <div class="item-input">
-                                                            <input type="text" class="otheraccountNo">
-                                                                </div>
-                                                    </div>
-                                                </div>
-                                            </li>
                                             <li>
                                                 <div class="item-content">
                                                     <div class="item-media"><i class="icon icon-form-settings"></i></div>
@@ -278,18 +280,6 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li id="othercostCenter" class="otherInputs">
-                                                <div class="item-content">
-                                                    <div class="item-media"><i class="icon icon-form-settings"></i></div>
-                                                    <div class="item-inner">
-                                                        <div class="item-title label">Other Cost Center</div>
-                                                        <div class="item-input">
-                                                            <input type="text" class="othercostCenter">
-                                                                </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-
                                             <li>
                                                 <div class="item-content">
                                                     <div class="item-inner">
@@ -586,13 +576,23 @@
                                     </div>
                                 </div>
                             </li>
-                            <li id="otherplanePassenger" class="otherInputs">
+                            <li>
                                 <div class="item-content">
                                     <div class="item-inner">
-                                        <div class="item-title label">Other Passenger</div>
+                                        <div class="item-title label">Birthdate</div>
                                         <div class="item-input">
-                                            <input type="text" class="otherplanePassenger">
+                                            <input disabled type="text" class="planeBirthdate">
                                         </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Mobile Number</div>
+                                        <div class="item-input">
+                                            <input disabled type="text" class="planeMobileNo">
+                                                </div>
                                     </div>
                                 </div>
                             </li>
@@ -625,16 +625,6 @@
                                             <select id="preferredAirlineFlyin" class="selector">
                                                 <option value="">Select an item</option>
                                             </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li id="otherpreferredAirlineFlyin" class="otherInputs">
-                                <div class="item-content">
-                                    <div class="item-inner">
-                                        <div class="item-title label">Other Airline</div>
-                                        <div class="item-input">
-                                            <input type="text" class="otherAirlineFlyin">
                                         </div>
                                     </div>
                                 </div>
@@ -701,16 +691,6 @@
                                     </div>
                                 </div>
                             </li>
-                            <li id="otherpreferredAirlineFlyout" class="otherInputs">
-                                <div class="item-content">
-                                    <div class="item-inner">
-                                        <div class="item-title label">Other Airline</div>
-                                        <div class="item-input">
-                                            <input type="text" class="otherAirlineFlyout">
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
                             <li>
                                 <div class="item-content">
                                     <div class="item-inner">
@@ -744,7 +724,8 @@
                         </ul>
                     </div>
                 </div>
-                <a href="#" class="button close-popup planeSave">Save and Close</a>
+                <a href="#" class="button close-popup planeSave">Save</a><br>
+                <a href="#" class="button close-popup">Cancel</a>
             </div>
         </div>
         <!--Hotel Request Add Popup-->
@@ -766,13 +747,23 @@
                                     </div>
                                 </div>
                             </li>
-                            <li id="otherhotelGuest" class="otherInputs">
+                            <li>
                                 <div class="item-content">
                                     <div class="item-inner">
-                                        <div class="item-title label">Other Guest</div>
+                                        <div class="item-title label">Birthdate</div>
                                         <div class="item-input">
-                                            <input type="text" class="otherguestName">
-                                        </div>
+                                            <input disabled type="text" class="hotelBirthdate">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Mobile Number</div>
+                                        <div class="item-input">
+                                            <input disabled type="text" class="hotelMobileNo">
+                                                </div>
                                     </div>
                                 </div>
                             </li>
@@ -805,16 +796,6 @@
                                     </div>
                                 </div>
                             </li>
-                            <li id="otherhotelLocation" class="otherInputs">
-                                <div class="item-content">
-                                    <div class="item-inner">
-                                        <div class="item-title label">Other Location</div>
-                                        <div class="item-input">
-                                            <input type="text" class="otherlocation">
-                                                </div>
-                                    </div>
-                                </div>
-                            </li>
                             <li>
                                 <div class="item-content">
                                     <div class="item-inner">
@@ -827,16 +808,6 @@
                                     </div>
                                 </div>
                             </li>
-                            <li id="otherroomType" class="otherInputs">
-                                <div class="item-content">
-                                    <div class="item-inner">
-                                        <div class="item-title label">Other Room Type</div>
-                                        <div class="item-input">
-                                            <input type="text" class="otherroomType">
-                                                </div>
-                                    </div>
-                                </div>
-                            </li>
                             <li>
                                 <div class="item-content">
                                     <div class="item-inner">
@@ -846,16 +817,6 @@
                                                 <option value="">Select an item</option>
                                             </select>
                                         </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li id="otherroomCategory" class="otherInputs">
-                                <div class="item-content">
-                                    <div class="item-inner">
-                                        <div class="item-title label">Other Room Category</div>
-                                        <div class="item-input">
-                                            <input type="text" class="otherroomCategory">
-                                                </div>
                                     </div>
                                 </div>
                             </li>
@@ -892,7 +853,8 @@
                         </ul>
                     </div>
                 </div>
-                <a href="#" class="button close-popup hotelSave">Save and Close</a>
+                <a href="#" class="button close-popup hotelSave">Save</a><br>
+                <a href="#" class="button close-popup">Cancel</a>
             </div>
         </div>
         <!--Car Services Request Add Popup-->
@@ -915,12 +877,22 @@
                                     </div>
                                 </div>
                             </li>
-                            <li id="othercarPassenger" class="otherInputs">
+                            <li>
                                 <div class="item-content">
                                     <div class="item-inner">
-                                        <div class="item-title label">Other Passenger</div>
+                                        <div class="item-title label">Birthdate</div>
                                         <div class="item-input">
-                                            <input type="text" class="othercarPassenger">
+                                            <input disabled type="text" class="carBirthdate">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Mobile Number</div>
+                                        <div class="item-input">
+                                            <input disabled type="text" class="carMobileNo">
                                                 </div>
                                     </div>
                                 </div>
@@ -994,16 +966,6 @@
                                     </div>
                                 </div>
                             </li>
-                            <li id="othercarDescription" class="otherInputs">
-                                <div class="item-content">
-                                    <div class="item-inner">
-                                        <div class="item-title label">Other Description</div>
-                                        <div class="item-input">
-                                            <input type="text" class="othercarDescription">
-                                                </div>
-                                    </div>
-                                </div>
-                            </li>
                             <li>
                                 <div class="item-content">
                                     <div class="item-inner">
@@ -1013,16 +975,6 @@
                                                 <option value="">Select an item</option>
                                             </select>
                                         </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li id="othercarDuration" class="otherInputs">
-                                <div class="item-content">
-                                    <div class="item-inner">
-                                        <div class="item-title label">Other Duration</div>
-                                        <div class="item-input">
-                                            <input type="text" class="othercarDuration">
-                                                </div>
                                     </div>
                                 </div>
                             </li>
@@ -1038,20 +990,11 @@
                                     </div>
                                 </div>
                             </li>
-                            <li id="othercarDetails" class="otherInputs">
-                                <div class="item-content">
-                                    <div class="item-inner">
-                                        <div class="item-title label">Other Details</div>
-                                        <div class="item-input">
-                                            <input type="text" class="othercarDetails">
-                                                </div>
-                                    </div>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                 </div>
-                <a href="#" class="button close-popup carSave">Save and Close</a>
+                <a href="#" class="button close-popup carSave">Save</a><br>
+                <a href="#" class="button close-popup">Cancel</a>
             </div>
         </div>
         <!--Registration Request Add Popup-->
@@ -1073,12 +1016,22 @@
                                     </div>
                                 </div>
                             </li>
-                            <li id="otherhcpReg" class="otherInputs">
+                            <li>
                                 <div class="item-content">
                                     <div class="item-inner">
-                                        <div class="item-title label">Other HCP Name</div>
+                                        <div class="item-title label">Birthdate</div>
                                         <div class="item-input">
-                                            <input type="text" class="otherhcpReg">
+                                            <input disabled type="text" class="regBirthdate">
+                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Mobile Number</div>
+                                        <div class="item-input">
+                                            <input disabled type="text" class="regMobileNo">
                                                 </div>
                                     </div>
                                 </div>
@@ -1157,7 +1110,8 @@
                         </ul>
                     </div>
                 </div>
-                <a href="#" class="button close-popup regSave">Save and Close</a>
+                <a href="#" class="button close-popup regSave">Save</a><br>
+                <a href="#" class="button close-popup">Cancel</a>
             </div>
         </div>
         <!--Other Request Add Popup-->
@@ -1193,12 +1147,12 @@
                                     </div>
                                 </div>
                             </li>
-                            <li id="otherhcpOther" class="otherInputs">
+                            <li>
                                 <div class="item-content">
                                     <div class="item-inner">
-                                        <div class="item-title label">Other HCP Name</div>
+                                        <div class="item-title label">Birthdate</div>
                                         <div class="item-input">
-                                            <input type="text" class="otherhcpOther">
+                                            <input disabled type="text" class="otherBirthdate">
                                                 </div>
                                     </div>
                                 </div>
@@ -1208,7 +1162,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">Mobile No.</div>
                                         <div class="item-input">
-                                            <input type="text" class="otherMobile">
+                                            <input disabled type="text" class="otherMobileNo">
                                                 </div>
                                     </div>
                                 </div>
@@ -1226,7 +1180,8 @@
                         </ul>
                     </div>
                 </div>
-                <a href="#" class="button close-popup otherSave">Save and Close</a>
+                <a href="#" class="button close-popup otherSave">Save</a><br>
+                <a href-"#" class="button close-popup">Cancel</a>
             </div>
         </div>
         <!--Email Popup-->

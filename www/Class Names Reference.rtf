@@ -1,4 +1,4 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf200
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
 \margl1440\margr1440\vieww12260\viewh13060\viewkind0
@@ -18,27 +18,29 @@ Reference No <span> = .referenceNo\
 Name <span> = .requestorName\
 Date of Activity <input>  = .activityDate\
 Activity Name <select> = #activityName\
-Other Activity Name <input> = .otherActivityName ; <li> = #otheractivityName\
+*Other Activity Name <input> = .otherActivityName ; <li> = #otheractivityName\
 Account No <select> = #accountNo\
-Other Account No <input> = .otheraccountNo ; <li> = #otheraccountNo\
+*Other Account No <input> = .otheraccountNo ; <li> = #otheraccountNo\
 CostCenter <select> = #costCenter\
-Other Cost Center <input> = .othercostCenter ; <li> = #othercostCenter\
+*Other Cost Center <input> = .othercostCenter ; <li> = #othercostCenter\
 \
 \'97Plane Request\
 Title <select> = .titlePassenger\
 Passenger <select> = #planePassenger\
-OtherPassenger <input> = .otherplanePassenger ; <li> = #otherplanePassenger\
+*OtherPassenger <input> = .otherplanePassenger ; <li> = #otherplanePassenger\
+Birthdate <input> = .planeBirthdate\
+MobileNumber <input> = .planeMobileNo\
 -Flyin\
 flightType <select> = .flightTypeFlyin\
 Preferred Airline <select> = #preferredAirlineFlyin\
-OtherAirline <input> = .otherAirlineFlyin ; <li> =#otherpreferredAirlineFlyin\
+*OtherAirline <input> = .otherAirlineFlyin ; <li> =#otherpreferredAirlineFlyin\
 Flight No <input> = .flightNoFlyin\
 ETD <input> = .etdFlyin\
 Flight Date <input> = .dateFlyin\
 -Flyout\
 flightType <select> = .flightTypeFlyout\
 Preferred Airline <select> = #preferredAirlineFlyout\
-OtherAirline <input> = .otherAirlineFlyout ; <li> =#otherpreferredAirlineFlyout\
+*OtherAirline <input> = .otherAirlineFlyout ; <li> =#otherpreferredAirlineFlyout\
 Flight No <input> = .flightNoFlyout\
 ETD <input> = .etdFlyout\
 Flight Date <input> = .dateFlyout\
@@ -46,7 +48,9 @@ SaveButton = .planeSave\
 \
 \'97Hotel Request\
 GuestName <select> = #hotelGuest\
-OtherGuestName <input> = .otherguestName ; <li> = #otherhotelGuest\
+Birthdate <input> = .hotelBirthdate\
+MobileNo <input> = .hotelMobileNo\
+*OtherGuestName <input> = .otherguestName ; <li> = #otherhotelGuest\
 PreferredHotel <input> = .preferredHotel\
 Location <select> = #hotelLocation\
 OtherLocation <input> = .otherlocation ; <li> = #otherhotelLocation\
@@ -61,7 +65,9 @@ SaveButton = .hotelSave\
 \
 \'97Car Request\
 Passenger <select> = #carPassenger\
-OtherPassenger <input> = .othercarPassenger ; <li> = #othercarPassenger\
+Birthdate <input> = .carBirthdate\
+Mobile <input> = .carMobileNo\
+*OtherPassenger <input> = .othercarPassenger ; <li> = #othercarPassenger\
 Pickup time <input> = .pickUpTime\
 Pickup date <input> = .pickUpDate\
 pickupPlace <input> = .pickUpPlace\
@@ -69,16 +75,18 @@ Destination <input> = .destination\
 No of Passenger <input> = .paxNo\
 -CarDetails\
 Description <select> = #carDescription\
-OtherDescription <input> = .othercarDescription ; <li> = #othercarPassenger\
+*OtherDescription <input> = .othercarDescription ; <li> = #othercarPassenger\
 Duration <select> = #carDuration\
-OtherDuration <input> = .othercarDuration ; <li> = #othercarDuration\
+*OtherDuration <input> = .othercarDuration ; <li> = #othercarDuration\
 Details <select> = #carDetails\
-OtherDetails <input> = .othercarDetails ; <li> = #othercarDetails\
+*OtherDetails <input> = .othercarDetails ; <li> = #othercarDetails\
 SaveButton = .carSave\
 \
 \'97Registration\
 HCP Name <select> = #hcpReg\
-Otherhcp <input> = .otherhcpReg ; <li> = #otherhcpReg\
+Birthdate <input> = .regBirthdate\
+Mobile <input> = .regMobileNo\
+*Otherhcp <input> = .otherhcpReg ; <li> = #otherhcpReg\
 PRC No. <input> = .prcNo\
 Mailing Address <input> = .mailingAddress\
 EmailAddress <input> = .emailAddress\
@@ -88,7 +96,8 @@ SaveButton <input> = .regSave\
 \'97Other\
 OtherType <select> = .otherType\
 HCP Name <select> = #hcpOther\
-Otherhcp <input> = .otherhcpOther ; <li> = #otherhcpOther\
+*Otherhcp <input> = .otherhcpOther ; <li> = #otherhcpOther\
+Birthdate = .otherBirthdate\
 Mobile No <input> = .otherMobile\
 Remarks <input> = .remarks\
 SaveButton = .otherSave\
