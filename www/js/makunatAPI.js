@@ -42,14 +42,24 @@ function reset(){
     $('.newRequestSubmit').removeClass('disable');
 }
 //File System Handlers
-function fsAccess(){
+function fsAccess(method){
     //call this function before any file system activity
-    window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
-                             window.rootFS = fileSystem.root;
-                             fs = window.rootFS;
-                             generateFile();
-                             }, gotError);
+    if (method == "NewRequest"){
+        window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
+                                 window.rootFS = fileSystem.root;
+                                 fs = window.rootFS;
+                                 generateFile();
+                                 }, gotError);
+    } else if (method == "UpdateDatabase"){
+        /*window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
+                                 window.rootFS = fileSystem.root;
+                                 fs = window.rootFS;
+                                 readFile();
+                                 }, gotError);*/
+        readFile();
+    }
 }
 function generateFile(){
     window.rootFS.getFile(Math.uuid()+".xml", {create:true, exclusive:false},
@@ -60,6 +70,45 @@ function generateFile(){
                                                  console.log("File Generated");
                                                  }, gotError);
                           }, gotError);
+}
+function readFile(){
+    $.get("https://4e34e00b99909b1e14e4225f665fae520cc4df6a.googledrive.com/host/0B2i9Gaj9Iy0_Z0NNc0dhaS1kUFU/nestleDB.xml",
+          function(rawXML){
+          var xml = $(rawXML);
+          xml.find("AccountNumbers").find("account").each(function(){
+                                                          //showAlert($(this).text());
+                                                          });
+          xml.find("CostCenters").find("cost").each(function(){
+                                                          //showAlert($(this).text());
+                                                          });
+          xml.find("ActivityName").find("activity").each(function(){
+                                                          //showAlert($(this).text());
+                                                          });
+          xml.find("Airlines").find("airline").each(function(){
+                                                          //showAlert($(this).text());
+                                                          });
+          xml.find("Locations").find("location").each(function(){
+                                                          //showAlert($(this).text());
+                                                          });
+          xml.find("RoomTypes").find("roomtype").each(function(){
+                                                          //showAlert($(this).text());
+                                                          });
+          xml.find("RoomCategories").find("roomcategory").each(function(){
+                                                          //showAlert($(this).text());
+                                                          });
+          xml.find("CarDescriptions").find("cardescription").each(function(){
+                                                          //showAlert($(this).text());
+                                                          });
+          xml.find("CarDurations").find("carduration").each(function(){
+                                                          //showAlert($(this).text());
+                                                          });
+          xml.find("CarDetails").find("cardetails").each(function(){
+                                                          //showAlert($(this).text());
+                                                          });
+          console.log("XML Fetched!");
+          }).fail(function(){
+                  showAlert("Can't Update Database \n No Database File Found \n Please Try Again");
+                  });
 }
 function xmlBuilder(){
     var plane = "";
@@ -561,11 +610,15 @@ function fireJquery(){
                                                    if ($(this).hasClass('disable')){
                                                    showAlert("Create New Request");
                                                    } else {
-                                                   fsAccess();
+                                                   fsAccess("NewRequest");
                                                    $(this).addClass('disable');
                                                    }
                                                    //window.plugin.email.open();
                                                    });
+                      //Download XML
+                      $('.downloadXML').click(function(){
+                                              fsAccess("UpdateDatabase");
+                                              });
                       //OtherInputs
                       $('.activityDate').change(function(){
                                                 var allowedDate = new Date($('.activityDate').val());
