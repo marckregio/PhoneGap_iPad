@@ -186,7 +186,7 @@ function xmlBuilder(){
     if ($('#accountNo').val() == "Other"){ accountNo = $('.otheraccountNo').val(); } else { accountNo = $('#accountNo').val(); }
     var costCenter = "";
     if ($('#costCenter').val() == "Other"){ costCenter = $('.othercostCenter').val(); } else { costCenter = $('#costCenter').val(); }
-    
+    //            <justification>' + $('.justification').val() + '</justification>
     var xmlFile = '<?xml version="1.0" encoding="UTF-8"?> \
     <!--\
     Generated XML using iPad Application \
@@ -198,7 +198,6 @@ function xmlBuilder(){
             <referenceNo>' + $('.referenceNo').text() + '</referenceNo> \
             <requestor>' + $('.requestorName').text() + '</requestor> \
             <activityDate>' + $('.activityDate').val() + '</activityDate> \
-            <justification>' + $('.justification').val() + '</justification> \
             <activityName>' + activityName + '</activityName> \
             <accountNo>' + accountNo + '</accountNo> \
             <costCenter>' + costCenter + '</costCenter> \
