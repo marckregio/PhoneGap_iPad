@@ -109,6 +109,10 @@ function readFile(){
           function(rawXML){
           var xml = $(rawXML);
           deleteDB();
+          xml.find("PassengerDetails").find("passenger").each(function(){
+                                                          //showAlert($(this).text());
+                                                          runSQL("Insert into Passengers (name, mobile, birthdate) Values ('" + $(this).find("name").text() + "','" + $(this).find("mobileno").text()+ "','" + $(this).find("birthdate").text()+ "')");
+                                                          });
           xml.find("AccountNumbers").find("account").each(function(){
                                                           //showAlert($(this).text());
                                                           runSQL("Insert into MainTableAccountNo (accountNumber) Values ('" + $(this).text() + "')");
