@@ -27,6 +27,8 @@ function reset(){
     rand = Math.floor((Math.random() * 100) + 1);
     $('.referenceNo').text(currentDate+"-"+rand);
     $('select').val("");
+    $('.selector option').remove();
+    $('.selector').append('<option value="">Select an item</option>');
     $('input[type="text"]').val("");
     $('input[type="date"]').val(currentDate);
     planeRequests = [];
@@ -40,6 +42,35 @@ function reset(){
     $('.addedRegRequest tr').remove();
     $('.addedOtherRequest tr').remove();
     $('.newRequestSubmit').removeClass('disable');
+    
+    loadDropdowns();
+}
+function deleteDB(){
+    runSQL("Delete from MainTableAccountNo");
+    runSQL("Delete from MainTableActivityName");
+    runSQL("Delete from MainTableCostCenter");
+    runSQL("Delete from PlaneTableAirline");
+    runSQL("Delete from HotelTableLocation");
+    runSQL("Delete from HotelTableRoomType");
+    runSQL("Delete from HotelTableRoomCategory");
+    runSQL("Delete from CarTableDescription");
+    runSQL("Delete from CarTableDuration");
+    runSQL("Delete from CarTableDetails");
+    runSQL("Delete from Passengers");
+}
+function loadDropdowns(){
+    authUser("AccountHandler","*","");
+    dropDownData("Passengers", "*", "");
+    dropDownData("MainTableAccountNo","*","");
+    dropDownData("MainTableActivityName","*","");
+    dropDownData("MainTableCostCenter","*","");
+    dropDownData("PlaneTableAirline", "*", "");
+    dropDownData("HotelTableLocation","*","");
+    dropDownData("HotelTableRoomType","*","");
+    dropDownData("HotelTableRoomCategory","*","");
+    dropDownData("CarTableDescription","*","");
+    dropDownData("CarTableDetails","*","");
+    dropDownData("CarTableDuration","*","");
 }
 //File System Handlers
 function fsAccess(method){
@@ -59,6 +90,7 @@ function fsAccess(method){
                                  readFile();
                                  }, gotError);*/
         readFile();
+        //deleteDB();
     }
 }
 function generateFile(){
@@ -72,39 +104,51 @@ function generateFile(){
                           }, gotError);
 }
 function readFile(){
+    //deleteDB();
     $.get("https://4e34e00b99909b1e14e4225f665fae520cc4df6a.googledrive.com/host/0B2i9Gaj9Iy0_Z0NNc0dhaS1kUFU/nestleDB.xml",
           function(rawXML){
           var xml = $(rawXML);
+          deleteDB();
           xml.find("AccountNumbers").find("account").each(function(){
                                                           //showAlert($(this).text());
+                                                          runSQL("Insert into MainTableAccountNo (accountNumber) Values ('" + $(this).text() + "')");
                                                           });
           xml.find("CostCenters").find("cost").each(function(){
-                                                          //showAlert($(this).text());
-                                                          });
-          xml.find("ActivityName").find("activity").each(function(){
-                                                          //showAlert($(this).text());
-                                                          });
+                                                    //showAlert($(this).text());
+                                                    runSQL("Insert into MainTableCostCenter (costCenter) Values ('" + $(this).text() + "')");
+                                                    });
+          xml.find("ActivityNames").find("activity").each(function(){
+                                                         //showAlert($(this).text());
+                                                         runSQL("Insert into MainTableActivityName (activityName) Values ('" + $(this).text() + "')");
+                                                         });
           xml.find("Airlines").find("airline").each(function(){
-                                                          //showAlert($(this).text());
-                                                          });
+                                                    //showAlert($(this).text());
+                                                    runSQL("Insert into PlaneTableAirline (airline) Values ('" + $(this).text() + "')");
+                                                    });
           xml.find("Locations").find("location").each(function(){
-                                                          //showAlert($(this).text());
-                                                          });
+                                                      //showAlert($(this).text());
+                                                      runSQL("Insert into HotelTableLocation (location) Values ('" + $(this).text() + "')");
+                                                      });
           xml.find("RoomTypes").find("roomtype").each(function(){
-                                                          //showAlert($(this).text());
-                                                          });
+                                                      //showAlert($(this).text());
+                                                      runSQL("Insert into HotelTableRoomType (roomType) Values ('" + $(this).text() + "')");
+                                                      });
           xml.find("RoomCategories").find("roomcategory").each(function(){
-                                                          //showAlert($(this).text());
-                                                          });
+                                                               //showAlert($(this).text());
+                                                               runSQL("Insert into HotelTableRoomCategory (roomCategory) Values ('" + $(this).text() + "')");
+                                                               });
           xml.find("CarDescriptions").find("cardescription").each(function(){
-                                                          //showAlert($(this).text());
-                                                          });
+                                                                  //showAlert($(this).text());
+                                                                  runSQL("Insert into CarTableDescription (description) Values ('" + $(this).text() + "')");
+                                                                  });
           xml.find("CarDurations").find("carduration").each(function(){
-                                                          //showAlert($(this).text());
-                                                          });
-          xml.find("CarDetails").find("cardetails").each(function(){
-                                                          //showAlert($(this).text());
-                                                          });
+                                                            //showAlert($(this).text());
+                                                            runSQL("Insert into CarTableDuration (duration) Values ('" + $(this).text() + "')");
+                                                            });
+          xml.find("CarDetails").find("cardetail").each(function(){
+                                                         //showAlert($(this).text());
+                                                         runSQL("Insert into CarTableDetails (details) Values ('" + $(this).text() + "')");
+                                                         });
           console.log("XML Fetched!");
           }).fail(function(){
                   showAlert("Can't Update Database \n No Database File Found \n Please Try Again");
@@ -501,21 +545,7 @@ function pageController(currentPage){
 function fireJquery(){
     $(document).ready(function(){
                       //runSQL("Delete from AccountHandler");
-                      //Load Maintenance
                       reset();
-                      
-                      authUser("AccountHandler","*","");
-                      dropDownData("Passengers", "*", "");
-                      dropDownData("MainTableAccountNo","*","");
-                      dropDownData("MainTableActivityName","*","");
-                      dropDownData("MainTableCostCenter","*","");
-                      dropDownData("PlaneTableAirline", "*", "");
-                      dropDownData("HotelTableLocation","*","");
-                      dropDownData("HotelTableRoomType","*","");
-                      dropDownData("HotelTableRoomCategory","*","");
-                      dropDownData("CarTableDescription","*","");
-                      dropDownData("CarTableDetails","*","");
-                      dropDownData("CarTableDuration","*","");
                       
                       //Link Pagers
                       $('.pager').click(function(){
