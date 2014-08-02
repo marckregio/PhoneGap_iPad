@@ -91,6 +91,8 @@ function fsAccess(method){
                                  }, gotError);*/
         readFile();
         //deleteDB();
+    } else if (mnethod == "fromDropbox"){
+        readFromDropbox();
     }
 }
 function generateFile(){
