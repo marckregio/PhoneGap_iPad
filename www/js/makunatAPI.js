@@ -182,6 +182,9 @@ function xmlBuilder(){
         other += otherRequests[i];
     }
     
+    //SUBMISSION DATE
+    var SQLDate = currentDate + " " + new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds() + ":" + new Date().getMilliseconds();
+    
     var activityName = "";
     if ($('#activityName').val() == "Other"){ activityName = $('.otheractivityName').val(); ifPlanned = false; } else { activityName = $('#activityName').val(); }
     var accountNo = "";
@@ -203,6 +206,7 @@ function xmlBuilder(){
             <activityName>' + activityName + '</activityName> \
             <accountNo>' + accountNo + '</accountNo> \
             <costCenter>' + costCenter + '</costCenter> \
+            <submissiondate>' + SQLDate + '</submissiondate> \
         </Request> \
         ' + plane + ' \
         ' + hotel + ' \
