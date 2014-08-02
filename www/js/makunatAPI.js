@@ -105,13 +105,13 @@ function generateFile(){
 }
 function readFile(){
     //deleteDB();
-    $.get("https://4e34e00b99909b1e14e4225f665fae520cc4df6a.googledrive.com/host/0B2i9Gaj9Iy0_Z0NNc0dhaS1kUFU/nestleDB.xml",
+    $.get("https://1493af446944a2a7b5f7146dcc42eee008910ced.googledrive.com/host/0B2i9Gaj9Iy0_eGh5Tm9objNXSGM/nestleDB.xml",
           function(rawXML){
           var xml = $(rawXML);
           deleteDB();
           xml.find("PassengerDetails").find("passenger").each(function(){
                                                           //showAlert($(this).text());
-                                                          runSQL("Insert into Passengers (name, mobile, birthdate) Values ('" + $(this).find("name").text() + "','" + $(this).find("mobileno").text()+ "','" + $(this).find("birthdate").text()+ "')");
+                                                          runSQL("Insert into Passengers (name, address, mobile, birthdate) Values ('" + $(this).find("name").text() + "','" + $(this).find("hcpid").text()+ "','" + $(this).find("mobileno").text()+ "','" + $(this).find("birthdate").text()+ "')");
                                                           });
           xml.find("AccountNumbers").find("account").each(function(){
                                                           //showAlert($(this).text());
@@ -349,22 +349,27 @@ function getMainTableCostCenterList(tx, results){
     }
 }
 function planePassengerDetails(tx, results){
+    $('.planehcpId').val(''+results.rows.item(0)['address']);
     $('.planeBirthdate').val(''+results.rows.item(0)['birthdate']);
     $('.planeMobileNo').val(''+results.rows.item(0)['mobile']);
 }
 function hotelGuestDetails(tx, results){
+    $('.hotelhcpId').val(''+results.rows.item(0)['address']);
     $('.hotelBirthdate').val(''+results.rows.item(0)['birthdate']);
     $('.hotelMobileNo').val(''+results.rows.item(0)['mobile']);
 }
 function carPassengerDetails(tx, results){
+    $('.carhcpId').val(''+results.rows.item(0)['address']);
     $('.carBirthdate').val(''+results.rows.item(0)['birthdate']);
     $('.carMobileNo').val(''+results.rows.item(0)['mobile']);
 }
 function hcpRegDetails(tx, results){
+    $('.reghcpId').val(''+results.rows.item(0)['address']);
     $('.regBirthdate').val(''+results.rows.item(0)['birthdate']);
     $('.regMobileNo').val(''+results.rows.item(0)['mobile']);
 }
 function hcpOtherDetails(tx, results){
+    $('otherhcpId').val(''+results.rows.item(0)['address']);
     $('.otherBirthdate').val(''+results.rows.item(0)['birthdate']);
     //$('.otherMobileNo').val(''+results.rows.item(0)['mobile']);
 }
