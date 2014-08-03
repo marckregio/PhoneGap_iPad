@@ -587,63 +587,81 @@ function fireJquery(){
                       //Tables
                       $('.planeSave').click(function(){
                                             var item = planeRequests.length;
-                                            $('.addedPlaneRequest').append('<tr>\
+                                            $('.addedPlaneRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
                                                                            <td>' + item + '</td> \
                                                                            <td>' + $('#preferredAirlineFlyin').val() + '</td> \
                                                                            <td>' + $('#planePassenger').val() + '</td> \
                                                                            </tr>');
-                                            $('.addedPlaneRequest tr').addClass('selectable');
+                                            $('.addedPlaneRequest tr').click(function(){
+                                                                             var selected = $(this).attr('id');
+                                                                             var body = planeRequests[selected]+'';
+                                                                             $('#summary').text(body);
+                                                                             end();
+                                                                             });
                                             processPlaneEntry();
                                             });
                       $('.hotelSave').click(function(){
                                             var item = hotelRequests.length;
-                                            $('.addedHotelRequest').append('<tr>\
+                                            $('.addedHotelRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
                                                                            <td>' + item + '</td> \
                                                                            <td>' + $('.preferredHotel').val() + '</td> \
                                                                            <td>' + $('#hotelGuest').val() + '</td> \
                                                                            </tr>');
-                                            $('.addedHotelRequest tr').addClass('selectable');
+                                            $('.addedHotelRequest tr').click(function(){
+                                                                             var selected = $(this).attr('id');
+                                                                             var body = hotelRequests[selected]+'';
+                                                                             $('#summary').text(body);
+                                                                             end();
+                                                                             });
                                             processHotelEntry();
                                             });
                       $('.carSave').click(function(){
                                           var item = carRequests.length;
-                                          $('.addedCarRequest').append('<tr>\
+                                          $('.addedCarRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
                                                                        <td>' + item + '</td> \
                                                                        <td>' + $('.destination').val() + '</td> \
                                                                        <td>' + $('#carPassenger').val() + '</td> \
                                                                        </tr>');
-                                          $('.addedCarRequest tr').addClass('selectable');
+                                          $('.addedCarRequest tr').click(function(){
+                                                                         var selected = $(this).attr('id');
+                                                                         var body = carRequests[selected]+'';
+                                                                         $('#summary').text(body);
+                                                                         end();
+                                                                         });
                                           processCarEntry();
                                           });
                       $('.regSave').click(function(){
                                           var item = regRequests.length;
-                                          $('.addedRegRequest').append('<tr>\
+                                          $('.addedRegRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
                                                                        <td>' + item + '</td> \
                                                                        <td>' + $('.prcNo').val() + '</td> \
                                                                        <td>' + $('#hcpReg').val() + '</td> \
                                                                        </tr>');
-                                          $('.addedRegRequest tr').addClass('selectable');
+                                          $('.addedRegRequest tr').click(function(){
+                                                                         var selected = $(this).attr('id');
+                                                                         var body = regRequests[selected]+'';
+                                                                         $('#summary').text(body);
+                                                                         end();
+                                                                         });
                                           processRegEntry();
                                           });
                       $('.otherSave').click(function(){
                                             var item = otherRequests.length;
-                                            $('.addedOtherRequest').append('<tr>\
+                                            $('.addedOtherRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
                                                                            <td>' + item + '</td> \
                                                                            <td>' + $('#hcpOther').val() + '</td> \
                                                                            <td>' + $('.otherType').val() + '</td> \
                                                                            <td>' + $('.remarks').val() + '</td> \
                                                                            </tr>');
-                                            $('.addedOtherRequest tr').addClass('selectable');
+                                            $('.addedOtherRequest tr').click(function(){
+                                                                             var selected = $(this).attr('id');
+                                                                             var body = otherRequests[selected]+'';
+                                                                             $('#summary').text(body);
+                                                                             end();
+                                                                             });
                                             processOtherEntry();
                                             });
-                      $('.selectable').click(function(){
-                                             var closestTr = $(this).closest('tr');
-                                             if ($(closestTr).hasClass('selected') == true){
-                                             $(closestTr).removeClass('selected');
-                                             } else {
-                                             $(closestTr).addClass('selected');
-                                             }
-                                             });
+                      
                       $('.deleteRow').click(function(){
                                             var arrayName = $(this).attr('id').substring(6,this.length);
                                             eval(arrayName).pop();

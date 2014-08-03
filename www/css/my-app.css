@@ -60,6 +60,6 @@ th, td{
 .otherInputs{
     display:none;
 }
-.selected{
+tr:focus{
     background-color:#A8CDF7;
 }
