@@ -91,7 +91,7 @@ function fsAccess(method){
                                  }, gotError);*/
         readFile();
         //deleteDB();
-    } else if (mnethod == "fromDropbox"){
+    } else if (method == "fromDropbox"){
         readFromDropbox();
     }
 }
@@ -106,7 +106,6 @@ function generateFile(){
                           }, gotError);
 }
 function readFile(){
-    //deleteDB();
     $.get("https://1493af446944a2a7b5f7146dcc42eee008910ced.googledrive.com/host/0B2i9Gaj9Iy0_eGh5Tm9objNXSGM/nestleDB.xml",
           function(rawXML){
           var xml = $(rawXML);
@@ -155,6 +154,60 @@ function readFile(){
                                                          //showAlert($(this).text());
                                                          runSQL("Insert into CarTableDetails (details) Values ('" + $(this).text() + "')");
                                                          });
+          console.log("XML Fetched!");
+          }).fail(function(){
+                  showAlert("Can't Update Database \n No Database File Found \n Please Try Again");
+                  });
+}
+function readFromDropbox(){
+    $.get("https://www.dropbox.com/s/7i8rwhy0jsh65wu/nestleDB.xml?dl=1",
+          function(rawXML){
+          var xml = $(rawXML);
+          deleteDB();
+          xml.find("PassengerDetails").find("passenger").each(function(){
+                                                              //showAlert($(this).text());
+                                                              runSQL("Insert into Passengers (name, address, mobile, birthdate) Values ('" + $(this).find("name").text() + "','" + $(this).find("hcpid").text()+ "','" + $(this).find("mobileno").text()+ "','" + $(this).find("birthdate").text()+ "')");
+                                                              });
+          xml.find("AccountNumbers").find("account").each(function(){
+                                                          //showAlert($(this).text());
+                                                          runSQL("Insert into MainTableAccountNo (accountNumber) Values ('" + $(this).text() + "')");
+                                                          });
+          xml.find("CostCenters").find("cost").each(function(){
+                                                    //showAlert($(this).text());
+                                                    runSQL("Insert into MainTableCostCenter (costCenter) Values ('" + $(this).text() + "')");
+                                                    });
+          xml.find("ActivityNames").find("activity").each(function(){
+                                                          //showAlert($(this).text());
+                                                          runSQL("Insert into MainTableActivityName (activityName) Values ('" + $(this).text() + "')");
+                                                          });
+          xml.find("Airlines").find("airline").each(function(){
+                                                    //showAlert($(this).text());
+                                                    runSQL("Insert into PlaneTableAirline (airline) Values ('" + $(this).text() + "')");
+                                                    });
+          xml.find("Locations").find("location").each(function(){
+                                                      //showAlert($(this).text());
+                                                      runSQL("Insert into HotelTableLocation (location) Values ('" + $(this).text() + "')");
+                                                      });
+          xml.find("RoomTypes").find("roomtype").each(function(){
+                                                      //showAlert($(this).text());
+                                                      runSQL("Insert into HotelTableRoomType (roomType) Values ('" + $(this).text() + "')");
+                                                      });
+          xml.find("RoomCategories").find("roomcategory").each(function(){
+                                                               //showAlert($(this).text());
+                                                               runSQL("Insert into HotelTableRoomCategory (roomCategory) Values ('" + $(this).text() + "')");
+                                                               });
+          xml.find("CarDescriptions").find("cardescription").each(function(){
+                                                                  //showAlert($(this).text());
+                                                                  runSQL("Insert into CarTableDescription (description) Values ('" + $(this).text() + "')");
+                                                                  });
+          xml.find("CarDurations").find("carduration").each(function(){
+                                                            //showAlert($(this).text());
+                                                            runSQL("Insert into CarTableDuration (duration) Values ('" + $(this).text() + "')");
+                                                            });
+          xml.find("CarDetails").find("cardetail").each(function(){
+                                                        //showAlert($(this).text());
+                                                        runSQL("Insert into CarTableDetails (details) Values ('" + $(this).text() + "')");
+                                                        });
           console.log("XML Fetched!");
           }).fail(function(){
                   showAlert("Can't Update Database \n No Database File Found \n Please Try Again");
@@ -375,7 +428,7 @@ function hcpRegDetails(tx, results){
     $('.regMobileNo').val(''+results.rows.item(0)['mobile']);
 }
 function hcpOtherDetails(tx, results){
-    $('otherhcpId').val(''+results.rows.item(0)['address']);
+    $('.otherhcpId').val(''+results.rows.item(0)['address']);
     $('.otherBirthdate').val(''+results.rows.item(0)['birthdate']);
     //$('.otherMobileNo').val(''+results.rows.item(0)['mobile']);
 }
@@ -681,6 +734,9 @@ function fireJquery(){
                       $('.downloadXML').click(function(){
                                               fsAccess("UpdateDatabase");
                                               });
+                      $('.downloadXMLDropbox').click(function(){
+                                              fsAccess("fromDropbox");
+                                              });
                       //OtherInputs
                       $('.activityDate').change(function(){
                                                 var allowedDate = new Date($('.activityDate').val());
@@ -700,6 +756,7 @@ function fireJquery(){
                                               var toSee = closest.substring(0, closest.length-1);
                                               $('.membersSelector').hide();
                                               $('#'+toSee).show();
+                                              $('.mem').val("");
                                               });
                       
                       $('.selector').change(function(){

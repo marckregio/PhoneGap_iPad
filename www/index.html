@@ -254,6 +254,17 @@
                                                     </div>
                                                 </div>
                                             </li>
+                                            <li id="otheractivityName" class="otherInputs">
+                                                <div class="item-content">
+                                                    <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title label">Unplanned Activity Name</div>
+                                                        <div class="item-input">
+                                                            <input type="text" class="otherActivityName">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
                                             <li>
                                                 <div class="item-content">
                                                     <div class="item-media"><i class="icon icon-form-settings"></i></div>
@@ -1118,8 +1129,8 @@
                                     <div class="item-inner">
                                         <div class="item-title label">Membership</div>
                                         <div class="item-input">
-                                            <input id="members" type="radio" name="member" class="membership"> Member
-                                            <input id="nonmembers" type="radio" name="member" class="membership"> Non-Member
+                                            <input id="members" type="radio" name="member" class="membership" value="Member"> Member
+                                            <input id="nonmembers" type="radio" name="member" class="membership" value="Non-Member"> Non-Member
                                         </div>
                                     </div>
                                 </div>
@@ -1129,7 +1140,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">Category</div>
                                         <div class="item-input">
-                                            <select id="hcpMember" class="membership">
+                                            <select id="hcpMember" class="mem">
                                                 <option value="">Select a Member Category</option>
                                                 <option value="Fellow">Fellow</option>
                                                 <option value="Diplomate">Diplomate</option>
@@ -1144,7 +1155,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">Category</div>
                                         <div class="item-input">
-                                            <select id="hcpNonmember" class="membership">
+                                            <select id="hcpNonmember" class="mem">
                                                 <option value="">Select a Non-Member Category</option>
                                                 <option value="Consultant">Consultant</option>
                                                 <option value="Resident">Resident</option>
