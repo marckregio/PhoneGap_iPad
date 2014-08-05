@@ -244,7 +244,8 @@ function xmlBuilder(){
     var SQLDate = currentDate + " " + new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds() + ":" + new Date().getMilliseconds();
     
     var activityName = "";
-    if ($('#activityName').val() == "Unplanned"){ activityName = $('.otheractivityName').val(); ifPlanned = false; } else { activityName = $('#activityName').val(); }
+    if ($('#activityName').val() == "Unplanned"){ activityName = $('.otheractivityName').val(); ifPlanned = false;
+    } else { activityName = $('#activityName').val(); ifPlanned = true; }
     
     var accountNo = "";
     if ($('#accountNo').val() == "Other"){ accountNo = $('.otheraccountNo').val(); } else { accountNo = $('#accountNo').val(); }
@@ -266,6 +267,7 @@ function xmlBuilder(){
             <accountNo>' + accountNo + '</accountNo> \
             <costCenter>' + costCenter + '</costCenter> \
             <submissiondate>' + SQLDate + '</submissiondate> \
+            <plan>' + ifPlanned + '</plan> \
         </Request> \
         ' + plane + ' \
         ' + hotel + ' \
@@ -973,6 +975,10 @@ function processRegEntry(){
     
     var hcpReg;
     if ($('#hcpReg').val() == "Other"){ hcpReg = $('.otherhcpReg').val(); } else { hcpReg = $('#hcpReg').val(); }
+    var membership;
+    var membershipCategory;
+    if ($('#members').is(':checked')){ membershipCategory = $('#hcpMember').val();  membership = $('#members').val();}
+    else if ($('#nonmembers').is(':checked')) { membershipCategory = $('#hcpNonmember').val(); membership = $('#nonmembers').val(); }
 
     var regXML = '\
     <RegRequest> \
@@ -980,7 +986,8 @@ function processRegEntry(){
         <prcNo>' + $('.prcNo').val() + '</prcNo> \
         <mailing>' + $('.mailingAddress').val() + '</mailing> \
         <emailAddress>' + $('.emailAddress').val() + '</emailAddress> \
-        <membership>' + $('.membership').val() + '</membership> \
+        <membership>' + membership + '</membership> \
+        <category>' + membershipCategory + '</category> \
     </RegRequest>';
     
     var regSummary = '\
@@ -1062,7 +1069,7 @@ function processRegEntry(){
                         <div class="item-inner"> \
                             <div class="item-title label">Membership</div> \
                             <div class="item-input"> \
-                                <input disabled type="text" value="' + $('.membership').val() + '"> \
+                                <input disabled type="text" value="' + membership + '"> \
                             </div> \
                         </div> \
                     </div> \
@@ -1072,17 +1079,7 @@ function processRegEntry(){
                         <div class="item-inner"> \
                             <div class="item-title label">Category</div> \
                             <div class="item-input"> \
-                                <input disabled type="text" value="' + $('#hcpMember').val() + '"> \
-                            </div> \
-                        </div> \
-                    </div> \
-                </li> \
-                <li> \
-                    <div class="item-content"> \
-                        <div class="item-inner"> \
-                            <div class="item-title label">Category</div> \
-                            <div class="item-input"> \
-                                <input disabled type="text" value="' + $('#hcpNonmember').val() + '"> \
+                                <input disabled type="text" value="' + membershipCategory + '"> \
                             </div> \
                         </div> \
                     </div> \
