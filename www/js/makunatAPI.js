@@ -7,7 +7,7 @@ var planeRequestsSummary = [];
 var hotelRequests = [];
 var hotelRequestsSummary = [];
 var carRequests = [];
-var hotelRequestsSummary = [];
+var carRequestsSummary = [];
 var regRequests = [];
 var regRequestsSummary = [];
 var otherRequests = [];
@@ -436,7 +436,7 @@ function hcpRegDetails(tx, results){
 function hcpOtherDetails(tx, results){
     $('.otherhcpId').val(''+results.rows.item(0)['address']);
     $('.otherBirthdate').val(''+results.rows.item(0)['birthdate']);
-    //$('.otherMobileNo').val(''+results.rows.item(0)['mobile']);
+    $('.otherMobileNo').val(''+results.rows.item(0)['mobile']);
 }
 //Array Handlers
 function processPlaneEntry(){
@@ -725,7 +725,7 @@ function processHotelEntry(){
                         <div class="item-inner"> \
                             <div class="item-title label">Preferred Hotel</div> \
                             <div class="item-input"> \
-                                <input disabled type="text" value"' + $('.preferredHotel').val() + '"> \
+                                <input disabled type="text" value="' + $('.preferredHotel').val() + '"> \
                             </div> \
                         </div> \
                     </div> \
@@ -735,7 +735,7 @@ function processHotelEntry(){
                         <div class="item-inner"> \
                             <div class="item-title label">Location</div> \
                             <div class="item-input"> \
-                                <input disabled type="text" value"' + hotelLocation  + '"> \
+                                <input disabled type="text" value="' + hotelLocation  + '"> \
                             </div> \
                         </div> \
                     </div> \
@@ -745,7 +745,7 @@ function processHotelEntry(){
                         <div class="item-inner"> \
                             <div class="item-title label">Room Type</div> \
                             <div class="item-input"> \
-                                <input disabled type="text" value"' + roomType  + '"> \
+                                <input disabled type="text" value="' + roomType  + '"> \
                             </div> \
                         </div> \
                     </div> \
@@ -755,7 +755,7 @@ function processHotelEntry(){
                         <div class="item-inner"> \
                             <div class="item-title label">Room Category</div> \
                             <div class="item-input"> \
-                                <input disabled type="text" value"' + roomCategory  + '"> \
+                                <input disabled type="text" value="' + roomCategory  + '"> \
                             </div> \
                         </div> \
                     </div> \
@@ -765,7 +765,7 @@ function processHotelEntry(){
                         <div class="item-inner"> \
                             <div class="item-title label">Check-in Date</div> \
                             <div class="item-input"> \
-                                <input disabled type="text" value"' + $('.checkInDate').val()  + '"> \
+                                <input disabled type="text" value="' + $('.checkInDate').val()  + '"> \
                             </div> \
                         </div> \
                     </div> \
@@ -775,7 +775,7 @@ function processHotelEntry(){
                         <div class="item-inner"> \
                             <div class="item-title label">Check-out Date</div> \
                             <div class="item-input"> \
-                                <input disabled type="text" value"' + $('.checkOutDate').val()  + '"> \
+                                <input disabled type="text" value="' + $('.checkOutDate').val()  + '"> \
                             </div> \
                         </div> \
                     </div> \
@@ -785,7 +785,7 @@ function processHotelEntry(){
                         <div class="item-inner"> \
                             <div class="item-title label">Room Nights</div> \
                             <div class="item-input"> \
-                                <input disabled type="text" value"' + $('.roomNights').val()  + '"> \
+                                <input disabled type="text" value="' + $('.roomNights').val()  + '"> \
                             </div> \
                         </div> \
                     </div> \
@@ -797,11 +797,11 @@ function processHotelEntry(){
     //Store to Array
     hotelRequests[index] = hotelXML;
     hotelRequestsSummary[indexSummary] = hotelSummary;
-    //showAlert(hotelXML);
+    //showAlert(hotelSummary);
 }
 function processCarEntry(){
     var index = carRequests.length;
-    var indexSummary = carRequestsSummary.length();
+    var indexSummary = carRequestsSummary.length;
     
     var carPassenger;
     if ($('#carPassenger').val() == "Other"){ carPassenger = $('.othercarPassenger').val(); } else { carPassenger = $('#carPassenger').val(); }
@@ -826,156 +826,150 @@ function processCarEntry(){
     </CarRequest>';
     
     var carSummary = '\
-    <div class="content-inner">
-    <div class="content-block-title">Passenger Information</div>
-    <div class="list-block">
-    <ul>
-    <li>
-    <div class="item-content">
-    <div class="item-inner">
-    <div class="item-title label">Name</div>
-    <div class="item-input">
-    <select id="carPassenger" class="selector">
-    <option value="">Select an item</option>
-    </select>
-    </div>
-    </div>
-    </div>
-    </li>
-    <li>
-    <div class="item-content">
-    <div class="item-inner">
-    <div class="item-title label">HCPID</div>
-    <div class="item-input">
-    <input disabled type="text" class="carhcpId">
-    </div>
-    </div>
-    </div>
-    </li>
-    <li>
-    <div class="item-content">
-    <div class="item-inner">
-    <div class="item-title label">Birthdate</div>
-    <div class="item-input">
-    <input disabled type="text" class="carBirthdate">
-    </div>
-    </div>
-    </div>
-    </li>
-    <li>
-    <div class="item-content">
-    <div class="item-inner">
-    <div class="item-title label">Mobile Number</div>
-    <div class="item-input">
-    <input disabled type="text" class="carMobileNo">
-    </div>
-    </div>
-    </div>
-    </li>
-    <li>
-    <div class="item-content">
-    <div class="item-inner">
-    <div class="item-title label">Pick-up Time</div>
-    <div class="item-input">
-    <input type="time" value="23:00:00" class="pickUpTime">
-    </div>
-    </div>
-    </div>
-    </li>
-    <li>
-    <div class="item-content">
-    <div class="item-inner">
-    <div class="item-title label">Pick-up Date</div>
-    <div class="item-input">
-    <input type="date" value="1994-03-10" class="pickUpDate">
-    </div>
-    </div>
-    </div>
-    </li>
-    <li>
-    <div class="item-content">
-    <div class="item-inner">
-    <div class="item-title label">Pick-up Place</div>
-    <div class="item-input">
-    <input type="text" class="pickUpPlace">
-    </div>
-    </div>
-    </div>
-    </li>
-    <li>
-    <div class="item-content">
-    <div class="item-inner">
-    <div class="item-title label">Destination</div>
-    <div class="item-input">
-    <input type="text" class="destination">
-    </div>
-    </div>
-    </div>
-    </li>
-    <li>
-    <div class="item-content">
-    <div class="item-inner">
-    <div class="item-title label">No. of Passenger</div>
-    <div class="item-input">
-    <input type="text" class="paxNo">
-    </div>
-    </div>
-    </div>
-    </li>
-    </ul>
-    </div>
-    </div>
-    <div class="content-inner">
-    <div class="content-block-title">Car Details</div>
-    <div class="list-block">
-    <ul>
-    <li>
-    <div class="item-content">
-    <div class="item-inner">
-    <div class="item-title label">Description</div>
-    <div class="item-input">
-    <select id="carDescription" class="selector">
-    <option value="">Select an item</option>
-    </select>
-    </div>
-    </div>
-    </div>
-    </li>
-    <li>
-    <div class="item-content">
-    <div class="item-inner">
-    <div class="item-title label">Duration</div>
-    <div class="item-input">
-    <select id="carDuration" class="selector">
-    <option value="">Select an item</option>
-    </select>
-    </div>
-    </div>
-    </div>
-    </li>
-    <li>
-    <div class="item-content">
-    <div class="item-inner">
-    <div class="item-title label">Car Details</div>
-    <div class="item-input">
-    <select id="carDetails" class="selector">
-    <option value="">Select an item</option>
-    </select>
-    </div>
-    </div>
-    </div>
-    </li>
-    </ul>
-    </div>
-    </div>
+        <div class="content-inner"> \
+            <div class="content-block-title">Passenger Information</div> \
+            <div class="list-block"> \
+                <ul> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Name</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + carPassenger + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">HCPID</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.carhcpId').val() + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Birthdate</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.carBirthdate').val() + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Mobile Number</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.carMobileNo').val() + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Pick-up Time</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.pickUpTime').val()  + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Pick-up Date</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.pickUpDate').val()  + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Pick-up Place</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.pickUpPlace').val()  + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Destination</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.destination').val()  + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">No. of Passenger</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.paxNo').val() + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                </ul> \
+            </div> \
+        </div> \
+        <div class="content-inner"> \
+            <div class="content-block-title">Car Details</div> \
+            <div class="list-block"> \
+                <ul> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Description</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + carDescription  + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Duration</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + carDuration  + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Car Details</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + carDetails  + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                </ul> \
+            </div> \
+        </div> \
     ';
     
     //Store to Array
     carRequests[index] = carXML;
-    //showAlert(carXML);
+    carRequestsSummary[indexSummary] = carSummary;
+    //showAlert(carSummary);
 }
 function processRegEntry(){
     var index = regRequests.length;
+    var indexSummary = regRequestsSummary.length;
     
     var hcpReg;
     if ($('#hcpReg').val() == "Other"){ hcpReg = $('.otherhcpReg').val(); } else { hcpReg = $('#hcpReg').val(); }
@@ -988,12 +982,123 @@ function processRegEntry(){
         <emailAddress>' + $('.emailAddress').val() + '</emailAddress> \
         <membership>' + $('.membership').val() + '</membership> \
     </RegRequest>';
+    
+    var regSummary = '\
+    <div class="content-inner"> \
+        <div class="list-block"> \
+            <ul> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">HCP Name</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('#hcpReg').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">HCPID</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('.reghcpId').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Birthdate</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('.regBirthdate').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Mobile Number</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('.regMobileNo').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">PRC No.</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('.prcNo').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Mailing Address</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('.mailingAddress').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Email Address</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('.emailAddress').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Membership</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('.membership').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Category</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('#hcpMember').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Category</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('#hcpNonmember').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+            </ul> \
+        </div> \
+    </div> \
+    ';
     //Store to Array
     regRequests[index] = regXML;
+    regRequestsSummary[indexSummary] = regSummary;
     //showAlert(regXML);
 }
 function processOtherEntry(){
     var index = otherRequests.length;
+    var indexSummary = otherRequestsSummary.length;
     
     var hcpOther;
     if ($('#hcpOther').val() == "Other"){ hcpOther = $('.otherhcpOther').val(); } else { hcpOther = $('#hcpOther').val(); }
@@ -1005,8 +1110,79 @@ function processOtherEntry(){
         <mobileOther>' + $('.otherMobile').val() + '</mobileOther> \
         <remarks>' + $('.remarks').val() + '</remarks> \
     </OtherRequest>';
+    
+    var otherSummary = '\
+    <div class="content-inner"> \
+        <div class="list-block"> \
+            <ul> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Type</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('.otherType').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">HCP Name</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('#hcpOther').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">HCPID</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('.otherhcpId').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Birthdate</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('.otherBirthdate').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Mobile No.</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('.otherMobileNo').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Remarks</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('.remarks').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+            </ul> \
+        </div> \
+    </div> \
+    ';
+    
     //Store to Array
     otherRequests[index] = otherXML;
+    otherRequestsSummary[indexSummary] = otherSummary;
     //showAlert(otherXML);
 }
 //Error Handlers
