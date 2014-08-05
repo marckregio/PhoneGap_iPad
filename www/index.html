@@ -12,6 +12,7 @@
         <script src="email_composer.js"></script>
         <script src="js/jquery.js"></script>
         <script src="js/GUID.js"></script>
+        <script src="js/typeahead.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script src="js/makunatAPI.js"></script>
         <title></title>
@@ -826,6 +827,7 @@
                                             <select id="hotelLocation" class="selector">
                                                 <option value="">Select an item</option>
                                             </select>
+                                            <!--<input id="hotelLocation" type="text" placeholder="Select an item">-->
                                         </div>
                                     </div>
                                 </div>
@@ -1326,6 +1328,15 @@
             <div class="content-block-title center"><h3 class="title">Request Summary</h3></div>
             <div id="summary" class="content-block">
 
+            </div>
+        </div>
+        <!--Search Popup-->
+        <div class="popup searchPopup">
+            <div class="content-block-title center"><h3 class="title">Select Location</h3></div>
+            <div class="content-block">
+                <div class="content-block-title">
+                    <a class="button close-popup">Close</a>
+                </div>
             </div>
         </div>
     </body>
