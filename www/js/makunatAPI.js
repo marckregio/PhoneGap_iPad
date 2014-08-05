@@ -3,10 +3,15 @@
  */
 var db;
 var planeRequests = [];
+var planeRequestsSummary = [];
 var hotelRequests = [];
+var hotelRequestsSummary = [];
 var carRequests = [];
+var hotelRequestsSummary = [];
 var regRequests = [];
+var regRequestsSummary = [];
 var otherRequests = [];
+var otherRequestsSummary = [];
 var dateJSON = new Date().toJSON();
 var currentDate = dateJSON.slice(0, 10);
 var rand ;
@@ -239,7 +244,8 @@ function xmlBuilder(){
     var SQLDate = currentDate + " " + new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds() + ":" + new Date().getMilliseconds();
     
     var activityName = "";
-    if ($('#activityName').val() == "Other"){ activityName = $('.otheractivityName').val(); ifPlanned = false; } else { activityName = $('#activityName').val(); }
+    if ($('#activityName').val() == "Unplanned"){ activityName = $('.otheractivityName').val(); ifPlanned = false; } else { activityName = $('#activityName').val(); }
+    
     var accountNo = "";
     if ($('#accountNo').val() == "Other"){ accountNo = $('.otheraccountNo').val(); } else { accountNo = $('#accountNo').val(); }
     var costCenter = "";
@@ -435,6 +441,7 @@ function hcpOtherDetails(tx, results){
 //Array Handlers
 function processPlaneEntry(){
     var index = planeRequests.length;
+    var indexSummary = planeRequestsSummary.length;
     
     var planePassenger = "";
     if ($('#planePassenger').val() == "Other"){ planePassenger = $('.otherplanePassenger').val(); } else { planePassenger = $('#planePassenger').val(); }
@@ -458,12 +465,188 @@ function processPlaneEntry(){
         <etdFlyout>' + $('.etdFlyout').val() + '</etdFlyout> \
         <dateFlyout>' + $('.dateFlyout').val() + '</dateFlyout> \
     </PlaneRequest>';
+    
+    var planeSummary = ' \
+        <div class="content-inner"> \
+            <div class="content-block-title">Passenger Information</div> \
+            <div class="list-block"> \
+                <ul> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Title</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.titlePassenger').val() + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Passenger</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + planePassenger  + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">HCPID</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.planehcpId').val() + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Birthdate</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.planeBirthdate').val() +'"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Mobile Number</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.planeMobileNo').val() +'"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                </ul> \
+            </div> \
+        </div> \
+        <div class="content-inner"> \
+            <div class="content-block-title">Fly-in Details</div> \
+            <div class="list-block"> \
+                <ul> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Airline Type</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.flightTypeFlyin').val() + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                            <div class="item-title label">Preferred Airline</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + preferredAirlineFlyin + '"> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Flight No.</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.flightNoFlyin').val() + '"/> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">ETD</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.etdFlyin').val() + '"/> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Flight Date</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.dateFlyin').val() + '"/> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                </ul> \
+            </div> \
+        </div> \
+        <div class="content-inner"> \
+            <div class="content-block-title">Fly-out Details</div> \
+            <div class="list-block"> \
+                <ul> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Airline Type</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.flightTypeFlyout').val() + '"/> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Preferred Airline</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + preferredAirlineFlyout + '"/> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Flight No.</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.flightNoFlyout').val() + '"/> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">ETD</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.etdFlyout').val() + '"/> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                    <li> \
+                        <div class="item-content"> \
+                            <div class="item-inner"> \
+                                <div class="item-title label">Flight Date</div> \
+                                <div class="item-input"> \
+                                    <input disabled type="text" value="' + $('.dateFlyout').val() + '"/> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </li> \
+                </ul> \
+            </div> \
+        </div> \
+    ';
     //Store to Array
     planeRequests[index] = planeXML;
+    planeRequestsSummary[indexSummary] = planeSummary;
     //showAlert(planeXML);
 }
 function processHotelEntry(){
     var index = hotelRequests.length;
+    var indexSummary = hotelRequestsSummary.length;
     
     var hotelGuest;
     if ($('#hotelGuest').val() == "Other"){ hotelGuest = $('.otherguestName').val(); } else { hotelGuest = $('#hotelGuest').val(); }
@@ -485,12 +668,140 @@ function processHotelEntry(){
         <checkout>' + $('.checkOutDate').val() + '</checkout> \
         <roomNights>' + $('.roomNights').val() + '</roomNights> \
     </HotelRequest>';
+    
+    var hotelSummary = '\
+    <div class="content-inner"> \
+        <div class="list-block"> \
+            <ul> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Guest Name</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + hotelGuest + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">HCPID</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('.hotelhcpId').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Birthdate</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('.hotelBirthdate').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Mobile Number</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value="' + $('.hotelMobileNo').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+            </ul> \
+        </div> \
+    </div> \
+    <div class="content-inner"> \
+        <div class="content-block-title">Hotel Details</div> \
+        <div class="list-block"> \
+            <ul> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Preferred Hotel</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value"' + $('.preferredHotel').val() + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Location</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value"' + hotelLocation  + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Room Type</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value"' + roomType  + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Room Category</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value"' + roomCategory  + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Check-in Date</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value"' + $('.checkInDate').val()  + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Check-out Date</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value"' + $('.checkOutDate').val()  + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+                <li> \
+                    <div class="item-content"> \
+                        <div class="item-inner"> \
+                            <div class="item-title label">Room Nights</div> \
+                            <div class="item-input"> \
+                                <input disabled type="text" value"' + $('.roomNights').val()  + '"> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </li> \
+            </ul> \
+        </div> \
+    </div> \
+    ';
     //Store to Array
     hotelRequests[index] = hotelXML;
+    hotelRequestsSummary[indexSummary] = hotelSummary;
     //showAlert(hotelXML);
 }
 function processCarEntry(){
     var index = carRequests.length;
+    var indexSummary = carRequestsSummary.length();
     
     var carPassenger;
     if ($('#carPassenger').val() == "Other"){ carPassenger = $('.othercarPassenger').val(); } else { carPassenger = $('#carPassenger').val(); }
@@ -513,6 +824,152 @@ function processCarEntry(){
         <duration>' + carDuration + '</duration> \
         <details>' + carDetails + '</details> \
     </CarRequest>';
+    
+    var carSummary = '\
+    <div class="content-inner">
+    <div class="content-block-title">Passenger Information</div>
+    <div class="list-block">
+    <ul>
+    <li>
+    <div class="item-content">
+    <div class="item-inner">
+    <div class="item-title label">Name</div>
+    <div class="item-input">
+    <select id="carPassenger" class="selector">
+    <option value="">Select an item</option>
+    </select>
+    </div>
+    </div>
+    </div>
+    </li>
+    <li>
+    <div class="item-content">
+    <div class="item-inner">
+    <div class="item-title label">HCPID</div>
+    <div class="item-input">
+    <input disabled type="text" class="carhcpId">
+    </div>
+    </div>
+    </div>
+    </li>
+    <li>
+    <div class="item-content">
+    <div class="item-inner">
+    <div class="item-title label">Birthdate</div>
+    <div class="item-input">
+    <input disabled type="text" class="carBirthdate">
+    </div>
+    </div>
+    </div>
+    </li>
+    <li>
+    <div class="item-content">
+    <div class="item-inner">
+    <div class="item-title label">Mobile Number</div>
+    <div class="item-input">
+    <input disabled type="text" class="carMobileNo">
+    </div>
+    </div>
+    </div>
+    </li>
+    <li>
+    <div class="item-content">
+    <div class="item-inner">
+    <div class="item-title label">Pick-up Time</div>
+    <div class="item-input">
+    <input type="time" value="23:00:00" class="pickUpTime">
+    </div>
+    </div>
+    </div>
+    </li>
+    <li>
+    <div class="item-content">
+    <div class="item-inner">
+    <div class="item-title label">Pick-up Date</div>
+    <div class="item-input">
+    <input type="date" value="1994-03-10" class="pickUpDate">
+    </div>
+    </div>
+    </div>
+    </li>
+    <li>
+    <div class="item-content">
+    <div class="item-inner">
+    <div class="item-title label">Pick-up Place</div>
+    <div class="item-input">
+    <input type="text" class="pickUpPlace">
+    </div>
+    </div>
+    </div>
+    </li>
+    <li>
+    <div class="item-content">
+    <div class="item-inner">
+    <div class="item-title label">Destination</div>
+    <div class="item-input">
+    <input type="text" class="destination">
+    </div>
+    </div>
+    </div>
+    </li>
+    <li>
+    <div class="item-content">
+    <div class="item-inner">
+    <div class="item-title label">No. of Passenger</div>
+    <div class="item-input">
+    <input type="text" class="paxNo">
+    </div>
+    </div>
+    </div>
+    </li>
+    </ul>
+    </div>
+    </div>
+    <div class="content-inner">
+    <div class="content-block-title">Car Details</div>
+    <div class="list-block">
+    <ul>
+    <li>
+    <div class="item-content">
+    <div class="item-inner">
+    <div class="item-title label">Description</div>
+    <div class="item-input">
+    <select id="carDescription" class="selector">
+    <option value="">Select an item</option>
+    </select>
+    </div>
+    </div>
+    </div>
+    </li>
+    <li>
+    <div class="item-content">
+    <div class="item-inner">
+    <div class="item-title label">Duration</div>
+    <div class="item-input">
+    <select id="carDuration" class="selector">
+    <option value="">Select an item</option>
+    </select>
+    </div>
+    </div>
+    </div>
+    </li>
+    <li>
+    <div class="item-content">
+    <div class="item-inner">
+    <div class="item-title label">Car Details</div>
+    <div class="item-input">
+    <select id="carDetails" class="selector">
+    <option value="">Select an item</option>
+    </select>
+    </div>
+    </div>
+    </div>
+    </li>
+    </ul>
+    </div>
+    </div>
+    ';
+    
     //Store to Array
     carRequests[index] = carXML;
     //showAlert(carXML);
@@ -647,8 +1104,8 @@ function fireJquery(){
                                                                            </tr>');
                                             $('.addedPlaneRequest tr').click(function(){
                                                                              var selected = $(this).attr('id');
-                                                                             var body = planeRequests[selected]+'';
-                                                                             $('#summary').text(body);
+                                                                             var body = planeRequestsSummary[selected]+'';
+                                                                             $('#summary').html(body);
                                                                              end();
                                                                              });
                                             processPlaneEntry();
@@ -662,8 +1119,8 @@ function fireJquery(){
                                                                            </tr>');
                                             $('.addedHotelRequest tr').click(function(){
                                                                              var selected = $(this).attr('id');
-                                                                             var body = hotelRequests[selected]+'';
-                                                                             $('#summary').text(body);
+                                                                             var body = hotelRequestsSummary[selected]+'';
+                                                                             $('#summary').html(body);
                                                                              end();
                                                                              });
                                             processHotelEntry();
@@ -677,8 +1134,8 @@ function fireJquery(){
                                                                        </tr>');
                                           $('.addedCarRequest tr').click(function(){
                                                                          var selected = $(this).attr('id');
-                                                                         var body = carRequests[selected]+'';
-                                                                         $('#summary').text(body);
+                                                                         var body = carRequestsSummary[selected]+'';
+                                                                         $('#summary').html(body);
                                                                          end();
                                                                          });
                                           processCarEntry();
@@ -692,8 +1149,8 @@ function fireJquery(){
                                                                        </tr>');
                                           $('.addedRegRequest tr').click(function(){
                                                                          var selected = $(this).attr('id');
-                                                                         var body = regRequests[selected]+'';
-                                                                         $('#summary').text(body);
+                                                                         var body = regRequestsSummary[selected]+'';
+                                                                         $('#summary').html(body);
                                                                          end();
                                                                          });
                                           processRegEntry();
@@ -708,8 +1165,8 @@ function fireJquery(){
                                                                            </tr>');
                                             $('.addedOtherRequest tr').click(function(){
                                                                              var selected = $(this).attr('id');
-                                                                             var body = otherRequests[selected]+'';
-                                                                             $('#summary').text(body);
+                                                                             var body = otherRequestsSummary[selected]+'';
+                                                                             $('#summary').html(body);
                                                                              end();
                                                                              });
                                             processOtherEntry();
@@ -717,7 +1174,9 @@ function fireJquery(){
                       
                       $('.deleteRow').click(function(){
                                             var arrayName = $(this).attr('id').substring(6,this.length);
+                                            var arrayNameSummary = $(this).attr('id').substring(6,this.length) + "Summary";
                                             eval(arrayName).pop();
+                                            eval(arrayNameSummary).pop();
                                             $('#'+arrayName+' tr:last').remove();
                                             });
                       //Generate XML
@@ -762,6 +1221,14 @@ function fireJquery(){
                       $('.selector').change(function(){
                                             var pass = $(this).attr('id');
                                             getDetails(pass+'Details', $(this).val());
+                                            
+                                            if ($('#activityName').val() == "Unplanned"){
+                                            $('#activityDetails').hide();
+                                            $('#otheractivityName').show();
+                                            } else {
+                                            $('#activityDetails').show();
+                                            $('#otheractivityName').hide();
+                                            }
                                             });
                       });
 
