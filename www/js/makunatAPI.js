@@ -16,7 +16,7 @@ var dateJSON = new Date().toJSON();
 var currentDate = dateJSON.slice(0, 10);
 var rand ;
 var referenceFile = currentDate+"-"+rand;
-var ifPlanned = true;
+var ifPlanned = "Planned";
 function makoy(){
     //Initialization
     //fsAccess();
@@ -244,8 +244,8 @@ function xmlBuilder(){
     var SQLDate = currentDate + " " + new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds() + ":" + new Date().getMilliseconds();
     
     var activityName = "";
-    if ($('#activityName').val() == "Unplanned"){ activityName = $('.otherActivityName').val(); ifPlanned = false;
-    } else { activityName = $('#activityName').val(); ifPlanned = true; }
+    if ($('#activityName').val() == "Unplanned"){ activityName = $('.otherActivityName').val(); ifPlanned = "Unplanned";
+    } else { activityName = $('#activityName').val(); ifPlanned = "Planned"; }
     
     var accountNo = "";
     if ($('#accountNo').val() == "Other"){ accountNo = $('.otheraccountNo').val(); } else { accountNo = $('#accountNo').val(); }
