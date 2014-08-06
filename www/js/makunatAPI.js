@@ -354,17 +354,10 @@ function getPlaneTableAirlineList(tx, results){
 }
 function getHotelTableLocationList(tx, results){
     var len = results.rows.length;
-    var raw = '';
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['location'];
         $('#hotelLocation').append('<option value="' + dt + '">' + dt + '</option>');
-        //raw += '{id:' + i + ',name:' + dt + '},';
     }
-    /*var locations = '[' + raw.substring(0,raw.length-1) + ']';
-    $('#hotelLocation').typeahead({
-                                  source: locations
-    });
-     */
 }
 function getHotelTableRoomTypeList(tx, results){
     var len = results.rows.length;
