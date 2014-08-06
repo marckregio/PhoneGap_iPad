@@ -244,7 +244,7 @@ function xmlBuilder(){
     var SQLDate = currentDate + " " + new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds() + ":" + new Date().getMilliseconds();
     
     var activityName = "";
-    if ($('#activityName').val() == "Unplanned"){ activityName = $('.otheractivityName').val(); ifPlanned = false;
+    if ($('#activityName').val() == "Unplanned"){ activityName = $('.otherActivityName').val(); ifPlanned = false;
     } else { activityName = $('#activityName').val(); ifPlanned = true; }
     
     var accountNo = "";
@@ -1111,7 +1111,6 @@ function processOtherEntry(){
     <OtherRequest> \
         <otherType>' + $('.otherType').val() + '</otherType> \
         <hcpOther>' + $('#hcpOther').val() + '</hcpOther> \
-        <mobileOther>' + $('.otherMobile').val() + '</mobileOther> \
         <remarks>' + $('.remarks').val() + '</remarks> \
     </OtherRequest>';
     
