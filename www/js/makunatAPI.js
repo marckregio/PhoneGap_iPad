@@ -275,7 +275,7 @@ function xmlBuilder(){
         <Request> \
             <referenceNo>' + $('.referenceNo').text() + '</referenceNo> \
             <requestor>' + $('.requestorName').text() + '</requestor> \
-            <activityName>' + $('#activityName').val() + '</activityName> \
+            <activityType>' + $('#activityName').val() + '</activityType> \
             <activityName>' + activityNameDetails + '</activityName> \
             <accountNo>' + accountNo + '</accountNo> \
             <costCenter>' + costCenter + '</costCenter> \
