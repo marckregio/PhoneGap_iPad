@@ -52,7 +52,8 @@ function reset(){
 }
 function deleteDB(){
     runSQL("Delete from MainTableAccountNo");
-    runSQL("Delete from MainTableActivityName");
+    runSQL("Delete from MainTableActivityType");
+    runSQL("Delete from MainTableActivityNameDetails");
     runSQL("Delete from MainTableCostCenter");
     runSQL("Delete from PlaneTableAirline");
     runSQL("Delete from HotelTableLocation");
@@ -67,7 +68,8 @@ function loadDropdowns(){
     authUser("AccountHandler","*","");
     dropDownData("Passengers", "*", "");
     dropDownData("MainTableAccountNo","*","");
-    dropDownData("MainTableActivityName","*","");
+    dropDownData("MainTableActivityType","*","");
+    dropDownData("MainTableActivityNameDetails","*","");
     dropDownData("MainTableCostCenter","*","");
     dropDownData("PlaneTableAirline", "*", "");
     dropDownData("HotelTableLocation","*","");
@@ -95,7 +97,6 @@ function fsAccess(method){
                                  readFile();
                                  }, gotError);*/
         readFile();
-        //deleteDB();
     } else if (method == "fromDropbox"){
         readFromDropbox();
     }
@@ -111,6 +112,7 @@ function generateFile(){
                           }, gotError);
 }
 function readFile(){
+    ActivityIndicator.show("Updating Database");
     $.get("https://1493af446944a2a7b5f7146dcc42eee008910ced.googledrive.com/host/0B2i9Gaj9Iy0_eGh5Tm9objNXSGM/nestleDB.xml",
           function(rawXML){
           var xml = $(rawXML);
@@ -129,8 +131,12 @@ function readFile(){
                                                     });
           xml.find("ActivityNames").find("activity").each(function(){
                                                          //showAlert($(this).text());
-                                                         runSQL("Insert into MainTableActivityName (activityName) Values ('" + $(this).text() + "')");
+                                                         runSQL("Insert into MainTableActivityType (activityName, agency) Values ('" + $(this).find("name").text() + "','" + $(this).find("agency").text() + "')");
                                                          });
+          xml.find("ActivityNamesDetails").find("activitydetails").each(function(){
+                                                    //showAlert($(this).text());
+                                                    runSQL("Insert into MainTableActivityNameDetails (activityDetail) Values ('" + $(this).text() + "')");
+                                                    });
           xml.find("Airlines").find("airline").each(function(){
                                                     //showAlert($(this).text());
                                                     runSQL("Insert into PlaneTableAirline (airline) Values ('" + $(this).text() + "')");
@@ -160,11 +166,13 @@ function readFile(){
                                                          runSQL("Insert into CarTableDetails (details) Values ('" + $(this).text() + "')");
                                                          });
           console.log("XML Fetched!");
+          ActivityIndicator.hide();
           }).fail(function(){
                   showAlert("Can't Update Database \n No Database File Found \n Please Try Again");
                   });
 }
 function readFromDropbox(){
+    ActivityIndicator.show("Updating Database");
     $.get("https://www.dropbox.com/s/7i8rwhy0jsh65wu/nestleDB.xml?dl=1",
           function(rawXML){
           var xml = $(rawXML);
@@ -183,8 +191,12 @@ function readFromDropbox(){
                                                     });
           xml.find("ActivityNames").find("activity").each(function(){
                                                           //showAlert($(this).text());
-                                                          runSQL("Insert into MainTableActivityName (activityName) Values ('" + $(this).text() + "')");
+                                                          runSQL("Insert into MainTableActivityType (activityName, agency) Values ('" + $(this).find("name").text() + "','" + $(this).find("agency").text() + "')");
                                                           });
+          xml.find("ActivityNamesDetails").find("activitydetails").each(function(){
+                                                                        //showAlert($(this).text());
+                                                                        runSQL("Insert into MainTableActivityNameDetails (activityDetail) Values ('" + $(this).text() + "')");
+                                                                        });
           xml.find("Airlines").find("airline").each(function(){
                                                     //showAlert($(this).text());
                                                     runSQL("Insert into PlaneTableAirline (airline) Values ('" + $(this).text() + "')");
@@ -214,6 +226,7 @@ function readFromDropbox(){
                                                         runSQL("Insert into CarTableDetails (details) Values ('" + $(this).text() + "')");
                                                         });
           console.log("XML Fetched!");
+          ActivityIndicator.hide();
           }).fail(function(){
                   showAlert("Can't Update Database \n No Database File Found \n Please Try Again");
                   });
@@ -243,9 +256,9 @@ function xmlBuilder(){
     //SUBMISSION DATE
     var SQLDate = currentDate + " " + new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds() + ":" + new Date().getMilliseconds();
     
-    var activityName = "";
-    if ($('#activityName').val() == "Unplanned"){ activityName = $('.otherActivityName').val(); ifPlanned = "Unplanned";
-    } else { activityName = $('#activityName').val(); ifPlanned = "Planned"; }
+    var activityNameDetails = "";
+    if ($('#activityNameDetails').val() == "Unplanned"){ activityNameDetails = $('.otherActivityName').val(); ifPlanned = "Unplanned";
+    } else { activityNameDetails = $('#activityNameDetails').val(); ifPlanned = "Planned"; }
     
     var accountNo = "";
     if ($('#accountNo').val() == "Other"){ accountNo = $('.otheraccountNo').val(); } else { accountNo = $('#accountNo').val(); }
@@ -263,7 +276,8 @@ function xmlBuilder(){
             <referenceNo>' + $('.referenceNo').text() + '</referenceNo> \
             <requestor>' + $('.requestorName').text() + '</requestor> \
             <activityDate>' + $('.activityDate').val() + '</activityDate> \
-            <activityName>' + activityName + '</activityName> \
+            <activityName>' + $('#activityName').val() + '</activityName> \
+            <activityName>' + activityNameDetails + '</activityName> \
             <accountNo>' + accountNo + '</accountNo> \
             <costCenter>' + costCenter + '</costCenter> \
             <submissiondate>' + SQLDate + '</submissiondate> \
@@ -284,7 +298,8 @@ function createDB(){
 }
 function createTables(tx){
     tx.executeSql('Create Table If Not Exists AccountHandler (id integer primary key autoincrement, lastname VARCHAR(255), firstname VARCHAR(255), middlename VARCHAR(255), birthdate VARCHAR(255), mobileno VARCHAR(255), address VARCHAR(255))');
-    tx.executeSql('Create Table If Not Exists MainTableActivityName (id integer primary key autoincrement, activityName VARCHAR(255))');
+    tx.executeSql('Create Table If Not Exists MainTableActivityType (id integer primary key autoincrement, activityName VARCHAR(255), agency VARCHAR(255))');
+    tx.executeSql('Create Table If Not Exists MainTableActivityNameDetails (id integer primary key autoincrement, activityDetail VARCHAR(255), activityName VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists MainTableAccountNo(id integer primary key autoincrement, accountNumber VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists MainTableCostCenter (id integer primary key autoincrement, costCenter VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists PlaneTableAirline (id integer primary key autoincrement, airline VARCHAR(255))');
@@ -401,11 +416,18 @@ function getMainTableAccountNoList(tx, results){
         $('#accountNo').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
-function getMainTableActivityNameList(tx, results){
+function getMainTableActivityTypeList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['activityName'];
         $('#activityName').append('<option value="' + dt + '">' + dt + '</option>');
+    }
+}
+function getMainTableActivityNameDetailsList(tx, results){
+    var len = results.rows.length;
+    for (var i = 0; i < len; i++){
+        var dt = results.rows.item(i)['activityDetail'];
+        $('#activityNameDetails').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
 function getMainTableCostCenterList(tx, results){
@@ -1394,11 +1416,9 @@ function fireJquery(){
                                             var pass = $(this).attr('id');
                                             getDetails(pass+'Details', $(this).val());
                                             
-                                            if ($('#activityName').val() == "Unplanned"){
-                                            $('#activityDetails').hide();
+                                            if ($('#activityNameDetails').val() == "Unplanned"){
                                             $('#otheractivityName').show();
                                             } else {
-                                            $('#activityDetails').show();
                                             $('#otheractivityName').hide();
                                             }
                                             });

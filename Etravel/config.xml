@@ -112,6 +112,12 @@
     <feature name="APPEmailComposer">
         <param name="ios-package" value="APPEmailComposer" />
     </feature>
+    <feature name="ActivityIndicator">
+        <param name="ios-package" value="ActivityIndicator" />
+    </feature>
+    <feature name="MBProgressHUD">
+        <param name="ios-package" value="MBProgressHUD" />
+    </feature>
     <!-- Deprecated plugins element. REmove in 3.0 -->
     <plugins>
         <plugin name="SQLitePlugin" value="SQLitePlugin"/>
