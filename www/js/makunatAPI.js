@@ -1005,6 +1005,7 @@ function processRegEntry(){
     <RegRequest> \
         <hcpReg>' + $('#hcpReg').val() + '</hcpReg> \
         <prcNo>' + $('.prcNo').val() + '</prcNo> \
+        <regActivityDate>' + $('.regactivityDate').val() + '</regActivityDate> \
         <mailing>' + $('.mailingAddress').val() + '</mailing> \
         <emailAddress>' + $('.emailAddress').val() + '</emailAddress> \
         <membership>' + membership + '</membership> \
@@ -1125,6 +1126,7 @@ function processOtherEntry(){
     <OtherRequest> \
         <otherType>' + $('.otherType').val() + '</otherType> \
         <hcpOther>' + $('#hcpOther').val() + '</hcpOther> \
+        <otherActivityDate>' + $('.otheractivityDate').val() + '</otherActivityDate> \
         <remarks>' + $('.remarks').val() + '</remarks> \
     </OtherRequest>';
     
