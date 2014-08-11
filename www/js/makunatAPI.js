@@ -281,6 +281,7 @@ function xmlBuilder(){
             <costCenter>' + costCenter + '</costCenter> \
             <submissiondate>' + SQLDate + '</submissiondate> \
             <plan>' + ifPlanned + '</plan> \
+            <ipad>yes</ipad> \
         </Request> \
         ' + plane + ' \
         ' + hotel + ' \
