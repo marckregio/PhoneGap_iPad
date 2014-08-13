@@ -256,9 +256,9 @@ function xmlBuilder(){
     //SUBMISSION DATE
     var SQLDate = currentDate + " " + new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds() + ":" + new Date().getMilliseconds();
     
-    var activityNameDetails = "";
-    if ($('#activityNameDetails').val() == "Unplanned"){ activityNameDetails = $('.otherActivityName').val(); ifPlanned = "Unplanned";
-    } else { activityNameDetails = $('#activityNameDetails').val(); ifPlanned = "Planned"; }
+    //var activityNameDetails = "";
+    //if ($('#activityNameDetails').val() == "Unplanned"){ activityNameDetails = $('.otherActivityName').val(); ifPlanned = "Unplanned";
+    //} else { activityNameDetails = $('#activityNameDetails').val(); ifPlanned = "Planned"; }
     
     var accountNo = "";
     if ($('#accountNo').val() == "Other"){ accountNo = $('.otheraccountNo').val(); } else { accountNo = $('#accountNo').val(); }
@@ -276,11 +276,11 @@ function xmlBuilder(){
             <referenceNo>' + $('.referenceNo').text() + '</referenceNo> \
             <requestor>' + $('.requestorName').text() + '</requestor> \
             <activityType>' + $('#activityName').val() + '</activityType> \
-            <activityName>' + activityNameDetails + '</activityName> \
+            <activityName>' + $('#activityNameDetails').val() + '</activityName> \
             <accountNo>' + accountNo + '</accountNo> \
             <costCenter>' + costCenter + '</costCenter> \
             <submissiondate>' + SQLDate + '</submissiondate> \
-            <plan>' + ifPlanned + '</plan> \
+            <plan>' + $('.plan').val() + '</plan> \
             <ipad>yes</ipad> \
         </Request> \
         ' + plane + ' \
