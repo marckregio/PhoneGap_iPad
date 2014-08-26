@@ -109,8 +109,8 @@
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage"/>
     </feature>
-    <feature name="APPEmailComposer">
-        <param name="ios-package" value="APPEmailComposer" />
+    <feature name="EmailComposer">
+        <param name="ios-package" value="APPEmailComposer"/>
     </feature>
     <feature name="ActivityIndicator">
         <param name="ios-package" value="ActivityIndicator" />

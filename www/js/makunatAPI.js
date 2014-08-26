@@ -22,11 +22,6 @@ function makoy(){
     //fsAccess();
     createDB();
     fireJquery();
-    window.plugin.email.isServiceAvailable(
-                                           function (isAvailable) {
-                                           showAlert("Email Composer not working for now");
-                                           }
-                                           );
 }
 function reset(){
     rand = Math.floor((Math.random() * 100) + 1);
@@ -169,6 +164,7 @@ function readFile(){
           ActivityIndicator.hide();
           }).fail(function(){
                   showAlert("Can't Update Database \n No Database File Found \n Please Try Again");
+                  ActivityIndicator.hide();
                   });
 }
 function readFromDropbox(){
@@ -229,6 +225,7 @@ function readFromDropbox(){
           ActivityIndicator.hide();
           }).fail(function(){
                   showAlert("Can't Update Database \n No Database File Found \n Please Try Again");
+                  ActivityIndicator.hide();
                   });
 }
 function xmlBuilder(){
@@ -662,6 +659,10 @@ function processPlaneEntry(){
                 </ul> \
             </div> \
         </div> \
+        <div class="content-block-title"> \
+            <a href="#" class="button close-popup planeDelete">Delete Entry</a><br> \
+            <a href="#" class="button close-popup">Close</a> \
+        </div> \
     ';
     //Store to Array
     planeRequests[index] = planeXML;
@@ -816,6 +817,10 @@ function processHotelEntry(){
                 </li> \
             </ul> \
         </div> \
+    </div> \
+    <div class="content-block-title"> \
+        <a href="#" class="button close-popup hotelDelete">Delete Entry</a><br> \
+        <a href="#" class="button close-popup">Close</a> \
     </div> \
     ';
     //Store to Array
@@ -984,6 +989,10 @@ function processCarEntry(){
                 </ul> \
             </div> \
         </div> \
+    <div class="content-block-title"> \
+        <a href="#" class="button close-popup carDelete">Delete Entry</a><br> \
+        <a href="#" class="button close-popup">Close</a> \
+    </div> \
     ';
     
     //Store to Array
@@ -1110,6 +1119,10 @@ function processRegEntry(){
             </ul> \
         </div> \
     </div> \
+    <div class="content-block-title"> \
+        <a href="#" class="button close-popup regDelete">Delete Entry</a><br> \
+        <a href="#" class="button close-popup">Close</a> \
+    </div> \
     ';
     //Store to Array
     regRequests[index] = regXML;
@@ -1197,6 +1210,10 @@ function processOtherEntry(){
                 </li> \
             </ul> \
         </div> \
+    </div> \
+    <div class="content-block-title"> \
+        <a href="#" class="button close-popup otherDelete">Delete Entry</a><br> \
+        <a href="#" class="button close-popup">Close</a> \
     </div> \
     ';
     
@@ -1290,7 +1307,7 @@ function fireJquery(){
                                                        '"+$('.birthdate').val()+"','"+$('.mobile').val()+"','"+$('.address').val()+"')");
                                                 runSQLReturn("AccountHandler","*","");
                                                 });
-                      //Tables
+                      //Tables Saving
                       $('.planeSave').click(function(){
                                             var item = planeRequests.length;
                                             $('.addedPlaneRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
@@ -1302,6 +1319,9 @@ function fireJquery(){
                                                                              var selected = $(this).attr('id');
                                                                              var body = planeRequestsSummary[selected]+'';
                                                                              $('#summary').html(body);
+                                                                             $('.planeDelete').click(function(){
+                                                                                                     showAlert("makoy");
+                                                                                                     });
                                                                              end();
                                                                              });
                                             processPlaneEntry();
@@ -1317,6 +1337,9 @@ function fireJquery(){
                                                                              var selected = $(this).attr('id');
                                                                              var body = hotelRequestsSummary[selected]+'';
                                                                              $('#summary').html(body);
+                                                                             $('.hotelDelete').click(function(){
+                                                                                                     showAlert("makoy");
+                                                                                                     });
                                                                              end();
                                                                              });
                                             processHotelEntry();
@@ -1332,6 +1355,9 @@ function fireJquery(){
                                                                          var selected = $(this).attr('id');
                                                                          var body = carRequestsSummary[selected]+'';
                                                                          $('#summary').html(body);
+                                                                         $('.carDelete').click(function(){
+                                                                                                 showAlert("makoy");
+                                                                                                 });
                                                                          end();
                                                                          });
                                           processCarEntry();
@@ -1347,6 +1373,9 @@ function fireJquery(){
                                                                          var selected = $(this).attr('id');
                                                                          var body = regRequestsSummary[selected]+'';
                                                                          $('#summary').html(body);
+                                                                         $('.regDelete').click(function(){
+                                                                                                 showAlert("makoy");
+                                                                                                 });
                                                                          end();
                                                                          });
                                           processRegEntry();
@@ -1363,11 +1392,15 @@ function fireJquery(){
                                                                              var selected = $(this).attr('id');
                                                                              var body = otherRequestsSummary[selected]+'';
                                                                              $('#summary').html(body);
+                                                                             $('.otherDelete').click(function(){
+                                                                                                     showAlert("makoy");
+                                                                                                     });
                                                                              end();
                                                                              });
                                             processOtherEntry();
                                             });
                       
+                      //Tables Delete
                       $('.deleteRow').click(function(){
                                             var arrayName = $(this).attr('id').substring(6,this.length);
                                             var arrayNameSummary = $(this).attr('id').substring(6,this.length) + "Summary";
@@ -1375,13 +1408,15 @@ function fireJquery(){
                                             eval(arrayNameSummary).pop();
                                             $('#'+arrayName+' tr:last').remove();
                                             });
+                      
                       //Generate XML
                       $('.newRequestSubmit').click(function(){
                                                    if ($(this).hasClass('disable')){
                                                    showAlert("Create New Request");
                                                    } else {
-                                                   fsAccess("NewRequest");
-                                                   $(this).addClass('disable');
+                                                   //fsAccess("NewRequest");
+                                                   //$(this).addClass('disable');
+                                                   window.email.open();
                                                    }
                                                    //window.plugin.email.open();
                                                    });
