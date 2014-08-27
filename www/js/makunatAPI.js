@@ -1459,6 +1459,11 @@ function fireJquery(){
                                             $('#otheractivityName').hide();
                                             }
                                             });
+                      //Date Difference
+                      $('.checkOutDate').change(function(){
+                                                var diff = new Date($('.checkOutDate').val() - $('.checkInDate').val());
+                                                $('.roomNights').val(diff/1000/60/60/24);
+                                                });
                       });
 
 }
