@@ -48,7 +48,7 @@
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
 		7A32982E1994ABEB008615A6 /* ActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A32982B1994ABEB008615A6 /* ActivityIndicator.m */; };
 		7A32982F1994ABEB008615A6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A32982D1994ABEB008615A6 /* MBProgressHUD.m */; };
-		7A336C70196E66750058C055 /* APPEmailComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A336C6F196E66750058C055 /* APPEmailComposer.m */; };
+		7A819D7719ADB76C00E3DD09 /* EmailComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A819D7619ADB76C00E3DD09 /* EmailComposer.m */; };
 		7AACFD14195159E600FF89F6 /* SQLitePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AACFD13195159E600FF89F6 /* SQLitePlugin.m */; };
 		7AACFD1719515B5000FF89F6 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AACFD1519515B5000FF89F6 /* libsqlite3.0.dylib */; };
 		7AACFD1819515B5000FF89F6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AACFD1619515B5000FF89F6 /* libsqlite3.dylib */; };
@@ -123,8 +123,8 @@
 		7A32982B1994ABEB008615A6 /* ActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIndicator.m; sourceTree = "<group>"; };
 		7A32982C1994ABEB008615A6 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7A32982D1994ABEB008615A6 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		7A336C6E196E66750058C055 /* APPEmailComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPEmailComposer.h; sourceTree = "<group>"; };
-		7A336C6F196E66750058C055 /* APPEmailComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPEmailComposer.m; sourceTree = "<group>"; };
+		7A819D7519ADB76C00E3DD09 /* EmailComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailComposer.h; sourceTree = "<group>"; };
+		7A819D7619ADB76C00E3DD09 /* EmailComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailComposer.m; sourceTree = "<group>"; };
 		7AACFD12195159E600FF89F6 /* SQLitePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLitePlugin.h; sourceTree = "<group>"; };
 		7AACFD13195159E600FF89F6 /* SQLitePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLitePlugin.m; sourceTree = "<group>"; };
 		7AACFD1519515B5000FF89F6 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -288,12 +288,12 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				7A819D7519ADB76C00E3DD09 /* EmailComposer.h */,
+				7A819D7619ADB76C00E3DD09 /* EmailComposer.m */,
 				7A32982A1994ABEB008615A6 /* ActivityIndicator.h */,
 				7A32982B1994ABEB008615A6 /* ActivityIndicator.m */,
 				7A32982C1994ABEB008615A6 /* MBProgressHUD.h */,
 				7A32982D1994ABEB008615A6 /* MBProgressHUD.m */,
-				7A336C6E196E66750058C055 /* APPEmailComposer.h */,
-				7A336C6F196E66750058C055 /* APPEmailComposer.m */,
 				7AACFD12195159E600FF89F6 /* SQLitePlugin.h */,
 				7AACFD13195159E600FF89F6 /* SQLitePlugin.m */,
 			);
@@ -468,10 +468,10 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
+				7A819D7719ADB76C00E3DD09 /* EmailComposer.m in Sources */,
 				7A32982E1994ABEB008615A6 /* ActivityIndicator.m in Sources */,
 				7AACFD14195159E600FF89F6 /* SQLitePlugin.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				7A336C70196E66750058C055 /* APPEmailComposer.m in Sources */,
 				7A32982F1994ABEB008615A6 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

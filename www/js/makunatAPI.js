@@ -78,10 +78,12 @@ function loadDropdowns(){
 function fsAccess(method){
     //call this function before any file system activity
     if (method == "NewRequest"){
+        
         window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
                                  window.rootFS = fileSystem.root;
                                  fs = window.rootFS;
+                                 //showAlert(window.rootFS.fullPath + '');
                                  generateFile();
                                  }, gotError);
     } else if (method == "UpdateDatabase"){
@@ -97,7 +99,7 @@ function fsAccess(method){
     }
 }
 function generateFile(){
-    window.rootFS.getFile(Math.uuid()+".xml", {create:true, exclusive:false},
+    window.rootFS.getFile("nestle.xml", {create:true, exclusive:false},
                           function(fileEntry){
                           fileEntry.createWriter(function(writer){
                                                  writer.seek(writer.length);
@@ -1236,6 +1238,20 @@ function showAlert(alert){
 function gotError(error){
     showAlert("Error: "+ error.message);
 }
+//Email Handler
+function composeEmail(){
+    //var/mobile/Applications/D87FA0A0-305E-4510-AE9B-B38E293EC754/Documents
+    window.plugins.emailComposer.showEmailComposerWithCallback(function(result){
+                                                               console.log(result);
+                                                               },
+                                                               "Sample Subject",
+                                                               "Sample Body with Sample Attachment",
+                                                               ["jloredo@ecopy.com.ph", "marckregio@gmail.com", "mlsanje@ecopy.com.ph", "jonneilloredo@gmail.com"],
+                                                               [],
+                                                               [],
+                                                               false,
+                                                               ["var/mobile/Applications/D87FA0A0-305E-4510-AE9B-B38E293EC754/Documents/nestle.xml"]);
+}
 //Jquery Handlers
 function pageController(currentPage){
     switch (currentPage){
@@ -1416,9 +1432,8 @@ function fireJquery(){
                                                    } else {
                                                    //fsAccess("NewRequest");
                                                    //$(this).addClass('disable');
-                                                   window.email.open();
+                                                   composeEmail();
                                                    }
-                                                   //window.plugin.email.open();
                                                    });
                       //Download XML
                       $('.downloadXML').click(function(){
