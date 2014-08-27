@@ -99,7 +99,7 @@ function fsAccess(method){
     }
 }
 function generateFile(){
-    window.rootFS.getFile("nestle.xml", {create:true, exclusive:false},
+    window.rootFS.getFile($(".referenceNo").text() + ".xml", {create:true, exclusive:false},
                           function(fileEntry){
                           fileEntry.createWriter(function(writer){
                                                  writer.seek(writer.length);
@@ -1246,11 +1246,11 @@ function composeEmail(){
                                                                },
                                                                "Sample Subject",
                                                                "Sample Body with Sample Attachment",
-                                                               ["jloredo@ecopy.com.ph", "marckregio@gmail.com", "mlsanje@ecopy.com.ph", "jonneilloredo@gmail.com"],
+                                                               ["marckregio@gmail.com"],
                                                                [],
                                                                [],
                                                                false,
-                                                               ["var/mobile/Applications/D87FA0A0-305E-4510-AE9B-B38E293EC754/Documents/nestle.xml"]);
+                                                               ["var/mobile/Applications/D87FA0A0-305E-4510-AE9B-B38E293EC754/Documents/2014-08-27-86.xml"]);
 }
 //Jquery Handlers
 function pageController(currentPage){
@@ -1430,8 +1430,8 @@ function fireJquery(){
                                                    if ($(this).hasClass('disable')){
                                                    showAlert("Create New Request");
                                                    } else {
-                                                   //fsAccess("NewRequest");
-                                                   //$(this).addClass('disable');
+                                                   fsAccess("NewRequest");
+                                                   $(this).addClass('disable');
                                                    composeEmail();
                                                    }
                                                    });
