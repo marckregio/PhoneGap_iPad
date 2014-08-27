@@ -1461,8 +1461,14 @@ function fireJquery(){
                                             });
                       //Date Difference
                       $('.checkOutDate').change(function(){
-                                                var diff = new Date($('.checkOutDate').val() - $('.checkInDate').val());
-                                                $('.roomNights').val(diff/1000/60/60/24);
+                                                var checkIn = new Date($('.checkInDate').val());
+                                                var checkOut = new Date($('.checkOutDate').val());
+                                                if (checkIn < checkOut){
+                                                var days = Math.abs(checkOut.getTime() - checkIn.getTime());
+                                                $('.roomNights').val(Math.ceil(days / (1000 * 3600 * 24)) + '');
+                                                } else {
+                                                $('.roomNights').val(0 + '');
+                                                }
                                                 });
                       });
 
