@@ -73,6 +73,7 @@ function loadDropdowns(){
     dropDownData("CarTableDescription","*","");
     dropDownData("CarTableDetails","*","");
     dropDownData("CarTableDuration","*","");
+    dropDownData("RegPrcNo","*","");
 }
 //File System Handlers
 function fsAccess(method){
@@ -223,6 +224,10 @@ function readFromDropbox(){
                                                         //showAlert($(this).text());
                                                         runSQL("Insert into CarTableDetails (details) Values ('" + $(this).text() + "')");
                                                         });
+          xml.find("PrcNo").find("prc").each(function(){
+                                                        //showAlert($(this).text());
+                                                        runSQL("Insert into RegPrcNo (prc) Values ('" + $(this).text() + "')");
+                                                        });
           console.log("XML Fetched!");
           ActivityIndicator.hide();
           }).fail(function(){
@@ -308,6 +313,7 @@ function createTables(tx){
     tx.executeSql('Create Table If Not Exists CarTableDescription (id integer primary key autoincrement, description VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists CarTableDuration (id integer primary key autoincrement, duration VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists CarTableDetails (id integer primary key autoincrement, details VARCHAR(255))');
+    tx.executeSql('Create Table If Not Exists RegPrcNo (id integer primary key autoincrement, prc VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists Passengers (id integer primary key autoincrement, name VARCHAR(255), mobile VARCHAR(255), address VARCHAR(255), birthdate VARCHAR(255) )');
 }
 function runSQL(queryString){
@@ -406,6 +412,13 @@ function getCarTableDurationList(tx, results){
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['duration'];
         $('#carDuration').append('<option value="' + dt + '">' + dt + '</option>');
+    }
+}
+function getRegPrcNoList(tx, results){
+    var len = results.rows.length;
+    for (var i = 0; i < len; i++){
+        var dt = results.rows.item(i)['prc'];
+        $('#prcNo').append('<option value="' + dt + '">' + dt + '</option>');
     }
 }
 function getMainTableAccountNoList(tx, results){
