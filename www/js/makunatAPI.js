@@ -500,6 +500,7 @@ function processPlaneEntry(){
         <flightNoFlyout>' + $('.flightNoFlyout').val() + '</flightNoFlyout> \
         <etdFlyout>' + $('.etdFlyout').val() + '</etdFlyout> \
         <dateFlyout>' + $('.dateFlyout').val() + '</dateFlyout> \
+        <planeJustification>' + $('.justification').val() + '</planeJustification> \
     </PlaneRequest>';
     
     var planeSummary = ' \
@@ -1456,18 +1457,28 @@ function fireJquery(){
                                               fsAccess("fromDropbox");
                                               });
                       //OtherInputs
-                      $('.activityDate').change(function(){
-                                                var allowedDate = new Date($('.activityDate').val());
-                                                allowedDate.setDate(allowedDate.getDate()+3);
-                                                var timeDiff = Math.abs(allowedDate.getTime() - new Date().getTime());
-                                                var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-                                                if (diffDays < 6){
-                                                $('#justification').show();
+                      $('.dateFlyin').change(function(){
+                                             var allowedDate = new Date($('.dateFlyin').val());
+                                             allowedDate.setDate(allowedDate.getDate()+3);
+                                             var timeDiff = Math.abs(allowedDate.getTime() - new Date().getTime());
+                                             var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                                             if ($('.flightTypeFlyin').val() == "Domestic"){
+                                                if (diffDays < 14){
+                                                $('#planeJustification').show();
                                                 } else {
-                                                $('#justification').hide();
+                                                $('#planeJustification').hide();
                                                 $('.justification').val('');
                                                 }
-                                                });
+                                             }
+                                             if ($('.flightTypeFlyin').val() == "International"){
+                                                if (diffDays < 28){
+                                                $('#planeJustification').show();
+                                                } else {
+                                                $('#planeJustification').hide();
+                                                $('.justification').val('');
+                                                }
+                                             }
+                                             });
                       
                       $('.membership').change(function(){
                                               var closest = $(this).attr('id');
