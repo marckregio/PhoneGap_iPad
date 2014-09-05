@@ -178,7 +178,7 @@ function readFromDropbox(){
           deleteDB();
           xml.find("PassengerDetails").find("passenger").each(function(){
                                                               //showAlert($(this).text());
-                                                              runSQL("Insert into Passengers (name, address, mobile, birthdate) Values ('" + $(this).find("name").text() + "','" + $(this).find("hcpid").text()+ "','" + $(this).find("mobileno").text()+ "','" + $(this).find("birthdate").text()+ "')");
+                                                              runSQL("Insert into Passengers (name, hcp, mobile, birthdate, delegate) Values ('" + $(this).find("name").text() + "','" + $(this).find("hcpid").text()+ "','" + $(this).find("mobileno").text()+ "','" + $(this).find("birthdate").text()+ "','" + $(this).find("delegate").text() + "')");
                                                               });
           xml.find("AccountNumbers").find("account").each(function(){
                                                           //showAlert($(this).text());
@@ -314,7 +314,7 @@ function createTables(tx){
     tx.executeSql('Create Table If Not Exists CarTableDuration (id integer primary key autoincrement, duration VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists CarTableDetails (id integer primary key autoincrement, details VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists RegPrcNo (id integer primary key autoincrement, prc VARCHAR(255))');
-    tx.executeSql('Create Table If Not Exists Passengers (id integer primary key autoincrement, name VARCHAR(255), mobile VARCHAR(255), address VARCHAR(255), birthdate VARCHAR(255) )');
+    tx.executeSql('Create Table If Not Exists Passengers (id integer primary key autoincrement, name VARCHAR(255), mobile VARCHAR(255), hcp VARCHAR(255), birthdate VARCHAR(255), delegate VARCHAR(255) )');
 }
 function runSQL(queryString){
     //showAlert(queryString);
@@ -450,27 +450,27 @@ function getMainTableCostCenterList(tx, results){
     }
 }
 function planePassengerDetails(tx, results){
-    $('.planehcpId').val(''+results.rows.item(0)['address']);
+    $('.planehcpId').val(''+results.rows.item(0)['hcp']);
     $('.planeBirthdate').val(''+results.rows.item(0)['birthdate']);
     $('.planeMobileNo').val(''+results.rows.item(0)['mobile']);
 }
 function hotelGuestDetails(tx, results){
-    $('.hotelhcpId').val(''+results.rows.item(0)['address']);
+    $('.hotelhcpId').val(''+results.rows.item(0)['hcp']);
     $('.hotelBirthdate').val(''+results.rows.item(0)['birthdate']);
     $('.hotelMobileNo').val(''+results.rows.item(0)['mobile']);
 }
 function carPassengerDetails(tx, results){
-    $('.carhcpId').val(''+results.rows.item(0)['address']);
+    $('.carhcpId').val(''+results.rows.item(0)['hcp']);
     $('.carBirthdate').val(''+results.rows.item(0)['birthdate']);
     $('.carMobileNo').val(''+results.rows.item(0)['mobile']);
 }
 function hcpRegDetails(tx, results){
-    $('.reghcpId').val(''+results.rows.item(0)['address']);
+    $('.reghcpId').val(''+results.rows.item(0)['hcp']);
     $('.regBirthdate').val(''+results.rows.item(0)['birthdate']);
     $('.regMobileNo').val(''+results.rows.item(0)['mobile']);
 }
 function hcpOtherDetails(tx, results){
-    $('.otherhcpId').val(''+results.rows.item(0)['address']);
+    $('.otherhcpId').val(''+results.rows.item(0)['hcp']);
     $('.otherBirthdate').val(''+results.rows.item(0)['birthdate']);
     $('.otherMobileNo').val(''+results.rows.item(0)['mobile']);
 }
@@ -1030,7 +1030,7 @@ function processRegEntry(){
     var regXML = '\
     <RegRequest> \
         <hcpReg>' + $('#hcpReg').val() + '</hcpReg> \
-        <prcNo>' + $('.prcNo').val() + '</prcNo> \
+        <prcNo>' + $('#prcNo').val() + '</prcNo> \
         <regActivityDate>' + $('.regactivityDate').val() + '</regActivityDate> \
         <mailing>' + $('.mailingAddress').val() + '</mailing> \
         <emailAddress>' + $('.emailAddress').val() + '</emailAddress> \
@@ -1087,7 +1087,7 @@ function processRegEntry(){
                         <div class="item-inner"> \
                             <div class="item-title label">PRC No.</div> \
                             <div class="item-input"> \
-                                <input disabled type="text" value="' + $('.prcNo').val() + '"> \
+                                <input disabled type="text" value="' + $('#prcNo').val() + '"> \
                             </div> \
                         </div> \
                     </div> \
@@ -1336,6 +1336,7 @@ function fireJquery(){
                                                        ('"+$('.lastname').val()+"','"+$('.firstname').val()+"','"+$('.middlename').val()+"', \
                                                        '"+$('.birthdate').val()+"','"+$('.mobile').val()+"','"+$('.address').val()+"')");
                                                 runSQLReturn("AccountHandler","*","");
+                                                reset();
                                                 });
                       //Tables Saving
                       $('.planeSave').click(function(){
@@ -1396,7 +1397,7 @@ function fireJquery(){
                                           var item = regRequests.length;
                                           $('.addedRegRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
                                                                        <td>' + item + '</td> \
-                                                                       <td>' + $('.prcNo').val() + '</td> \
+                                                                       <td>' + $('#prcNo').val() + '</td> \
                                                                        <td>' + $('#hcpReg').val() + '</td> \
                                                                        </tr>');
                                           $('.addedRegRequest tr').click(function(){
@@ -1459,7 +1460,7 @@ function fireJquery(){
                       //OtherInputs
                       $('.dateFlyin').change(function(){
                                              var allowedDate = new Date($('.dateFlyin').val());
-                                             allowedDate.setDate(allowedDate.getDate()+3);
+                                             allowedDate.setDate(allowedDate.getDate());
                                              var timeDiff = Math.abs(allowedDate.getTime() - new Date().getTime());
                                              var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
                                              if ($('.flightTypeFlyin').val() == "Domestic"){
