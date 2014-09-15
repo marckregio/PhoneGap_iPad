@@ -62,7 +62,7 @@ function deleteDB(){
 }
 function loadDropdowns(){
     authUser("AccountHandler","*","");
-    dropDownData("Passengers", "*", "");
+    dropDownData("Passengers", "*", "Where delegate = '" + $('.requestorName').text() + "'");
     dropDownData("MainTableAccountNo","*","");
     dropDownData("MainTableActivityType","*","");
     dropDownData("MainTableActivityNameDetails","*","");
@@ -1502,7 +1502,7 @@ function fireJquery(){
                                             $('#activityNameDetails').find('option').remove();
                                             $('#activityNameDetails').append('<option value="">Select an item</option>');
                                             $('#activityNameDetails').val("");
-                                            dropDownData("MainTableActivityNameDetails","*","Where activityName = 'SMR'");
+                                            dropDownData("MainTableActivityNameDetails","*","Where activitydeadline = '9/24/2014'");
                                             }
                                             });
                       //Date Difference
