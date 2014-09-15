@@ -195,7 +195,7 @@ function readFromDropbox(){
                                                           });
           xml.find("ActivityNamesDetails").find("details").each(function(){
                                                                         //showAlert($(this).text());
-                                                                        runSQL("Insert into MainTableActivityNameDetails (activityDetail, graceperiod, activitydeadline) Values ('" + $(this).find("activitydetails").text() + "','"+ $(this).find("graceperiod").text() +"','" + $(this).find("activitydeadline").text() + "')");
+                                                                        runSQL("Insert into MainTableActivityNameDetails (activityName, activityDetail, graceperiod, activitydeadline) Values ('" + $(this).find("activitytype").text() + "','" + $(this).find("activitydetails").text() + "','"+ $(this).find("graceperiod").text() +"','" + $(this).find("activitydeadline").text() + "')");
                                                                         });
           xml.find("Airlines").find("airline").each(function(){
                                                     //showAlert($(this).text());
@@ -332,7 +332,7 @@ function authUser(dbName,fields,whereClause){
                    }, function(){ console.log("runSQLReturn Successful"); });
 }
 function dropDownData(dbName,fields,whereClause){
-    var queryString = "Select " + fields + " from " + dbName + whereClause;
+    var queryString = "Select " + fields + " from " + dbName +" "+ whereClause;
     db.transaction(function(tx){
                    tx.executeSql(queryString,[], eval('get'+dbName+'List'), gotError);
                    }, function(){ console.log("Cannot Load Dropdown");
@@ -1493,13 +1493,16 @@ function fireJquery(){
                                               });
                       
                       $('.selector').change(function(){
+                                            if($(this).hasClass('passenger')){
                                             var pass = $(this).attr('id');
                                             getDetails(pass+'Details', $(this).val());
+                                            }
                                             
-                                            if ($('#activityNameDetails').val() == "Unplanned"){
-                                            $('#otheractivityName').show();
-                                            } else {
-                                            $('#otheractivityName').hide();
+                                            if ($(this).hasClass('cascadeActivityName')) {
+                                            $('#activityNameDetails').find('option').remove();
+                                            $('#activityNameDetails').append('<option value="">Select an item</option>');
+                                            $('#activityNameDetails').val("");
+                                            dropDownData("MainTableActivityNameDetails","*","Where activityName = 'SMR'");
                                             }
                                             });
                       //Date Difference
