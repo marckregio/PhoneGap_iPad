@@ -58,6 +58,7 @@ function deleteDB(){
     runSQL("Delete from CarTableDuration");
     runSQL("Delete from CarTableDetails");
     runSQL("Delete from Passengers");
+    runSQL("Delete from RegPrcNo");
 }
 function loadDropdowns(){
     authUser("AccountHandler","*","");
@@ -192,9 +193,9 @@ function readFromDropbox(){
                                                           //showAlert($(this).text());
                                                           runSQL("Insert into MainTableActivityType (activityName, agency) Values ('" + $(this).find("name").text() + "','" + $(this).find("agency").text() + "')");
                                                           });
-          xml.find("ActivityNamesDetails").find("activitydetails").each(function(){
+          xml.find("ActivityNamesDetails").find("details").each(function(){
                                                                         //showAlert($(this).text());
-                                                                        runSQL("Insert into MainTableActivityNameDetails (activityDetail) Values ('" + $(this).text() + "')");
+                                                                        runSQL("Insert into MainTableActivityNameDetails (activityDetail, graceperiod, activitydeadline) Values ('" + $(this).find("activitydetails").text() + "','"+ $(this).find("graceperiod").text() +"','" + $(this).find("activitydeadline").text() + "')");
                                                                         });
           xml.find("Airlines").find("airline").each(function(){
                                                     //showAlert($(this).text());
@@ -303,7 +304,7 @@ function createDB(){
 function createTables(tx){
     tx.executeSql('Create Table If Not Exists AccountHandler (id integer primary key autoincrement, lastname VARCHAR(255), firstname VARCHAR(255), middlename VARCHAR(255), birthdate VARCHAR(255), mobileno VARCHAR(255), address VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists MainTableActivityType (id integer primary key autoincrement, activityName VARCHAR(255), agency VARCHAR(255))');
-    tx.executeSql('Create Table If Not Exists MainTableActivityNameDetails (id integer primary key autoincrement, activityDetail VARCHAR(255), activityName VARCHAR(255))');
+    tx.executeSql('Create Table If Not Exists MainTableActivityNameDetails (id integer primary key autoincrement, activityDetail VARCHAR(255), activityName VARCHAR(255), graceperiod VARCHAR(255), activitydeadline VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists MainTableAccountNo(id integer primary key autoincrement, accountNumber VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists MainTableCostCenter (id integer primary key autoincrement, costCenter VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists PlaneTableAirline (id integer primary key autoincrement, airline VARCHAR(255))');
@@ -347,7 +348,6 @@ function getDetails(forList, name){
 function getAccountList(tx, results){
     var fullname = results.rows.item(0)['firstname'] + " " + results.rows.item(0)['middlename'] + " " + results.rows.item(0)['lastname'];
     //showAlert("Welcome to E-Travel " + fullname);
-    $('#menuPage').removeClass('hidden').addClass('shown');
     pageController('menuPage');
     $('.requestorName').text(fullname);
     $('.requestorWelcome').text(fullname);
@@ -1270,6 +1270,8 @@ function composeEmail(){
 function pageController(currentPage){
     switch (currentPage){
         case 'menuPage' :
+            $('#registrationPage').removeClass('shown').addClass('hidden');
+            $('#menuPage').removeClass('hidden').addClass('shown');
             console.log(currentPage);
             break;
         case 'requestPage':
@@ -1335,8 +1337,9 @@ function fireJquery(){
                                                 runSQL("Insert Into AccountHandler (lastname, firstname, middlename, birthdate, mobileno, address) Values \
                                                        ('"+$('.lastname').val()+"','"+$('.firstname').val()+"','"+$('.middlename').val()+"', \
                                                        '"+$('.birthdate').val()+"','"+$('.mobile').val()+"','"+$('.address').val()+"')");
-                                                runSQLReturn("AccountHandler","*","");
+                                                //runSQLReturn("AccountHandler","*","");
                                                 reset();
+                                                pageController('menuPage');
                                                 });
                       //Tables Saving
                       $('.planeSave').click(function(){
