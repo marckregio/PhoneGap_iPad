@@ -439,7 +439,11 @@ function getMainTableActivityNameDetailsList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
         var dt = results.rows.item(i)['activityDetail'];
-        $('#activityNameDetails').append('<option value="' + dt + '">' + dt + '</option>');
+        var activitydeadline = new Date(Date.parse(results.rows.item(i)['activitydeadline']));
+        var graceperiod = new Date(Date.parse(results.rows.item(i)['graceperiod']));
+        if (new Date() < activitydeadline){
+            $('#activityNameDetails').append('<option value="' + dt + '">' + dt + '</option>');
+        }
     }
 }
 function getMainTableCostCenterList(tx, results){
@@ -1502,7 +1506,7 @@ function fireJquery(){
                                             $('#activityNameDetails').find('option').remove();
                                             $('#activityNameDetails').append('<option value="">Select an item</option>');
                                             $('#activityNameDetails').val("");
-                                            dropDownData("MainTableActivityNameDetails","*","Where activitydeadline = '9/24/2014'");
+                                            dropDownData("MainTableActivityNameDetails","*","Where activityName='" + $('#activityName').val().trim() + "'");
                                             }
                                             });
                       //Date Difference
