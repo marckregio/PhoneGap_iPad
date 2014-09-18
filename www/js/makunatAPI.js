@@ -1358,7 +1358,8 @@ function fireJquery(){
                                                                              var body = planeRequestsSummary[selected]+'';
                                                                              $('#summary').html(body);
                                                                              $('.planeDelete').click(function(){
-                                                                                                     showAlert("makoy");
+                                                                                                     showAlert(selected +'');
+                                                                                                     $('#planeRequests').deleteRow(selected);
                                                                                                      });
                                                                              end();
                                                                              });
@@ -1442,10 +1443,11 @@ function fireJquery(){
                       $('.deleteRow').click(function(){
                                             var arrayName = $(this).attr('id').substring(6,this.length);
                                             var arrayNameSummary = $(this).attr('id').substring(6,this.length) + "Summary";
-                                            eval(arrayName).pop();
-                                            eval(arrayNameSummary).pop();
+                                            //eval(arrayName).pop();
+                                            //eval(arrayNameSummary).pop();
                                             $('#'+arrayName+' tr:last').remove();
                                             });
+                      
                       
                       //Generate XML
                       $('.newRequestSubmit').click(function(){
