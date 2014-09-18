@@ -1349,17 +1349,18 @@ function fireJquery(){
                       $('.planeSave').click(function(){
                                             var item = planeRequests.length;
                                             $('.addedPlaneRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
-                                                                           <td>' + item + '</td> \
                                                                            <td>' + $('#preferredAirlineFlyin').val() + '</td> \
                                                                            <td>' + $('#planePassenger').val() + '</td> \
                                                                            </tr>');
                                             $('.addedPlaneRequest tr').click(function(){
-                                                                             var selected = $(this).attr('id');
+                                                                             var selected = $(this).index();
                                                                              var body = planeRequestsSummary[selected]+'';
                                                                              $('#summary').html(body);
                                                                              $('.planeDelete').click(function(){
-                                                                                                     showAlert(selected +'');
-                                                                                                     $('#planeRequests').deleteRow(selected);
+                                                                                                     //showAlert(selected + '');
+                                                                                                     planeRequests.splice(selected,1);
+                                                                                                     planeRequestsSummary.splice(selected,1);
+                                                                                                     $('.addedPlaneRequest tr:eq(' + selected + ')').remove();
                                                                                                      });
                                                                              end();
                                                                              });
@@ -1368,7 +1369,6 @@ function fireJquery(){
                       $('.hotelSave').click(function(){
                                             var item = hotelRequests.length;
                                             $('.addedHotelRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
-                                                                           <td>' + item + '</td> \
                                                                            <td>' + $('.preferredHotel').val() + '</td> \
                                                                            <td>' + $('#hotelGuest').val() + '</td> \
                                                                            </tr>');
@@ -1377,7 +1377,10 @@ function fireJquery(){
                                                                              var body = hotelRequestsSummary[selected]+'';
                                                                              $('#summary').html(body);
                                                                              $('.hotelDelete').click(function(){
-                                                                                                     showAlert("makoy");
+                                                                                                     hotelRequests.splice(selected,1);
+                                                                                                     hotelRequestsSummary.splice(selected,1);
+                                                                                                     $('.addedHotelRequest tr:eq(' + selected + ')').remove();
+                                                                                                     
                                                                                                      });
                                                                              end();
                                                                              });
@@ -1386,7 +1389,6 @@ function fireJquery(){
                       $('.carSave').click(function(){
                                           var item = carRequests.length;
                                           $('.addedCarRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
-                                                                       <td>' + item + '</td> \
                                                                        <td>' + $('.destination').val() + '</td> \
                                                                        <td>' + $('#carPassenger').val() + '</td> \
                                                                        </tr>');
@@ -1395,8 +1397,11 @@ function fireJquery(){
                                                                          var body = carRequestsSummary[selected]+'';
                                                                          $('#summary').html(body);
                                                                          $('.carDelete').click(function(){
-                                                                                                 showAlert("makoy");
-                                                                                                 });
+                                                                                               carRequests.splice(selected,1);
+                                                                                               carRequestsSummary.splice(selected,1);
+                                                                                               $('.addedCarRequest tr:eq(' + selected + ')').remove();
+                                                                                               
+                                                                                               });
                                                                          end();
                                                                          });
                                           processCarEntry();
@@ -1404,7 +1409,6 @@ function fireJquery(){
                       $('.regSave').click(function(){
                                           var item = regRequests.length;
                                           $('.addedRegRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
-                                                                       <td>' + item + '</td> \
                                                                        <td>' + $('#prcNo').val() + '</td> \
                                                                        <td>' + $('#hcpReg').val() + '</td> \
                                                                        </tr>');
@@ -1413,8 +1417,10 @@ function fireJquery(){
                                                                          var body = regRequestsSummary[selected]+'';
                                                                          $('#summary').html(body);
                                                                          $('.regDelete').click(function(){
-                                                                                                 showAlert("makoy");
-                                                                                                 });
+                                                                                               regRequests.splice(selected,1);
+                                                                                               regRequestsSummary.splice(selected,1);
+                                                                                               $('.addedRegRequest tr:eq(' + selected + ')').remove();
+                                                                                               });
                                                                          end();
                                                                          });
                                           processRegEntry();
@@ -1422,7 +1428,6 @@ function fireJquery(){
                       $('.otherSave').click(function(){
                                             var item = otherRequests.length;
                                             $('.addedOtherRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
-                                                                           <td>' + item + '</td> \
                                                                            <td>' + $('#hcpOther').val() + '</td> \
                                                                            <td>' + $('.otherType').val() + '</td> \
                                                                            <td>' + $('.remarks').val() + '</td> \
@@ -1432,7 +1437,9 @@ function fireJquery(){
                                                                              var body = otherRequestsSummary[selected]+'';
                                                                              $('#summary').html(body);
                                                                              $('.otherDelete').click(function(){
-                                                                                                     showAlert("makoy");
+                                                                                                     otherRequests.splice(selected,1);
+                                                                                                     otherRequestsSummary.splice(selected,1);
+                                                                                                     $('.addedOtherRequest tr:eq(' + selected + ')').remove();
                                                                                                      });
                                                                              end();
                                                                              });
@@ -1443,8 +1450,8 @@ function fireJquery(){
                       $('.deleteRow').click(function(){
                                             var arrayName = $(this).attr('id').substring(6,this.length);
                                             var arrayNameSummary = $(this).attr('id').substring(6,this.length) + "Summary";
-                                            //eval(arrayName).pop();
-                                            //eval(arrayNameSummary).pop();
+                                            eval(arrayName).pop();
+                                            eval(arrayNameSummary).pop();
                                             $('#'+arrayName+' tr:last').remove();
                                             });
                       
