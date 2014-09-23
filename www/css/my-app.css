@@ -3,7 +3,7 @@ body{
     -webkit-overflow-scrolling: touch;
 }
 .center{
-    text-align:center;
+    text-align:center !important;
 }
 table{
     border-radius:5px;
@@ -67,4 +67,8 @@ th, td{
 tr:focus{
     background-color:#A8CDF7;
 }
-
+.formerror{
+    color:#FA142F !important;
+    display:none;
+    margin-bottom:30px;
+}

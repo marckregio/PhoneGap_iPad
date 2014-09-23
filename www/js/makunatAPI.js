@@ -1347,6 +1347,21 @@ function fireJquery(){
                                                 });
                       //Tables Saving
                       $('.planeSave').click(function(){
+                                            //Check if Complete
+                                            if ($('.titlePassenger').val() != '' &&
+                                                $('#planePassenger').val() != '' &&
+                                                $('.flightTypeFlyin').val() != '' &&
+                                                $('#preferredAirlineFlyin').val() != '' &&
+                                                $('.flightNoFlyin').val() != '' &&
+                                                $('.etdFlyin').val() != '' &&
+                                                $('.dateFlyin').val() != '' &&
+                                                $('.flightTypeFlyout').val() != '' &&
+                                                $('#preferredAirlineFlyout').val() != '' &&
+                                                $('.flightNoFlyout').val() != '' &&
+                                                $('.etdFlyout').val() != '' &&
+                                                $('.dateFlyout').val() != ''
+                                            ){
+                                            myApp.closeModal();
                                             var item = planeRequests.length;
                                             $('.addedPlaneRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
                                                                            <td>' + $('#preferredAirlineFlyin').val() + '</td> \
@@ -1365,8 +1380,22 @@ function fireJquery(){
                                                                              end();
                                                                              });
                                             processPlaneEntry();
+                                            } else {
+                                            $('.planeError').show();
+                                            setTimeout(function(){$('.planeError').fadeOut('slow');}, 3000);
+                                            }
                                             });
                       $('.hotelSave').click(function(){
+                                            //Check if Complete
+                                            if($('#hotelGuest').val() != '' &&
+                                               $('.preferredHotel').val() != '' &&
+                                               $('#hotelLocation').val() != '' &&
+                                               $('#roomType').val() != '' &&
+                                               $('#roomCategory').val() != '' &&
+                                               $('.checkInDate').val() != '' &&
+                                               $('.checkOutDate').val() != ''
+                                            ){
+                                            myApp.closeModal();
                                             var item = hotelRequests.length;
                                             $('.addedHotelRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
                                                                            <td>' + $('.preferredHotel').val() + '</td> \
@@ -1385,8 +1414,24 @@ function fireJquery(){
                                                                              end();
                                                                              });
                                             processHotelEntry();
+                                            } else {
+                                            $('.hotelError').show();
+                                            setTimeout(function(){$('.hotelError').fadeOut('slow');}, 3000);
+                                            }
                                             });
                       $('.carSave').click(function(){
+                                          //Check if Complete
+                                          if($('#carPassenger').val != '' &&
+                                             $('.pickUpTime').val != '' &&
+                                             $('.pickUpDate').val != '' &&
+                                             $('.pickUpPlace').val != '' &&
+                                             $('.destination').val != '' &&
+                                             $('.paxNo').val != '' &&
+                                             $('#carDescription').val != '' &&
+                                             $('#carDuration').val != '' &&
+                                             $('#carDetails').val != ''
+                                          ){
+                                          myApp.closeModal();
                                           var item = carRequests.length;
                                           $('.addedCarRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
                                                                        <td>' + $('.destination').val() + '</td> \
@@ -1405,8 +1450,20 @@ function fireJquery(){
                                                                          end();
                                                                          });
                                           processCarEntry();
+                                          } else {
+                                          $('.carError').show();
+                                          setTimeout(function(){$('.carError').fadeOut('slow');}, 3000);
+                                          }
                                           });
                       $('.regSave').click(function(){
+                                          //Check if Complete
+                                          if($('#hcpReg').val() != '' &&
+                                             $('#prcNo').val() != '' &&
+                                             $('.mailingAddress').val() != '' &&
+                                             $('.emailAddress').val() != '' &&
+                                             $('.membership').val() != ''
+                                          ){
+                                          myApp.closeModal();
                                           var item = regRequests.length;
                                           $('.addedRegRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
                                                                        <td>' + $('#prcNo').val() + '</td> \
@@ -1424,8 +1481,17 @@ function fireJquery(){
                                                                          end();
                                                                          });
                                           processRegEntry();
+                                          } else {
+                                          $('.regError').show();
+                                          setTimeout(function(){$('.regError').fadeOut('slow');}, 3000);
+                                          }
                                           });
                       $('.otherSave').click(function(){
+                                            //Check if Complete
+                                            if($('.otherType').val() != '' &&
+                                               $('#hcpOther').val() != ''
+                                            ){
+                                            myApp.closeModal();
                                             var item = otherRequests.length;
                                             $('.addedOtherRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
                                                                            <td>' + $('#hcpOther').val() + '</td> \
@@ -1444,6 +1510,10 @@ function fireJquery(){
                                                                              end();
                                                                              });
                                             processOtherEntry();
+                                            } else {
+                                            $('.otherError').show();
+                                            setTimeout(function(){$('.otherError').fadeOut('slow');}, 3000);
+                                            }
                                             });
                       
                       //Tables Delete
@@ -1458,12 +1528,20 @@ function fireJquery(){
                       
                       //Generate XML
                       $('.newRequestSubmit').click(function(){
+                                                   if($('#activityName').val() != '' &&
+                                                      $('#activityNameDetails').val() != '' &&
+                                                      $('#accountNo').val() != '' &&
+                                                      $('#costCenter').val() != ''
+                                                   ){
                                                    if ($(this).hasClass('disable')){
                                                    showAlert("Create New Request");
                                                    } else {
                                                    fsAccess("NewRequest");
                                                    $(this).addClass('disable');
                                                    composeEmail();
+                                                   }
+                                                   } else {
+                                                   showAlert("Please complete the form");
                                                    }
                                                    });
                       //Download XML
