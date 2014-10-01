@@ -10,29 +10,29 @@
 	<string>Etravel</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>F64E9C7C-1844-4EAB-8662-B2D03CA9F403</key>
+		<key>9630CC2197FA62DF75432FB463F75AFE81193D17</key>
 		<string>https://github.com/marckregio/PhoneGap_iPad.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Etravel.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>F64E9C7C-1844-4EAB-8662-B2D03CA9F403</key>
+		<key>9630CC2197FA62DF75432FB463F75AFE81193D17</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/marckregio/PhoneGap_iPad.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>F64E9C7C-1844-4EAB-8662-B2D03CA9F403</string>
+	<string>9630CC2197FA62DF75432FB463F75AFE81193D17</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F64E9C7C-1844-4EAB-8662-B2D03CA9F403</string>
+			<string>9630CC2197FA62DF75432FB463F75AFE81193D17</string>
 			<key>IDESourceControlWCCName</key>
 			<string>NestleEtravel</string>
 		</dict>
