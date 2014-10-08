@@ -15,11 +15,12 @@ var otherRequestsSummary = [];
 var dateJSON = new Date().toJSON();
 var currentDate = dateJSON.slice(0, 10);
 var rand ;
-var referenceFile = currentDate+"-"+rand;
+var documentsDirectory = "";
 var ifPlanned = "Planned";
+var planeHasLeadtime = 0;
 function makoy(){
     //Initialization
-    //fsAccess();
+    //fsAccess("TestEmail");
     createDB();
     fireJquery();
 }
@@ -31,6 +32,7 @@ function reset(){
     $('.selector').append('<option value="">Select an item</option>');
     $('input[type="text"]').val("");
     $('input[type="date"]').val(currentDate);
+    $('textarea').val("");
     planeRequests = [];
     hotelRequests = [];
     carRequests = [];
@@ -86,16 +88,19 @@ function fsAccess(method){
                                  window.rootFS = fileSystem.root;
                                  fs = window.rootFS;
                                  //showAlert(window.rootFS.fullPath + '');
+                                 documentsDirectory = window.rootFS.fullPath + "";
                                  generateFile();
                                  }, gotError);
-    } else if (method == "UpdateDatabase"){
-        /*window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+    } else if (method == "TestEmail"){
+        window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
                                  window.rootFS = fileSystem.root;
                                  fs = window.rootFS;
-                                 readFile();
-                                 }, gotError);*/
-        readFile();
+                                 //showAlert(window.rootFS.fullPath + '');
+                                 generateFile();
+                                 documentsDirectory = window.rootFS.fullPath + "";
+                                 }, gotError);
+        composeEmail();
     } else if (method == "fromDropbox"){
         readFromDropbox();
     }
@@ -286,6 +291,7 @@ function xmlBuilder(){
             <costCenter>' + costCenter + '</costCenter> \
             <submissiondate>' + SQLDate + '</submissiondate> \
             <plan>' + $('.plan').val() + '</plan> \
+            <planeLeadtime>' + planeHasLeadtime + '</planeLeadtime> \
             <ipad>yes</ipad> \
         </Request> \
         ' + plane + ' \
@@ -1268,7 +1274,7 @@ function composeEmail(){
                                                                [],
                                                                [],
                                                                false,
-                                                               ["var/mobile/Applications/D87FA0A0-305E-4510-AE9B-B38E293EC754/Documents/2014-08-27-86.xml"]);
+                                                               ["/var/mobile/Applications/40501E8B-5868-4D1B-9DFC-9D334D83714B/Documents/2014-10-08-22.xml"]);
 }
 //Jquery Handlers
 function pageController(currentPage){
@@ -1560,17 +1566,21 @@ function fireJquery(){
                                              if ($('.flightTypeFlyin').val() == "Domestic"){
                                                 if (diffDays < 14){
                                                 $('#planeJustification').show();
+                                                planeHasLeadtime = 1;
                                                 } else {
                                                 $('#planeJustification').hide();
                                                 $('.justification').val('');
+                                                planeHasLeadtime = 0;
                                                 }
                                              }
                                              if ($('.flightTypeFlyin').val() == "International"){
                                                 if (diffDays < 28){
                                                 $('#planeJustification').show();
+                                                planeHasLeadtime = 1;
                                                 } else {
                                                 $('#planeJustification').hide();
                                                 $('.justification').val('');
+                                                planeHasLeadtime = 0;
                                                 }
                                              }
                                              });
