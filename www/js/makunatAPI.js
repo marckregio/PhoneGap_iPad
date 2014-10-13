@@ -14,8 +14,7 @@ var otherRequests = [];
 var otherRequestsSummary = [];
 var dateJSON = new Date().toJSON();
 var currentDate = dateJSON.slice(0, 10);
-var rand ;
-var documentsDirectory = "";
+var rand = "";
 var ifPlanned = "Planned";
 var planeHasLeadtime = 0;
 function makoy(){
@@ -87,8 +86,6 @@ function fsAccess(method){
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
                                  window.rootFS = fileSystem.root;
                                  fs = window.rootFS;
-                                 //showAlert(window.rootFS.fullPath + '');
-                                 documentsDirectory = window.rootFS.fullPath + "";
                                  generateFile();
                                  }, gotError);
     } else if (method == "TestEmail"){
@@ -96,11 +93,9 @@ function fsAccess(method){
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
                                  window.rootFS = fileSystem.root;
                                  fs = window.rootFS;
-                                 //showAlert(window.rootFS.fullPath + '');
-                                 generateFile();
-                                 documentsDirectory = window.rootFS.fullPath + "";
+                                 //generateFile();
+                                 //composeEmail(window.rootFS.fullPath + "");
                                  }, gotError);
-        composeEmail();
     } else if (method == "fromDropbox"){
         readFromDropbox();
     }
@@ -112,6 +107,7 @@ function generateFile(){
                                                  writer.seek(writer.length);
                                                  writer.write(xmlBuilder());
                                                  console.log("File Generated");
+                                                 composeEmail(window.rootFS.fullPath + "/" +$(".referenceNo").text() + ".xml");
                                                  }, gotError);
                           }, gotError);
 }
@@ -1263,8 +1259,8 @@ function gotError(error){
     showAlert("Error: "+ error.message);
 }
 //Email Handler
-function composeEmail(){
-    //var/mobile/Applications/D87FA0A0-305E-4510-AE9B-B38E293EC754/Documents
+function composeEmail(pathOfXML){
+    
     window.plugins.emailComposer.showEmailComposerWithCallback(function(result){
                                                                console.log(result);
                                                                },
@@ -1274,7 +1270,8 @@ function composeEmail(){
                                                                [],
                                                                [],
                                                                false,
-                                                               ["/var/mobile/Applications/40501E8B-5868-4D1B-9DFC-9D334D83714B/Documents/2014-10-08-22.xml"]);
+                                                               [pathOfXML]);
+    
 }
 //Jquery Handlers
 function pageController(currentPage){
@@ -1544,7 +1541,6 @@ function fireJquery(){
                                                    } else {
                                                    fsAccess("NewRequest");
                                                    $(this).addClass('disable');
-                                                   composeEmail();
                                                    }
                                                    } else {
                                                    showAlert("Please complete the form");
