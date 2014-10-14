@@ -1364,6 +1364,11 @@ function fireJquery(){
                                                 $('.etdFlyout').val() != '' &&
                                                 $('.dateFlyout').val() != ''
                                             ){
+                                            if (planeHasLeadtime == 1 && $('.justification').val() == ""){
+                                            $('.planeError').html("Please provide your justification");
+                                            $('.planeError').show();
+                                            setTimeout(function(){$('.planeError').fadeOut('slow');}, 3000);
+                                            } else {
                                             myApp.closeModal();
                                             var item = planeRequests.length;
                                             $('.addedPlaneRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
@@ -1382,8 +1387,12 @@ function fireJquery(){
                                                                                                      });
                                                                              end();
                                                                              });
-                                            processPlaneEntry();
+                                            
+                                                processPlaneEntry();
+                                            }
+                                            
                                             } else {
+                                            $('.planeError').html("Please complete the Form");
                                             $('.planeError').show();
                                             setTimeout(function(){$('.planeError').fadeOut('slow');}, 3000);
                                             }
@@ -1418,6 +1427,7 @@ function fireJquery(){
                                                                              });
                                             processHotelEntry();
                                             } else {
+                                            $('.planeError').html("Please complete the Form");
                                             $('.hotelError').show();
                                             setTimeout(function(){$('.hotelError').fadeOut('slow');}, 3000);
                                             }
@@ -1454,6 +1464,7 @@ function fireJquery(){
                                                                          });
                                           processCarEntry();
                                           } else {
+                                          $('.planeError').html("Please complete the Form");
                                           $('.carError').show();
                                           setTimeout(function(){$('.carError').fadeOut('slow');}, 3000);
                                           }
@@ -1485,6 +1496,7 @@ function fireJquery(){
                                                                          });
                                           processRegEntry();
                                           } else {
+                                          $('.planeError').html("Please complete the Form");
                                           $('.regError').show();
                                           setTimeout(function(){$('.regError').fadeOut('slow');}, 3000);
                                           }
@@ -1514,6 +1526,7 @@ function fireJquery(){
                                                                              });
                                             processOtherEntry();
                                             } else {
+                                            $('.planeError').html("Please complete the Form");
                                             $('.otherError').show();
                                             setTimeout(function(){$('.otherError').fadeOut('slow');}, 3000);
                                             }
