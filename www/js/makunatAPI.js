@@ -1264,9 +1264,9 @@ function composeEmail(pathOfXML){
     window.plugins.emailComposer.showEmailComposerWithCallback(function(result){
                                                                console.log(result);
                                                                },
-                                                               "Sample Subject",
-                                                               "Sample Body with Sample Attachment",
-                                                               ["marckregio@gmail.com"],
+                                                               "Nestle Nutrition Travel Requests",
+                                                               "DISCLAIMER: This email and any files transmitted with it are confidential and intended solely for the use of E-Travel Application owned by Nestle Philippines. Please notify the sender immediately by e-mail if you have received this e-mail by mistake and delete this e-mail from your system. If you are not the intended recipient you are notified that disclosing, copying, distributing or taking any action in reliance on the contents of this information is strictly prohibited.",
+                                                               ["mlsanje@ecopy.com.ph","marckregio@gmail.com"],
                                                                [],
                                                                [],
                                                                false,
