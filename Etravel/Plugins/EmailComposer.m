@@ -80,9 +80,13 @@
     MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc] init];
     mailComposer.mailComposeDelegate = self;
     
+    NSString* referenceNo = @"";
+    
 	// set subject
     @try {
         NSString* subject = [parameters objectForKey:@"subject"];
+        NSArray* subjectDivision = [subject componentsSeparatedByString:@": "];
+        referenceNo = [subjectDivision objectAtIndex:1];
         if (subject) {
             [mailComposer setSubject:subject];
         }
@@ -141,7 +145,8 @@
             for (NSString* path in attachmentPaths) {
                 @try {
                     NSData *data = [[NSFileManager defaultManager] contentsAtPath:path];
-                    [mailComposer addAttachmentData:data mimeType:[self getMimeTypeFromFileExtension:[path pathExtension]] fileName:[NSString stringWithFormat:@"attachment%d.%@", counter, [path pathExtension]]];
+                    //[mailComposer addAttachmentData:data mimeType:[self getMimeTypeFromFileExtension:[path pathExtension]] fileName:[NSString stringWithFormat:@"%@%d.%@", referenceNo, counter, [path pathExtension]]];
+                    [mailComposer addAttachmentData:data mimeType:[self getMimeTypeFromFileExtension:[path pathExtension]] fileName:[NSString stringWithFormat:@"%@.%@", referenceNo, [path pathExtension]]];
                     counter++;
                 }
                 @catch (NSException *exception) {

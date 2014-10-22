@@ -52,6 +52,8 @@
 		7AACFD14195159E600FF89F6 /* SQLitePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AACFD13195159E600FF89F6 /* SQLitePlugin.m */; };
 		7AACFD1719515B5000FF89F6 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AACFD1519515B5000FF89F6 /* libsqlite3.0.dylib */; };
 		7AACFD1819515B5000FF89F6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AACFD1619515B5000FF89F6 /* libsqlite3.dylib */; };
+		7AE2A3D919F4B96500ACE217 /* icon-57-2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE2A3D819F4B96500ACE217 /* icon-57-2x.png */; };
+		7AE2A3DB19F4BA1500ACE217 /* icon-72-2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE2A3DA19F4BA1500ACE217 /* icon-72-2x.png */; };
 		7AE611CE196CE0FD00BEECE8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE611CD196CE0FD00BEECE8 /* MessageUI.framework */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		F840E1F1165FE0F500CFE078 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = F840E1F0165FE0F500CFE078 /* config.xml */; };
@@ -129,6 +131,8 @@
 		7AACFD13195159E600FF89F6 /* SQLitePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLitePlugin.m; sourceTree = "<group>"; };
 		7AACFD1519515B5000FF89F6 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		7AACFD1619515B5000FF89F6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		7AE2A3D819F4B96500ACE217 /* icon-57-2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-57-2x.png"; path = "www/res/icon/ios/icon-57-2x.png"; sourceTree = "<group>"; };
+		7AE2A3DA19F4BA1500ACE217 /* icon-72-2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72-2x.png"; path = "www/res/icon/ios/icon-72-2x.png"; sourceTree = "<group>"; };
 		7AE611CD196CE0FD00BEECE8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Etravel-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Etravel-Info.plist"; path = "../Etravel-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				7AE2A3DA19F4BA1500ACE217 /* icon-72-2x.png */,
+				7AE2A3D819F4B96500ACE217 /* icon-57-2x.png */,
 				F840E1F0165FE0F500CFE078 /* config.xml */,
 				301BF56E109A69640062928A /* www */,
 				301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */,
@@ -421,6 +427,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AE2A3DB19F4BA1500ACE217 /* icon-72-2x.png in Resources */,
+				7AE2A3D919F4B96500ACE217 /* icon-57-2x.png in Resources */,
 				F840E1F1165FE0F500CFE078 /* config.xml in Resources */,
 				308D05371370CCF300D202BF /* icon-72.png in Resources */,
 				308D05381370CCF300D202BF /* icon.png in Resources */,
