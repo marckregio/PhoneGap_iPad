@@ -123,7 +123,7 @@
                                             </li>
                                             <li>
                                                 <div class="item-content">
-                                                    <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                                                    <div class="item-media"><i class="icon icon-form-name"></i></div>
                                                     <div class="item-inner">
                                                         <div class="item-title label">Mobile No.</div>
                                                         <div class="item-input">
@@ -291,7 +291,7 @@
                             </div>
                             <!--Plane Request-->
                             <div class="planeRequestSection section">
-                                <div class="content-block-title">Plane Request</div>
+                                <div class="content-block-title">Flight Request</div>
                                 <div class="content-block">
                                     <div class="content-block-inner">
                                         <div class="list-block">
@@ -302,6 +302,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="item">Airline</th>
+                                                        <th class="item">Fly-in Date</th>
                                                         <th class="item">Passenger</th>
                                                     </tr>
                                                 </thead>
@@ -326,6 +327,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="item">Hotel</th>
+                                                        <th class="item">Location</th>
                                                         <th class="item">Guest Name</th>
                                                     </tr>
                                                 </thead>
@@ -350,6 +352,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="item">Destination</th>
+                                                        <th class="item">Pick-up Date</th>
                                                         <th class="item">Passenger</th>
                                                     </tr>
                                                 </thead>
@@ -373,6 +376,7 @@
                                             <table>
                                                 <thead>
                                                     <tr>
+                                                        <th class="item">Membership</th>
                                                         <th class="item">PRC No.</th>
                                                         <th class="item">HCP Name</th>
                                                     </tr>
@@ -472,7 +476,7 @@
             </div>
         </div>
         <!--Plane Request Add Popup-->
-        <div class="popup addPlane tablet-fullscreen">
+        <div class="popup addPlane">
             <div class="content-block-title center"><h3 class="title">Plane Request</h3></div>
             <div class="content-block">
                 <div class="content-inner">
@@ -1281,6 +1285,25 @@
             <div class="content-block-title center"><h3 class="title">Request Summary</h3></div>
             <div id="summary" class="content-block">
 
+            </div>
+        </div>
+        <!--Agreement Popup-->
+        <div class="popup agreement">
+            <div class="content-block-title center"><h3 class="title">Agreement</h3></div>
+            <div class="content-block">
+                <div class="content-block-inner">
+                    <p class="center">
+                    This Application is intended and limited to work with Nestle E-travel Application in Rapidflows Platform,
+                    in which case this software will not work outside Nestle E-Travel processes. <br><br>
+                    This Application and any files transmitted with it are confidential and intended solely for the use of E-Travel Application owned by Nestle Philippines.
+                    </p>
+                    <p class="center">
+                        <input class="dontShow" type="checkbox" value=""/> Do not show again
+                    </p>
+                </div>
+                <div class="content-block-title">
+                    <a href="#" class="button agreeConfirm close-popup">Confirm</a><br>
+                </div>
             </div>
         </div>
     </body>

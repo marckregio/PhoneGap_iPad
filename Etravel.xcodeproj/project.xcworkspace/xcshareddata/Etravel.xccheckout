@@ -14,7 +14,7 @@
 		<string>https://github.com/marckregio/PhoneGap_iPad.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Etravel.xcodeproj/project.xcworkspace</string>
+	<string>Etravel.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>9630CC2197FA62DF75432FB463F75AFE81193D17</key>

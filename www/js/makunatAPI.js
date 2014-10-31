@@ -76,6 +76,7 @@ function loadDropdowns(){
     dropDownData("CarTableDetails","*","");
     dropDownData("CarTableDuration","*","");
     dropDownData("RegPrcNo","*","");
+    dropDownData("Agreement","*","");
 }
 //File System Handlers
 function fsAccess(method){
@@ -304,6 +305,7 @@ function createDB(){
     db.transaction(createTables, gotError, function(){ console.log("Db Created"); });
 }
 function createTables(tx){
+    tx.executeSql('Create Table If Not Exists Agreement (id integer primary key autoincrement, agree VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists AccountHandler (id integer primary key autoincrement, lastname VARCHAR(255), firstname VARCHAR(255), middlename VARCHAR(255), birthdate VARCHAR(255), mobileno VARCHAR(255), address VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists MainTableActivityType (id integer primary key autoincrement, activityName VARCHAR(255), agency VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists MainTableActivityNameDetails (id integer primary key autoincrement, activityDetail VARCHAR(255), activityName VARCHAR(255), graceperiod VARCHAR(255), activitydeadline VARCHAR(255))');
@@ -341,11 +343,17 @@ function dropDownData(dbName,fields,whereClause){
                    }, function(){ console.log("runSQLReturn Successful"); });
 }
 function getDetails(forList, name){
-    var queryString = "Select * from Passengers Where name = '" + name + "'";
+    var queryString = "Select * from Passengers Where name = '" + name + "' and delegate = '" + $('.requestorName').text() + "'";
     db.transaction(function(tx){
                    tx.executeSql(queryString,[], eval(forList), gotError);
                    }, function(){ console.log("Cannot Load For List");
                    }, function(){ console.log("runSQLReturn Successful"); });
+}
+function getAgreementList(tx, results){
+    var isAgreed = results.rows.length;
+    if (isAgreed == 0){
+        myApp.popup('.agreement');
+    }
 }
 function getAccountList(tx, results){
     var fullname = results.rows.item(0)['firstname'] + " " + results.rows.item(0)['middlename'] + " " + results.rows.item(0)['lastname'];
@@ -1341,12 +1349,22 @@ function fireJquery(){
                                               });
                       //RegisterUser
                       $('.newUserSubmit').click(function(){
+                                                if ($('.lastname').val() != '' &&
+                                                    $('.firstname').val() != '' &&
+                                                    $('.middlename').val() != '' &&
+                                                    $('.birthdate').val() != '' &&
+                                                    $('.mobile').val() != '' &&
+                                                    $('.address').val() != ''
+                                                ){
                                                 runSQL("Insert Into AccountHandler (lastname, firstname, middlename, birthdate, mobileno, address) Values \
                                                        ('"+$('.lastname').val()+"','"+$('.firstname').val()+"','"+$('.middlename').val()+"', \
                                                        '"+$('.birthdate').val()+"','"+$('.mobile').val()+"','"+$('.address').val()+"')");
                                                 //runSQLReturn("AccountHandler","*","");
                                                 reset();
                                                 pageController('menuPage');
+                                                } else {
+                                                showAlert("Please Complete The Form");
+                                                }
                                                 });
                       //Tables Saving
                       $('.planeSave').click(function(){
@@ -1373,6 +1391,7 @@ function fireJquery(){
                                             var item = planeRequests.length;
                                             $('.addedPlaneRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
                                                                            <td>' + $('#preferredAirlineFlyin').val() + '</td> \
+                                                                           <td>' + $('.dateFlyin').val() + '</td> \
                                                                            <td>' + $('#planePassenger').val() + '</td> \
                                                                            </tr>');
                                             $('.addedPlaneRequest tr').click(function(){
@@ -1411,6 +1430,7 @@ function fireJquery(){
                                             var item = hotelRequests.length;
                                             $('.addedHotelRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
                                                                            <td>' + $('.preferredHotel').val() + '</td> \
+                                                                           <td>' + $('#hotelLocation').val() + '</td> \
                                                                            <td>' + $('#hotelGuest').val() + '</td> \
                                                                            </tr>');
                                             $('.addedHotelRequest tr').click(function(){
@@ -1448,6 +1468,7 @@ function fireJquery(){
                                           var item = carRequests.length;
                                           $('.addedCarRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
                                                                        <td>' + $('.destination').val() + '</td> \
+                                                                       <td>' + $('.pickUpDate').val() + '</td> \
                                                                        <td>' + $('#carPassenger').val() + '</td> \
                                                                        </tr>');
                                           $('.addedCarRequest tr').click(function(){
@@ -1480,6 +1501,7 @@ function fireJquery(){
                                           myApp.closeModal();
                                           var item = regRequests.length;
                                           $('.addedRegRequest').append('<tr id="' + item + '" data-popup=".entrySummary" class="open-popup">\
+                                                                       <td>' + $('.membership').val() + '</td> \
                                                                        <td>' + $('#prcNo').val() + '</td> \
                                                                        <td>' + $('#hcpReg').val() + '</td> \
                                                                        </tr>');
@@ -1626,6 +1648,12 @@ function fireJquery(){
                                                 $('.roomNights').val(0 + '');
                                                 }
                                                 });
+                      //Agreement
+                      $('.agreeConfirm').click(function(){
+                                               if ($('.dontShow').is(':checked')){
+                                               runSQL("Insert into Agreement (agree) Values ('true')");
+                                               }
+                                               });
                       });
 
 }
