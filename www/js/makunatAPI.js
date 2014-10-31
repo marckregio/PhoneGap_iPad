@@ -1383,9 +1383,9 @@ function fireJquery(){
                                                 $('.dateFlyout').val() != ''
                                             ){
                                             if (planeHasLeadtime == 1 && $('.justification').val() == ""){
-                                            $('.planeError').html("Please provide your justification");
-                                            $('.planeError').show();
-                                            setTimeout(function(){$('.planeError').fadeOut('slow');}, 3000);
+                                                $('.planeError').html("Please provide your justification");
+                                                $('.planeError').show();
+                                                setTimeout(function(){$('.planeError').fadeOut('slow');}, 3000);
                                             } else {
                                             myApp.closeModal();
                                             var item = planeRequests.length;
@@ -1408,8 +1408,8 @@ function fireJquery(){
                                                                              });
                                             
                                                 processPlaneEntry();
-                                            }
                                             
+                                            }
                                             } else {
                                             $('.planeError').html("Please complete the Form");
                                             $('.planeError').show();
