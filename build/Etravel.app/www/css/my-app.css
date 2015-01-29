@@ -1,0 +1,74 @@
+body{
+    overflow:auto;
+    -webkit-overflow-scrolling: touch;
+}
+.center{
+    text-align:center !important;
+}
+table{
+    border-radius:5px;
+    width:100%;
+    border-collapse:collapse;
+}
+table, th, td{
+    border:1px solid #999;
+}
+th.no{
+    max-width:20px;
+    min-width:10px;
+}
+th.item{
+    min-width:50px;
+}
+thead{
+    background-color:#999999;
+}
+th, td{
+    height:30px;
+    font-weight:normal;
+}
+.tableButtons{
+    width:150px;
+    height:35px;
+}
+.requestTab{
+    width:100%;
+}
+.onright{
+    text-align:right;
+}
+.title{
+    color:#666666;
+}
+.content-block-title{
+    top:-11px;
+    color:#2D8DFA;
+}
+.referenceTitle{
+    color:#000000 !important;
+    font-size:15px;
+}
+.content-block-inner{
+    padding-top:0px;
+    padding-bottom:0px;
+}
+.planeRequestSection, .hotelRequestSection, .carRequestSection, .registrationRequestSection, .otherRequestSection{
+    display:none;
+}
+.shown{
+    visibility:visible !important;
+}
+.hidden{
+    visibility:hidden !important;
+}
+.otherInputs{
+    display:none;
+}
+tr:focus{
+    background-color:#A8CDF7;
+}
+.formerror{
+    color:#FA142F !important;
+    display:none;
+    margin-bottom:30px;
+}

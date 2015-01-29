@@ -1,0 +1,54 @@
+body{
+    margin-bottom:50px;
+}
+.statusSpace{
+    margin-top:20px;
+}
+.center{
+    text-align:center;
+}
+.right{
+    text-align:right;
+    }
+body{
+    text-transform:none !important;
+}
+.appName{
+    font-family:Helvetica;
+}
+.form{
+    height:40px;
+}
+.planeRequest, .hotelaccommodation, .carServices, .registration, .others{
+    display:none;
+    }
+#page2, #page3{
+    display:none;
+    }
+.menu{
+    width:30%;
+    left: 35%; /* (100- width)/2 */
+    margin-left:auto;
+    margin-right:auto;
+    }
+.dataEntry{
+    width:33%;
+    left: 33.5%; /* (100- width)/2 */
+    margin-left:auto;
+    margin-right:auto;
+    }
+.menubutton{
+    width:150px;
+    }
+.tbHead{
+    background-color:#00b3a7;
+    }
+.selected{
+    background-color:#76eee6;
+    }
+.dbName{
+    margin-top:0px;
+    }
+.item{
+    width:2px;
+    }
