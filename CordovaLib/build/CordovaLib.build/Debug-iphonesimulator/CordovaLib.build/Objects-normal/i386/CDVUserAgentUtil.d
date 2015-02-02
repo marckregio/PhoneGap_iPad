@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/eCopy/Documents/PhonegapProjects/NestleEtravel/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m \
-  /Users/eCopy/Documents/PhonegapProjects/NestleEtravel/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.h
+  /Users/eCopy/Desktop/NestleEtravel/CordovaLib/Classes/CDVUserAgentUtil.m \
+  /Users/eCopy/Desktop/NestleEtravel/CordovaLib/Classes/CDVUserAgentUtil.h

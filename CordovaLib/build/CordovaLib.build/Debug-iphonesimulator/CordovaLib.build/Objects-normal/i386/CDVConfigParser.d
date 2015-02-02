@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/eCopy/Documents/PhonegapProjects/NestleEtravel/platforms/ios/CordovaLib/Classes/CDVConfigParser.m \
-  /Users/eCopy/Documents/PhonegapProjects/NestleEtravel/platforms/ios/CordovaLib/Classes/CDVConfigParser.h
+  /Users/eCopy/Desktop/NestleEtravel/CordovaLib/Classes/CDVConfigParser.m \
+  /Users/eCopy/Desktop/NestleEtravel/CordovaLib/Classes/CDVConfigParser.h

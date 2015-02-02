@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/eCopy/Documents/PhonegapProjects/NestleEtravel/platforms/ios/CordovaLib/Classes/CDVWhitelist.m \
-  /Users/eCopy/Documents/PhonegapProjects/NestleEtravel/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
+  /Users/eCopy/Desktop/NestleEtravel/CordovaLib/Classes/CDVWhitelist.m \
+  /Users/eCopy/Desktop/NestleEtravel/CordovaLib/Classes/CDVWhitelist.h

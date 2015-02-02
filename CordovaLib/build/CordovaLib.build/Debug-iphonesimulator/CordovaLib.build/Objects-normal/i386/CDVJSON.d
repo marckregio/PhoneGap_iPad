@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/eCopy/Documents/PhonegapProjects/NestleEtravel/platforms/ios/CordovaLib/Classes/CDVJSON.m \
-  /Users/eCopy/Documents/PhonegapProjects/NestleEtravel/platforms/ios/CordovaLib/Classes/CDVJSON.h
+  /Users/eCopy/Desktop/NestleEtravel/CordovaLib/Classes/CDVJSON.m \
+  /Users/eCopy/Desktop/NestleEtravel/CordovaLib/Classes/CDVJSON.h

@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/eCopy/Documents/PhonegapProjects/NestleEtravel/platforms/ios/CordovaLib/Classes/NSData+Base64.m \
-  /Users/eCopy/Documents/PhonegapProjects/NestleEtravel/platforms/ios/CordovaLib/Classes/NSData+Base64.h
+  /Users/eCopy/Desktop/NestleEtravel/CordovaLib/Classes/NSData+Base64.m \
+  /Users/eCopy/Desktop/NestleEtravel/CordovaLib/Classes/NSData+Base64.h

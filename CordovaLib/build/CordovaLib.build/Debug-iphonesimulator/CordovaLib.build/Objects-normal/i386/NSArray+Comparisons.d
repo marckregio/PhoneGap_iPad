@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/eCopy/Documents/PhonegapProjects/NestleEtravel/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m \
-  /Users/eCopy/Documents/PhonegapProjects/NestleEtravel/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.h
+  /Users/eCopy/Desktop/NestleEtravel/CordovaLib/Classes/NSArray+Comparisons.m \
+  /Users/eCopy/Desktop/NestleEtravel/CordovaLib/Classes/NSArray+Comparisons.h

@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/eCopy/Documents/iOSProjects/NestleEtravel/Etravel/Plugins/MBProgressHUD.m \
-  /Users/eCopy/Documents/iOSProjects/NestleEtravel/Etravel/Plugins/MBProgressHUD.h
+  /Users/eCopy/Desktop/NestleEtravel/Etravel/Plugins/MBProgressHUD.m \
+  /Users/eCopy/Desktop/NestleEtravel/Etravel/Plugins/MBProgressHUD.h

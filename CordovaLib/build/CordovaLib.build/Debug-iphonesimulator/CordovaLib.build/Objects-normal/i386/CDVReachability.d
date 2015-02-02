@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/eCopy/Documents/PhonegapProjects/NestleEtravel/platforms/ios/CordovaLib/Classes/CDVReachability.m \
-  /Users/eCopy/Documents/PhonegapProjects/NestleEtravel/platforms/ios/CordovaLib/Classes/CDVReachability.h
+  /Users/eCopy/Desktop/NestleEtravel/CordovaLib/Classes/CDVReachability.m \
+  /Users/eCopy/Desktop/NestleEtravel/CordovaLib/Classes/CDVReachability.h

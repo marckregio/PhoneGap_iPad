@@ -1,14 +1,14 @@
 dependencies: \
-  /Users/eCopy/Documents/iOSProjects/NestleEtravel/Etravel/Classes/MainViewController.m \
-  /Users/eCopy/Documents/iOSProjects/NestleEtravel/Etravel/Classes/MainViewController.h \
-  /Users/eCopy/Documents/iOSProjects/NestleEtravel/build/include/Cordova/CDVViewController.h \
-  /Users/eCopy/Documents/iOSProjects/NestleEtravel/build/include/Cordova/CDVAvailability.h \
-  /Users/eCopy/Documents/iOSProjects/NestleEtravel/build/include/Cordova/CDVInvokedUrlCommand.h \
-  /Users/eCopy/Documents/iOSProjects/NestleEtravel/build/include/Cordova/CDVCommandDelegate.h \
-  /Users/eCopy/Documents/iOSProjects/NestleEtravel/build/include/Cordova/CDVCommandQueue.h \
-  /Users/eCopy/Documents/iOSProjects/NestleEtravel/build/include/Cordova/CDVWhitelist.h \
-  /Users/eCopy/Documents/iOSProjects/NestleEtravel/build/include/Cordova/CDVScreenOrientationDelegate.h \
-  /Users/eCopy/Documents/iOSProjects/NestleEtravel/build/include/Cordova/CDVPlugin.h \
-  /Users/eCopy/Documents/iOSProjects/NestleEtravel/build/include/Cordova/CDVPluginResult.h \
-  /Users/eCopy/Documents/iOSProjects/NestleEtravel/build/include/Cordova/NSMutableArray+QueueAdditions.h \
-  /Users/eCopy/Documents/iOSProjects/NestleEtravel/build/include/Cordova/CDVCommandDelegateImpl.h
+  /Users/eCopy/Desktop/NestleEtravel/Etravel/Classes/MainViewController.m \
+  /Users/eCopy/Desktop/NestleEtravel/Etravel/Classes/MainViewController.h \
+  /Users/eCopy/Desktop/NestleEtravel/build/emulator/include/Cordova/CDVViewController.h \
+  /Users/eCopy/Desktop/NestleEtravel/build/emulator/include/Cordova/CDVAvailability.h \
+  /Users/eCopy/Desktop/NestleEtravel/build/emulator/include/Cordova/CDVInvokedUrlCommand.h \
+  /Users/eCopy/Desktop/NestleEtravel/build/emulator/include/Cordova/CDVCommandDelegate.h \
+  /Users/eCopy/Desktop/NestleEtravel/build/emulator/include/Cordova/CDVCommandQueue.h \
+  /Users/eCopy/Desktop/NestleEtravel/build/emulator/include/Cordova/CDVWhitelist.h \
+  /Users/eCopy/Desktop/NestleEtravel/build/emulator/include/Cordova/CDVScreenOrientationDelegate.h \
+  /Users/eCopy/Desktop/NestleEtravel/build/emulator/include/Cordova/CDVPlugin.h \
+  /Users/eCopy/Desktop/NestleEtravel/build/emulator/include/Cordova/CDVPluginResult.h \
+  /Users/eCopy/Desktop/NestleEtravel/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h \
+  /Users/eCopy/Desktop/NestleEtravel/build/emulator/include/Cordova/CDVCommandDelegateImpl.h

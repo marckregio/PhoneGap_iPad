@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/eCopy/Documents/PhonegapProjects/NestleEtravel/platforms/ios/CordovaLib/Classes/CDVTimer.m \
-  /Users/eCopy/Documents/PhonegapProjects/NestleEtravel/platforms/ios/CordovaLib/Classes/CDVTimer.h
+  /Users/eCopy/Desktop/NestleEtravel/CordovaLib/Classes/CDVTimer.m \
+  /Users/eCopy/Desktop/NestleEtravel/CordovaLib/Classes/CDVTimer.h
