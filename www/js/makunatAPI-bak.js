@@ -48,6 +48,7 @@ function reset(){
         runSQL("Insert into DropboxLink (dbLink) VALUES ('https://www.dropbox.com/s/7i8rwhy0jsh65wu/nestleDB.xml?dl=1')");
     }
     loadDropdowns();
+    
 }
 function deleteDB(){
     runSQL("Delete from MainTableAccountNo");
@@ -65,8 +66,8 @@ function deleteDB(){
     runSQL("Delete from RegPrcNo");
 }
 function loadDropdowns(){
-    dbLink("DropboxLink","dbLink","Order by id ASC");
     authUser("AccountHandler","*","");
+    getDBLink("DropboxLink","*","");
     dropDownData("Passengers", "*", "Where delegate = '" + $('.requestorName').text() + "'");
     dropDownData("MainTableAccountNo","*","");
     dropDownData("MainTableActivityType","*","");
@@ -81,6 +82,7 @@ function loadDropdowns(){
     dropDownData("CarTableDuration","*","");
     dropDownData("RegPrcNo","*","");
     dropDownData("Agreement","*","");
+    
 }
 //File System Handlers
 function fsAccess(method){
@@ -104,6 +106,7 @@ function fsAccess(method){
     } else if (method == "fromDropbox"){
         runSQL("Delete from DropboxLink");
         runSQL("Insert into DropboxLink (dbLink) VALUES ('" + $('.dbLink').val() + "')");
+        
         readFromDropbox();
     }
 }
@@ -326,7 +329,7 @@ function createTables(tx){
     tx.executeSql('Create Table If Not Exists CarTableDetails (id integer primary key autoincrement, details VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists RegPrcNo (id integer primary key autoincrement, prc VARCHAR(255))');
     tx.executeSql('Create Table If Not Exists Passengers (id integer primary key autoincrement, name VARCHAR(255), mobile VARCHAR(255), hcp VARCHAR(255), birthdate VARCHAR(255), delegate VARCHAR(255) )');
-    tx.executeSql('Create Table If Not Exists DropboxLink(id integer primary key autoincrement, dbLink VARCHAR(255))');
+    tx.executeSql('Create Table If Not Exists DropboxLink (id integer primary key autoincrement, dbLink VARCHAR(255))');
 }
 function runSQL(queryString){
     //showAlert(queryString);
@@ -342,10 +345,10 @@ function authUser(dbName,fields,whereClause){
                    $('.open-panel').addClass('hidden');
                    }, function(){ console.log("runSQLReturn Successful"); });
 }
-function dbLink(dbName, fields, whereClause){
-    var q = "Select " + fields + " from " + dbName + " " + whereClause;
+function getDBLink(dbName, fields, whereClause){
+    queryString = "Select " + fields + " from " + dbName + " " + whereClause;
     db.transaction(function(tx){
-                   tx.executeSql(q,[], getDBLinkData, gotError);
+                   tx.executeSql(queryString,[], getDBLinkData, gotError);
                    }, function(){ console.log($('.dbLink').val() + "");
                    }, function(){ console.log("runSQLReturn Successful"); });
 }
@@ -355,9 +358,6 @@ function dropDownData(dbName,fields,whereClause){
                    tx.executeSql(queryString,[], eval('get'+dbName+'List'), gotError);
                    }, function(){ console.log("Cannot Load Dropdown");
                    }, function(){ console.log("runSQLReturn Successful"); });
-}
-function getDBLinkData(tx, results){
-    $('.dbLink').val(results.rows.item(0)['dbLink']);
 }
 function getDetails(forList, name){
     var queryString = "Select * from Passengers Where name = '" + name + "' and delegate = '" + $('.requestorName').text() + "'";
@@ -380,6 +380,7 @@ function getAccountList(tx, results){
     $('.requestorWelcome').text(fullname);
     $('.emailFrom').val(results.rows.item(0)['address']);
 }
+
 function getPassengersList(tx, results){
     var len = results.rows.length;
     for (var i = 0; i < len; i++){
@@ -1603,7 +1604,7 @@ function fireJquery(){
                                               fsAccess("UpdateDatabase");
                                               });
                       $('.downloadXMLDropbox').click(function(){
-                                              fsAccess("fromDropbox");
+                                                     fsAccess("fromDropbox");
                                               });
                       //OtherInputs
                       $('.dateFlyin').change(function(){
